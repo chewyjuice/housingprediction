@@ -1,0 +1,49 @@
+{
+  "name": "singapore-housing-predictor-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Singapore Housing Predictor",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc",
+    "test": "jest",
+    "migrate": "ts-node src/scripts/migrate.ts up",
+    "migrate:down": "ts-node src/scripts/migrate.ts down",
+    "migrate:status": "ts-node src/scripts/migrate.ts status",
+    "seed-areas": "ts-node src/scripts/seed-areas.ts"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.1.5",
+    "pg": "^8.11.3",
+    "redis": "^4.6.10",
+    "bull": "^4.12.2",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1",
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/cors": "^2.8.17",
+    "@types/pg": "^8.10.7",
+    "@types/bull": "^4.10.0",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20.8.0",
+    "@types/cheerio": "^0.22.35",
+    "@types/node-cron": "^3.0.11",
+    "@types/supertest": "^2.0.16",
+    "typescript": "^5.2.2",
+    "ts-node-dev": "^2.0.0",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.8",
+    "ts-jest": "^29.1.1",
+    "supertest": "^6.3.3"
+  }
+}

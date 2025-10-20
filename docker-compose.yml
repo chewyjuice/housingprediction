@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://postgres:password@postgres:5432/housing_predictor
+      - REDIS_URL=redis://redis:6379
+      - JWT_SECRET=your-jwt-secret-key
+    depends_on:
+      - postgres
+      - redis
+      - ml-service
+
+  ml-service:
+    build:
+      context: ./ml-service
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@postgres:5432/housing_predictor
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=housing_predictor
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend
+      - backend
+
+volumes:
+  postgres_data:
+  redis_data:
