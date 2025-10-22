@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import SingaporeMap from './components/SingaporeMap';
 import PredictionForm from './components/PredictionForm';
 import ResultsVisualization from './components/ResultsVisualization';
 import AccuracyDashboard from './components/AccuracyDashboard';
+import { AppProvider, useAppContext } from './contexts/AppContext';
+import { NotificationProvider, useNotificationHelpers } from './components/NotificationSystem';
+import HealthStatus from './components/HealthStatus';
+import ErrorBoundary from './components/ErrorBoundary';
 import { Area, CreatePredictionRequest, PredictionResult } from './types';
 import { singaporeAreas } from './data/singaporeAreas';
+import apiService from './services/api';
 
 // Fix for default markers in react-leaflet
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -16,20 +21,71 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
-const App: React.FC = () => {
-  const [selectedArea, setSelectedArea] = useState<Area | null>(null);
-  const [hoveredArea, setHoveredArea] = useState<Area | null>(null);
-  const [predictionResult, setPredictionResult] = useState<PredictionResult | null>(null);
+const AppContent: React.FC = () => {
+  const { state, dispatch, setSelectedArea, setHoveredArea, setPredictionResult, setActiveTab, setLoading, setError, resetPrediction } = useAppContext();
+  const { showSuccess, showError, showWarning, showInfo } = useNotificationHelpers();
   const [currentTimeframe, setCurrentTimeframe] = useState<number>(5);
-  const [isLoadingPrediction, setIsLoadingPrediction] = useState<boolean>(false);
-  const [predictionError, setPredictionError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'prediction' | 'accuracy'>('prediction');
+  const [areas, setAreas] = useState<Area[]>(singaporeAreas); // Fallback to static data
+
+  // Check backend health on component mount
+  useEffect(() => {
+    checkBackendHealth();
+    loadAreas();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const checkBackendHealth = async () => {
+    try {
+      console.log('Checking backend health...');
+      setLoading('health', true);
+      const response = await apiService.checkHealth();
+      console.log('Health check response:', response);
+      
+      if (response.success) {
+        console.log('Backend connected successfully');
+        showSuccess('Backend Connected', 'Successfully connected to the prediction service');
+        dispatch({ type: 'SET_BACKEND_CONNECTION', payload: true });
+        dispatch({ type: 'SET_LAST_HEALTH_CHECK', payload: new Date() });
+      } else {
+        throw new Error('Health check failed');
+      }
+    } catch (error) {
+      console.warn('Backend not available, using demo mode:', error);
+      showWarning(
+        'Demo Mode Active', 
+        'Backend services are not available. Using simulated data for demonstration.'
+      );
+      dispatch({ type: 'SET_BACKEND_CONNECTION', payload: false });
+    } finally {
+      setLoading('health', false);
+    }
+  };
+
+  const loadAreas = async () => {
+    try {
+      console.log('Loading areas from backend...');
+      setLoading('areas', true);
+      const response = await apiService.searchAreas({ query: '' });
+      console.log('Areas response:', response);
+      
+      if (response.success && response.data) {
+        console.log('Areas loaded successfully:', response.data.length, 'areas');
+        setAreas(response.data);
+        dispatch({ type: 'SET_AREAS', payload: response.data });
+      } else {
+        throw new Error('Failed to load areas');
+      }
+    } catch (error) {
+      console.warn('Failed to load areas from backend, using static data:', error);
+      // Keep using static data as fallback
+      dispatch({ type: 'SET_AREAS', payload: singaporeAreas });
+    } finally {
+      setLoading('areas', false);
+    }
+  };
 
   const handleAreaSelect = (area: Area) => {
     setSelectedArea(area);
-    // Clear previous prediction when area changes
-    setPredictionResult(null);
-    setPredictionError(null);
+    resetPrediction();
   };
 
   const handleAreaHover = (area: Area | null) => {
@@ -76,54 +132,98 @@ const App: React.FC = () => {
   };
 
   const handlePredictionSubmit = async (request: CreatePredictionRequest) => {
-    if (!selectedArea) return;
+    if (!state.selectedArea) return;
 
-    setIsLoadingPrediction(true);
-    setPredictionError(null);
+    setLoading('prediction', true);
+    setError('prediction', null);
     setCurrentTimeframe(request.timeframeYears);
 
     try {
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      console.log('[PREDICTION] Starting prediction submission...');
+      console.log('[PREDICTION] Backend connected:', state.isBackendConnected);
+      console.log('[PREDICTION] Request:', request);
+      
+      if (state.isBackendConnected) {
+        // Use real API
+        console.log('[PREDICTION] Using real API...');
+        showInfo('Processing Request', 'Analyzing market data and development trends...');
+        
+        console.log('[PREDICTION] Creating prediction request...');
+        const createResponse = await apiService.createPredictionRequest(request);
+        console.log('[PREDICTION] Create response:', createResponse);
+        
+        if (!createResponse.success) {
+          throw new Error(createResponse.error || 'Failed to create prediction request');
+        }
 
-      // Calculate prediction based on area characteristics and property details
-      const basePricePerSqft = getBasePricePerSqft(selectedArea, request.propertyType);
-      const growthRate = calculateGrowthRate(selectedArea, request.propertyType);
-      const predictedPricePerSqft = basePricePerSqft * Math.pow(1 + growthRate, request.timeframeYears);
-      const predictedPrice = predictedPricePerSqft * (request.unitSize || 1000);
+        const requestId = createResponse.data!.requestId;
+        console.log('[PREDICTION] Request ID:', requestId);
+        
+        // Poll for results
+        console.log('[PREDICTION] Starting polling...');
+        const result = await apiService.pollPredictionResult(requestId, 30, 2000);
+        console.log('[PREDICTION] Polling result:', result);
+        
+        setPredictionResult(result);
+        showSuccess('Prediction Complete', 'Your housing price prediction is ready!');
+        
+      } else {
+        // Use demo mode
+        showInfo('Demo Mode', 'Generating simulated prediction...');
+        await new Promise(resolve => setTimeout(resolve, 2000));
+
+        // Calculate prediction based on area characteristics and property details
+        const basePricePerSqft = getBasePricePerSqft(state.selectedArea, request.propertyType);
+        const growthRate = calculateGrowthRate(state.selectedArea, request.propertyType);
+        const predictedPricePerSqft = basePricePerSqft * Math.pow(1 + growthRate, request.timeframeYears);
+        const predictedPrice = predictedPricePerSqft * (request.unitSize || 1000);
+        
+        // Create confidence interval (±12% of predicted price)
+        const confidenceRange = predictedPrice * 0.12;
+        const confidenceRangePerSqft = predictedPricePerSqft * 0.12;
+        
+        // Generate mock influencing factors
+        const influencingFactors = generateInfluencingFactors(state.selectedArea, request.timeframeYears, request.propertyType);
+        
+        const result: PredictionResult = {
+          id: `pred_${Date.now()}`,
+          requestId: `req_${Date.now()}`,
+          predictedPrice,
+          predictedPricePerSqft,
+          propertyType: request.propertyType,
+          unitSize: request.unitSize || 1000,
+          roomType: request.roomType,
+          confidenceInterval: {
+            lower: predictedPrice - confidenceRange,
+            upper: predictedPrice + confidenceRange,
+            lowerPerSqft: predictedPricePerSqft - confidenceRangePerSqft,
+            upperPerSqft: predictedPricePerSqft + confidenceRangePerSqft
+          },
+          influencingFactors,
+          modelAccuracy: 0.78 + Math.random() * 0.15, // 78-93% accuracy
+          generatedAt: new Date()
+        };
+        
+        setPredictionResult(result);
+        showSuccess('Demo Prediction Complete', 'Simulated prediction generated successfully!');
+      }
       
-      // Create confidence interval (±12% of predicted price)
-      const confidenceRange = predictedPrice * 0.12;
-      const confidenceRangePerSqft = predictedPricePerSqft * 0.12;
-      
-      // Generate mock influencing factors
-      const influencingFactors = generateInfluencingFactors(selectedArea, request.timeframeYears, request.propertyType);
-      
-      const result: PredictionResult = {
-        id: `pred_${Date.now()}`,
-        requestId: `req_${Date.now()}`,
-        predictedPrice,
-        predictedPricePerSqft,
-        propertyType: request.propertyType,
-        unitSize: request.unitSize || 1000,
-        roomType: request.roomType,
-        confidenceInterval: {
-          lower: predictedPrice - confidenceRange,
-          upper: predictedPrice + confidenceRange,
-          lowerPerSqft: predictedPricePerSqft - confidenceRangePerSqft,
-          upperPerSqft: predictedPricePerSqft + confidenceRangePerSqft
-        },
-        influencingFactors,
-        modelAccuracy: 0.78 + Math.random() * 0.15, // 78-93% accuracy
-        generatedAt: new Date()
-      };
-      
-      setPredictionResult(result);
     } catch (error) {
-      setPredictionError('Failed to generate prediction. Please try again.');
-      console.error('Prediction error:', error);
+      console.error('[PREDICTION] Error occurred:', error);
+      console.error('[PREDICTION] Error type:', typeof error);
+      console.error('[PREDICTION] Error instanceof Error:', error instanceof Error);
+      if (error instanceof Error) {
+        console.error('[PREDICTION] Error message:', error.message);
+        console.error('[PREDICTION] Error stack:', error.stack);
+      }
+      
+      const errorMessage = error instanceof Error ? error.message : 'Failed to generate prediction. Please try again.';
+      console.error('[PREDICTION] Final error message:', errorMessage);
+      
+      setError('prediction', errorMessage);
+      showError('Prediction Failed', errorMessage);
     } finally {
-      setIsLoadingPrediction(false);
+      setLoading('prediction', false);
     }
   };
 
@@ -189,14 +289,7 @@ const App: React.FC = () => {
     return factors.slice(0, 3 + Math.floor(Math.random() * 2)); // 3-4 factors
   };
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('en-SG', {
-      style: 'currency',
-      currency: 'SGD',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0
-    }).format(price);
-  };
+  // Removed unused formatPrice function
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -211,6 +304,24 @@ const App: React.FC = () => {
       </header>
 
       <div className="container mx-auto px-4 py-8">
+        {/* Backend Status Indicator */}
+        {state.loading.health && (
+          <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <div className="flex items-center">
+              <svg className="animate-spin h-5 w-5 text-blue-500 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <span className="text-blue-700">Connecting to backend services...</span>
+            </div>
+          </div>
+        )}
+
+        {/* Connection Status */}
+        <div className="mb-6">
+          <HealthStatus />
+        </div>
+
         {/* Navigation Tabs */}
         <div className="mb-8">
           <div className="border-b border-gray-200">
@@ -218,7 +329,7 @@ const App: React.FC = () => {
               <button
                 onClick={() => setActiveTab('prediction')}
                 className={`py-2 px-1 border-b-2 font-medium text-sm ${
-                  activeTab === 'prediction'
+                  state.activeTab === 'prediction'
                     ? 'border-blue-500 text-blue-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
@@ -228,7 +339,7 @@ const App: React.FC = () => {
               <button
                 onClick={() => setActiveTab('accuracy')}
                 className={`py-2 px-1 border-b-2 font-medium text-sm ${
-                  activeTab === 'accuracy'
+                  state.activeTab === 'accuracy'
                     ? 'border-blue-500 text-blue-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
@@ -240,7 +351,7 @@ const App: React.FC = () => {
         </div>
 
         {/* Prediction Tab Content */}
-        {activeTab === 'prediction' && (
+        {state.activeTab === 'prediction' && (
           <div className="space-y-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Map Section */}
@@ -248,22 +359,22 @@ const App: React.FC = () => {
                 <h2 className="text-xl font-semibold mb-4">Select an Area</h2>
                 <div className="h-96 rounded-lg overflow-hidden">
                   <SingaporeMap
-                    areas={singaporeAreas}
-                    selectedArea={selectedArea}
+                    areas={areas}
+                    selectedArea={state.selectedArea}
                     onAreaSelect={handleAreaSelect}
                     onAreaHover={handleAreaHover}
                   />
                 </div>
                 
                 {/* Area info display */}
-                {hoveredArea && hoveredArea.id !== selectedArea?.id && (
+                {state.hoveredArea && state.hoveredArea.id !== state.selectedArea?.id && (
                   <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                    <h4 className="font-medium text-blue-900">Hovering: {hoveredArea.name}</h4>
-                    <p className="text-sm text-blue-700">{hoveredArea.district} District</p>
+                    <h4 className="font-medium text-blue-900">Hovering: {state.hoveredArea.name}</h4>
+                    <p className="text-sm text-blue-700">{state.hoveredArea.district} District</p>
                     <div className="text-xs text-blue-600 mt-1">
-                      <span>MRT: {hoveredArea.characteristics.mrtProximity}km</span>
-                      <span className="ml-3">CBD: {hoveredArea.characteristics.cbdDistance}km</span>
-                      <span className="ml-3">Amenity Score: {hoveredArea.characteristics.amenityScore}/10</span>
+                      <span>MRT: {state.hoveredArea.characteristics.mrtProximity}km</span>
+                      <span className="ml-3">CBD: {state.hoveredArea.characteristics.cbdDistance}km</span>
+                      <span className="ml-3">Amenity Score: {state.hoveredArea.characteristics.amenityScore}/10</span>
                     </div>
                   </div>
                 )}
@@ -271,29 +382,41 @@ const App: React.FC = () => {
 
               {/* Prediction Form Section */}
               <PredictionForm
-                selectedArea={selectedArea}
+                selectedArea={state.selectedArea}
                 onSubmit={handlePredictionSubmit}
-                isLoading={isLoadingPrediction}
+                isLoading={state.loading.prediction}
               />
             </div>
 
             {/* Results Visualization */}
             <ResultsVisualization
-              result={predictionResult}
-              isLoading={isLoadingPrediction}
-              error={predictionError}
-              selectedArea={selectedArea}
+              result={state.predictionResult}
+              isLoading={state.loading.prediction}
+              error={state.errors.prediction}
+              selectedArea={state.selectedArea}
               timeframeYears={currentTimeframe}
             />
 
-            {/* Demo Notice */}
-            {(predictionResult || isLoadingPrediction) && (
+            {/* Mode Notice */}
+            {(state.predictionResult || state.loading.prediction) && (
               <div className="bg-white rounded-lg shadow-md p-6">
-                <div className="p-4 bg-yellow-50 rounded-lg">
-                  <h4 className="font-semibold text-yellow-900 mb-2">🚧 Demo Mode</h4>
-                  <p className="text-sm text-yellow-700">
-                    This is a demo version. The backend services are not running yet, so predictions are simulated.
-                    To get real predictions, start the backend services with a database.
+                <div className={`p-4 rounded-lg ${
+                  state.isBackendConnected 
+                    ? 'bg-green-50 border border-green-200' 
+                    : 'bg-yellow-50 border border-yellow-200'
+                }`}>
+                  <h4 className={`font-semibold mb-2 ${
+                    state.isBackendConnected ? 'text-green-900' : 'text-yellow-900'
+                  }`}>
+                    {state.isBackendConnected ? '✅ Live Prediction' : '🚧 Demo Mode'}
+                  </h4>
+                  <p className={`text-sm ${
+                    state.isBackendConnected ? 'text-green-700' : 'text-yellow-700'
+                  }`}>
+                    {state.isBackendConnected 
+                      ? 'This prediction uses real-time data from our backend services including web crawling and machine learning models.'
+                      : 'Backend services are not available. This prediction uses simulated data for demonstration purposes.'
+                    }
                   </p>
                 </div>
               </div>
@@ -302,16 +425,16 @@ const App: React.FC = () => {
         )}
 
         {/* Accuracy Tab Content */}
-        {activeTab === 'accuracy' && (
+        {state.activeTab === 'accuracy' && (
           <AccuracyDashboard
-            metrics={[]}
-            selectedArea={selectedArea}
-            isLoading={false}
+            metrics={state.accuracyMetrics}
+            selectedArea={state.selectedArea}
+            isLoading={state.loading.accuracy}
           />
         )}
 
         {/* Features Section - Show only on prediction tab */}
-        {activeTab === 'prediction' && (
+        {state.activeTab === 'prediction' && (
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
               <div className="text-3xl mb-4">🗺️</div>
@@ -334,6 +457,19 @@ const App: React.FC = () => {
         )}
       </div>
     </div>
+  );
+};
+
+// Main App component with providers
+const App: React.FC = () => {
+  return (
+    <ErrorBoundary>
+      <NotificationProvider>
+        <AppProvider>
+          <AppContent />
+        </AppProvider>
+      </NotificationProvider>
+    </ErrorBoundary>
   );
 };
 

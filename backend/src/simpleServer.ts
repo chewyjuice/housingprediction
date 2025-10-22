@@ -1,44 +1,39 @@
 import dotenv from 'dotenv';
-import { App } from './app';
+import { SimpleApp } from './simpleApp';
 
 // Load environment variables
-dotenv.config();
+dotenv.config({ path: '.env.local' });
 
 const PORT = process.env.PORT || 8000;
 
 async function startServer() {
-  const app = new App();
+  const app = new SimpleApp();
   
   try {
-    // Initialize database connection
+    // Initialize the app
     await app.initialize();
     
     // Start the server
     const server = app.getApp().listen(PORT, () => {
-      console.log('🇸🇬 Singapore Housing Predictor API');
-      console.log('================================');
+      console.log('🇸🇬 Singapore Housing Predictor API - Simple Mode');
+      console.log('=============================================');
       console.log(`🚀 Server running on port ${PORT}`);
       console.log(`📍 Health check: http://localhost:${PORT}/health`);
       console.log(`🔍 Area search: http://localhost:${PORT}/api/areas/search`);
-      console.log(`📍 Area validation: http://localhost:${PORT}/api/areas/validate`);
+      console.log(`📊 Predictions: http://localhost:${PORT}/api/predictions/request`);
       console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+      console.log(`💾 Storage: File-based (no database required)`);
+      console.log('=============================================');
     });
 
     // Graceful shutdown handling
     const gracefulShutdown = async (signal: string) => {
       console.log(`\n📡 Received ${signal}. Starting graceful shutdown...`);
       
-      server.close(async () => {
+      server.close(() => {
         console.log('🔒 HTTP server closed');
-        
-        try {
-          await app.shutdown();
-          console.log('✅ Graceful shutdown completed');
-          process.exit(0);
-        } catch (error) {
-          console.error('❌ Error during shutdown:', error);
-          process.exit(1);
-        }
+        console.log('✅ Graceful shutdown completed');
+        process.exit(0);
       });
     };
 

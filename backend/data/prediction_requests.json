@@ -1,0 +1,202 @@
+[
+  {
+    "id": "req_1761052289341_irqskl5o5",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 900,
+    "roomType": "4-room",
+    "status": "processing",
+    "createdAt": "2025-10-21T13:11:29.341Z"
+  },
+  {
+    "id": "req_1761052501570_cb5xram9i",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "status": "processing",
+    "createdAt": "2025-10-21T13:15:01.570Z"
+  },
+  {
+    "id": "req_1761052576347_1axwfghez",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "3-room",
+    "status": "processing",
+    "createdAt": "2025-10-21T13:16:16.347Z"
+  },
+  {
+    "id": "req_1761052624764_2llusyhau",
+    "areaId": "raffles-place",
+    "timeframeYears": 3,
+    "propertyType": "Condo",
+    "unitSize": 800,
+    "roomType": "2-room",
+    "status": "processing",
+    "createdAt": "2025-10-21T13:17:04.764Z"
+  },
+  {
+    "id": "req_1761052692278_dnol5qssq",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "3-room",
+    "status": "processing",
+    "createdAt": "2025-10-21T13:18:12.278Z"
+  },
+  {
+    "id": "req_1761052725063_dq35svg25",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "3-room",
+    "status": "processing",
+    "createdAt": "2025-10-21T13:18:45.063Z"
+  },
+  {
+    "id": "req_1761052859910_ub3dgwwpu",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "3-room",
+    "status": "processing",
+    "createdAt": "2025-10-21T13:20:59.910Z"
+  },
+  {
+    "id": "req_1761052916818_b8bsjexhf",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "3-room",
+    "status": "processing",
+    "createdAt": "2025-10-21T13:21:56.818Z"
+  },
+  {
+    "id": "req_1761052959927_g1r6x4k9l",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "3-room",
+    "status": "processing",
+    "createdAt": "2025-10-21T13:22:39.927Z"
+  },
+  {
+    "id": "req_1761053564643_qteggpt8o",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "status": "processing",
+    "createdAt": "2025-10-21T13:32:44.643Z"
+  },
+  {
+    "id": "req_1761053584250_ekhmw08ws",
+    "areaId": "orchard",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "status": "processing",
+    "createdAt": "2025-10-21T13:33:04.250Z"
+  },
+  {
+    "id": "req_1761119119994_wzz7lfzkb",
+    "areaId": "orchard",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "status": "processing",
+    "createdAt": "2025-10-22T07:45:19.994Z"
+  },
+  {
+    "id": "req_1761119275009_pcc9a9jei",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "3-room",
+    "status": "processing",
+    "createdAt": "2025-10-22T07:47:55.009Z"
+  },
+  {
+    "id": "req_1761119377391_qodtf633l",
+    "areaId": "orchard",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "status": "processing",
+    "createdAt": "2025-10-22T07:49:37.391Z"
+  },
+  {
+    "id": "req_1761119401639_e8b7i8qhx",
+    "areaId": "bukit-timah",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "status": "processing",
+    "createdAt": "2025-10-22T07:50:01.639Z"
+  },
+  {
+    "id": "req_1761119527124_1j17zm95z",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "3-room",
+    "status": "processing",
+    "createdAt": "2025-10-22T07:52:07.124Z"
+  },
+  {
+    "id": "req_1761119609583_8hdxs94jv",
+    "areaId": "ang-mo-kio",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "status": "processing",
+    "createdAt": "2025-10-22T07:53:29.583Z"
+  },
+  {
+    "id": "req_1761119965012_c82h3peo4",
+    "areaId": "ang-mo-kio",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "status": "processing",
+    "createdAt": "2025-10-22T07:59:25.012Z"
+  },
+  {
+    "id": "req_1761120034604_67wcuuo71",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "status": "processing",
+    "createdAt": "2025-10-22T08:00:34.604Z"
+  },
+  {
+    "id": "req_1761120090958_1sa4jjwjj",
+    "areaId": "orchard",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "status": "processing",
+    "createdAt": "2025-10-22T08:01:30.958Z"
+  }
+]

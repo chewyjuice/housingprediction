@@ -10,7 +10,7 @@ import {
   PointElement,
   LineElement
 } from 'chart.js';
-import { Bar, Line } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import { AccuracyDashboardProps, AccuracyMetrics } from '../types';
 
 // Register Chart.js components

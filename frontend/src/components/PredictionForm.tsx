@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Area, PredictionFormProps, CreatePredictionRequest } from '../types';
+import { PredictionFormProps, CreatePredictionRequest } from '../types';
 
 interface PredictionFormState {
   timeframeYears: number;
@@ -74,7 +74,7 @@ const PredictionForm: React.FC<PredictionFormProps> = ({
   // Validate form whenever inputs change
   useEffect(() => {
     validateForm();
-  }, [formState.timeframeYears, formState.propertyType, formState.unitSize, selectedArea]);
+  }, [formState.timeframeYears, formState.propertyType, formState.unitSize, selectedArea]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const validateForm = () => {
     const errors: { timeframeYears?: string; area?: string; propertyType?: string; unitSize?: string } = {};
@@ -374,12 +374,25 @@ const PredictionForm: React.FC<PredictionFormProps> = ({
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Generating Prediction...
+                <span>Analyzing Market Data...</span>
               </div>
             ) : (
               'Get Price Prediction'
             )}
           </button>
+          
+          {/* Progress indicator for long operations */}
+          {(formState.isSubmitting || isLoading) && (
+            <div className="mt-3">
+              <div className="flex justify-between text-xs text-gray-600 mb-1">
+                <span>Processing your request</span>
+                <span>This may take up to 60 seconds</span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-1">
+                <div className="bg-blue-600 h-1 rounded-full animate-pulse" style={{ width: '60%' }}></div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Form Validation Status */}

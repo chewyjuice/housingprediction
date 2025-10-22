@@ -11,7 +11,7 @@ import {
   Filler
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { ResultsDisplayProps, PredictionResult, Development } from '../types';
+import { ResultsDisplayProps, Development } from '../types';
 
 // Register Chart.js components
 ChartJS.register(
@@ -74,7 +74,7 @@ const ResultsVisualization: React.FC<ExtendedResultsDisplayProps> = ({
     );
 
     const allYears = [...historicalYears, ...years.slice(1)];
-    const allPrices = [...historicalPrices, ...futurePrices];
+    // const allPrices = [...historicalPrices, ...futurePrices]; // Unused variable
 
     return {
       labels: allYears.map(year => year.toString()),

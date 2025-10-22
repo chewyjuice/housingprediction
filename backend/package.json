@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "dev:simple": "ts-node-dev --respawn --transpile-only src/simpleServer.ts",
     "build": "tsc",
     "test": "jest",
     "migrate": "ts-node src/scripts/migrate.ts up",

@@ -113,6 +113,161 @@ export abstract class BaseRepositoryImpl<T extends { id: string; createdAt: Date
     return await this.db.transaction(callback);
   }
 
+  // Query optimization methods
+  protected async executeOptimizedQuery<R extends Record<string, any> = any>(
+    query: string, 
+    params?: any[],
+    options?: {
+      useIndex?: string;
+      forceSeqScan?: boolean;
+      enableHashJoin?: boolean;
+    }
+  ): Promise<QueryResult<R>> {
+    let optimizedQuery = query;
+    
+    if (options?.forceSeqScan) {
+      optimizedQuery = `SET enable_seqscan = off; ${optimizedQuery}; SET enable_seqscan = on;`;
+    }
+    
+    if (options?.enableHashJoin === false) {
+      optimizedQuery = `SET enable_hashjoin = off; ${optimizedQuery}; SET enable_hashjoin = on;`;
+    }
+    
+    if (options?.useIndex) {
+      // Add index hint as comment for query analysis
+      optimizedQuery = `/* USE INDEX ${options.useIndex} */ ${optimizedQuery}`;
+    }
+    
+    return await this.db.query<R>(optimizedQuery, params);
+  }
+
+  // Batch operations for better performance
+  public async batchCreate(entities: Array<Omit<T, 'id' | 'createdAt' | 'updatedAt'>>): Promise<T[]> {
+    if (entities.length === 0) return [];
+    
+    const columns = Object.keys(entities[0]);
+    const values = entities.map((entity, index) => {
+      const entityValues = Object.values(entity);
+      const placeholders = entityValues.map((_, valueIndex) => 
+        `$${index * entityValues.length + valueIndex + 1}`
+      ).join(', ');
+      return `(${placeholders})`;
+    }).join(', ');
+    
+    const allValues = entities.flatMap(entity => Object.values(entity));
+    
+    const query = `
+      INSERT INTO ${this.tableName} (${columns.join(', ')})
+      VALUES ${values}
+      RETURNING *
+    `;
+    
+    const result = await this.db.query<T>(query, allValues);
+    return result.rows.map(row => this.mapRowToEntity(row));
+  }
+
+  // Optimized pagination with cursor-based approach
+  public async findPaginated(
+    cursor?: string,
+    limit: number = 20,
+    orderBy: string = 'created_at',
+    direction: 'ASC' | 'DESC' = 'DESC'
+  ): Promise<{
+    data: T[];
+    nextCursor?: string;
+    hasMore: boolean;
+  }> {
+    let query = `SELECT * FROM ${this.tableName}`;
+    const params: any[] = [];
+    
+    if (cursor) {
+      const operator = direction === 'DESC' ? '<' : '>';
+      query += ` WHERE ${orderBy} ${operator} $1`;
+      params.push(cursor);
+    }
+    
+    query += ` ORDER BY ${orderBy} ${direction} LIMIT $${params.length + 1}`;
+    params.push(limit + 1); // Fetch one extra to check if there are more
+    
+    const result = await this.executeOptimizedQuery<T>(query, params);
+    const rows = result.rows.map(row => this.mapRowToEntity(row));
+    
+    const hasMore = rows.length > limit;
+    if (hasMore) {
+      rows.pop(); // Remove the extra row
+    }
+    
+    const nextCursor = hasMore && rows.length > 0 
+      ? (rows[rows.length - 1] as any)[orderBy]
+      : undefined;
+    
+    return {
+      data: rows,
+      nextCursor,
+      hasMore
+    };
+  }
+
+  // Bulk update with optimized query
+  public async bulkUpdate(
+    updates: Array<{ id: string; data: Partial<Omit<T, 'id' | 'createdAt' | 'updatedAt'>> }>
+  ): Promise<T[]> {
+    if (updates.length === 0) return [];
+    
+    // Use CASE statements for bulk updates
+    const columns = Object.keys(updates[0].data);
+    const setClauses = columns.map(column => {
+      const cases = updates.map((update, index) => 
+        `WHEN id = $${index * 2 + 1} THEN $${index * 2 + 2}`
+      ).join(' ');
+      return `${column} = CASE ${cases} ELSE ${column} END`;
+    }).join(', ');
+    
+    const ids = updates.map(update => update.id);
+    const values = updates.flatMap(update => [update.id, ...Object.values(update.data)]);
+    
+    const query = `
+      UPDATE ${this.tableName}
+      SET ${setClauses}, updated_at = CURRENT_TIMESTAMP
+      WHERE id = ANY($${values.length + 1})
+      RETURNING *
+    `;
+    
+    const result = await this.db.query<T>(query, [...values, ids]);
+    return result.rows.map(row => this.mapRowToEntity(row));
+  }
+
+  // Cache-aware find method
+  protected async findWithCache<R>(
+    cacheKey: string,
+    queryFn: () => Promise<R>,
+    ttlSeconds: number = 300
+  ): Promise<R> {
+    // This would integrate with Redis cache if available
+    // For now, just execute the query directly
+    return await queryFn();
+  }
+
+  // Query performance analysis
+  public async analyzeQuery(query: string, params?: any[]): Promise<{
+    executionTime: number;
+    planningTime: number;
+    plan: any;
+  }> {
+    const explainQuery = `EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) ${query}`;
+    const start = Date.now();
+    const result = await this.db.query(explainQuery, params);
+    const executionTime = Date.now() - start;
+    
+    const plan = result.rows[0]['QUERY PLAN'][0];
+    
+    return {
+      executionTime,
+      planningTime: plan['Planning Time'] || 0,
+      plan: plan.Plan
+    };
+  }
+
   // Abstract method to be implemented by concrete repositories
   protected abstract mapRowToEntity(row: any): T;
 

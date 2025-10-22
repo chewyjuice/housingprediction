@@ -5,70 +5,156 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
+      target: production
+    restart: unless-stopped
     environment:
-      - REACT_APP_API_URL=http://localhost:8000
+      - REACT_APP_API_URL=${REACT_APP_API_URL:-http://localhost/api}
+      - REACT_APP_ENABLE_DEMO_MODE=${REACT_APP_ENABLE_DEMO_MODE:-false}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
+    networks:
+      - app-network
 
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    ports:
-      - "8000:8000"
+      target: production
+    restart: unless-stopped
     environment:
       - NODE_ENV=production
-      - DATABASE_URL=postgresql://postgres:password@postgres:5432/housing_predictor
+      - PORT=8000
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-password}@postgres:5432/${POSTGRES_DB:-housing_predictor}
       - REDIS_URL=redis://redis:6379
-      - JWT_SECRET=your-jwt-secret-key
+      - JWT_SECRET=${JWT_SECRET:-your-jwt-secret-key-change-in-production}
+      - FRONTEND_URL=${FRONTEND_URL:-http://localhost}
+      - ML_SERVICE_URL=http://ml-service:8001
+      - CRAWLER_TIMEOUT=${CRAWLER_TIMEOUT:-60000}
+      - CRAWLER_RATE_LIMIT=${CRAWLER_RATE_LIMIT:-1000}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     depends_on:
-      - postgres
-      - redis
-      - ml-service
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - app-network
 
   ml-service:
     build:
       context: ./ml-service
       dockerfile: Dockerfile
-    ports:
-      - "8001:8001"
+    restart: unless-stopped
     environment:
-      - DATABASE_URL=postgresql://postgres:password@postgres:5432/housing_predictor
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-password}@postgres:5432/${POSTGRES_DB:-housing_predictor}
       - REDIS_URL=redis://redis:6379
+      - MODEL_PATH=/app/models
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    volumes:
+      - ml_models:/app/models
     depends_on:
-      - postgres
-      - redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - app-network
 
   postgres:
-    image: postgres:15
+    image: postgres:15-alpine
+    restart: unless-stopped
     environment:
-      - POSTGRES_DB=housing_predictor
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
-    ports:
-      - "5432:5432"
+      - POSTGRES_DB=${POSTGRES_DB:-housing_predictor}
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-password}
+      - POSTGRES_INITDB_ARGS=--auth-host=scram-sha-256
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-housing_predictor}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./setup.sql:/docker-entrypoint-initdb.d/setup.sql:ro
+    networks:
+      - app-network
+    # Only expose port in development
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
 
   redis:
     image: redis:7-alpine
-    ports:
-      - "6379:6379"
+    restart: unless-stopped
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-}
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     volumes:
       - redis_data:/data
+    networks:
+      - app-network
+    # Only expose port in development
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
 
   nginx:
     image: nginx:alpine
+    restart: unless-stopped
     ports:
-      - "80:80"
+      - "${HTTP_PORT:-80}:80"
+      - "${HTTPS_PORT:-443}:443"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+      - nginx_logs:/var/log/nginx
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
     depends_on:
-      - frontend
-      - backend
+      frontend:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
 
 volumes:
   postgres_data:
+    driver: local
   redis_data:
+    driver: local
+  ml_models:
+    driver: local
+  nginx_logs:
+    driver: local

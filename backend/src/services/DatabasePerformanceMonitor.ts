@@ -344,6 +344,249 @@ export class DatabasePerformanceMonitor {
       criticalIssues
     };
   }
+
+  // Advanced monitoring methods
+  async getSlowQueries(limit: number = 10): Promise<Array<{
+    query: string;
+    calls: number;
+    totalTime: number;
+    avgTime: number;
+    rows: number;
+  }>> {
+    try {
+      const result = await this.db.query(`
+        SELECT 
+          query,
+          calls,
+          total_exec_time as total_time,
+          mean_exec_time as avg_time,
+          rows
+        FROM pg_stat_statements 
+        WHERE dbid = (SELECT oid FROM pg_database WHERE datname = current_database())
+        ORDER BY mean_exec_time DESC 
+        LIMIT $1
+      `, [limit]);
+
+      return result.rows.map(row => ({
+        query: row.query.substring(0, 200) + '...',
+        calls: parseInt(row.calls || '0'),
+        totalTime: parseFloat(row.total_time || '0'),
+        avgTime: parseFloat(row.avg_time || '0'),
+        rows: parseInt(row.rows || '0')
+      }));
+    } catch (error) {
+      console.warn('Failed to get slow queries:', error);
+      return [];
+    }
+  }
+
+  async getIndexEfficiency(): Promise<Array<{
+    table: string;
+    index: string;
+    scans: number;
+    tuplesRead: number;
+    efficiency: number;
+    size: string;
+  }>> {
+    try {
+      const result = await this.db.query(`
+        SELECT 
+          schemaname || '.' || tablename as table,
+          indexname as index,
+          idx_scan as scans,
+          idx_tup_read as tuples_read,
+          CASE 
+            WHEN idx_scan = 0 THEN 0
+            ELSE ROUND((idx_tup_fetch::numeric / idx_tup_read::numeric) * 100, 2)
+          END as efficiency,
+          pg_size_pretty(pg_relation_size(indexrelid)) as size
+        FROM pg_stat_user_indexes 
+        WHERE schemaname = 'public'
+          AND idx_scan > 0
+        ORDER BY efficiency DESC, idx_scan DESC
+        LIMIT 20
+      `);
+
+      return result.rows.map(row => ({
+        table: row.table,
+        index: row.index,
+        scans: parseInt(row.scans || '0'),
+        tuplesRead: parseInt(row.tuples_read || '0'),
+        efficiency: parseFloat(row.efficiency || '0'),
+        size: row.size
+      }));
+    } catch (error) {
+      console.warn('Failed to get index efficiency:', error);
+      return [];
+    }
+  }
+
+  async getTableBloat(): Promise<Array<{
+    table: string;
+    size: string;
+    bloatRatio: number;
+    wastedSpace: string;
+  }>> {
+    try {
+      const result = await this.db.query(`
+        SELECT 
+          schemaname || '.' || tablename as table,
+          pg_size_pretty(pg_total_relation_size(schemaname||'.'||tablename)) as size,
+          ROUND(
+            (n_dead_tup::numeric / GREATEST(n_live_tup + n_dead_tup, 1)::numeric) * 100, 2
+          ) as bloat_ratio,
+          pg_size_pretty(
+            pg_total_relation_size(schemaname||'.'||tablename) * 
+            (n_dead_tup::numeric / GREATEST(n_live_tup + n_dead_tup, 1)::numeric)
+          ) as wasted_space
+        FROM pg_stat_user_tables 
+        WHERE schemaname = 'public'
+          AND n_dead_tup > 0
+        ORDER BY bloat_ratio DESC
+        LIMIT 10
+      `);
+
+      return result.rows.map(row => ({
+        table: row.table,
+        size: row.size,
+        bloatRatio: parseFloat(row.bloat_ratio || '0'),
+        wastedSpace: row.wasted_space
+      }));
+    } catch (error) {
+      console.warn('Failed to get table bloat:', error);
+      return [];
+    }
+  }
+
+  async optimizeDatabase(): Promise<{
+    actions: string[];
+    results: Array<{
+      action: string;
+      success: boolean;
+      message: string;
+    }>;
+  }> {
+    const actions = [
+      'Refresh materialized views',
+      'Update table statistics',
+      'Reindex heavily used indexes',
+      'Vacuum analyze tables'
+    ];
+
+    const results: Array<{
+      action: string;
+      success: boolean;
+      message: string;
+    }> = [];
+
+    // Refresh materialized views
+    try {
+      await this.db.query('SELECT refresh_area_statistics()');
+      results.push({
+        action: 'Refresh materialized views',
+        success: true,
+        message: 'Area statistics materialized view refreshed successfully'
+      });
+    } catch (error) {
+      results.push({
+        action: 'Refresh materialized views',
+        success: false,
+        message: `Failed to refresh materialized views: ${error instanceof Error ? error.message : error}`
+      });
+    }
+
+    // Update table statistics
+    try {
+      await this.db.query(`
+        ANALYZE areas;
+        ANALYZE developments;
+        ANALYZE prediction_requests;
+        ANALYZE prediction_results;
+        ANALYZE historical_prices;
+      `);
+      results.push({
+        action: 'Update table statistics',
+        success: true,
+        message: 'Table statistics updated successfully'
+      });
+    } catch (error) {
+      results.push({
+        action: 'Update table statistics',
+        success: false,
+        message: `Failed to update statistics: ${error instanceof Error ? error.message : error}`
+      });
+    }
+
+    // Vacuum analyze tables with high bloat
+    const bloatedTables = await this.getTableBloat();
+    for (const table of bloatedTables.slice(0, 3)) { // Only top 3 most bloated
+      if (table.bloatRatio > 20) {
+        try {
+          await this.db.query(`VACUUM ANALYZE ${table.table.split('.')[1]}`);
+          results.push({
+            action: `Vacuum ${table.table}`,
+            success: true,
+            message: `Vacuumed table ${table.table} (${table.bloatRatio}% bloat)`
+          });
+        } catch (error) {
+          results.push({
+            action: `Vacuum ${table.table}`,
+            success: false,
+            message: `Failed to vacuum ${table.table}: ${error instanceof Error ? error.message : error}`
+          });
+        }
+      }
+    }
+
+    return { actions, results };
+  }
+
+  async getConnectionPoolHealth(): Promise<{
+    status: 'healthy' | 'warning' | 'critical';
+    details: {
+      totalConnections: number;
+      activeConnections: number;
+      idleConnections: number;
+      waitingConnections: number;
+      utilization: number;
+      maxConnections: number;
+    };
+    recommendations: string[];
+  }> {
+    const poolInfo = this.db.getPoolInfo();
+    const utilization = (poolInfo.totalCount / poolInfo.maxConnections) * 100;
+    
+    let status: 'healthy' | 'warning' | 'critical' = 'healthy';
+    const recommendations: string[] = [];
+
+    if (utilization > 90) {
+      status = 'critical';
+      recommendations.push('Increase connection pool size immediately');
+      recommendations.push('Review long-running queries');
+    } else if (utilization > 70) {
+      status = 'warning';
+      recommendations.push('Consider increasing connection pool size');
+      recommendations.push('Monitor query performance');
+    }
+
+    if (poolInfo.waitingCount > 0) {
+      status = status === 'critical' ? 'critical' : 'warning';
+      recommendations.push('Connections are waiting - optimize query performance');
+    }
+
+    return {
+      status,
+      details: {
+        totalConnections: poolInfo.totalCount,
+        activeConnections: poolInfo.totalCount - poolInfo.idleCount,
+        idleConnections: poolInfo.idleCount,
+        waitingConnections: poolInfo.waitingCount,
+        utilization,
+        maxConnections: poolInfo.maxConnections
+      },
+      recommendations
+    };
+  }
 }
 
 export default DatabasePerformanceMonitor;

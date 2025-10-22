@@ -172,6 +172,9 @@ const SingaporeMap: React.FC<MapComponentProps> = ({
       let minDistance = Infinity;
 
       areas.forEach(area => {
+        if (!area.coordinates || typeof area.coordinates.latitude !== 'number' || typeof area.coordinates.longitude !== 'number') {
+          return; // Skip areas with invalid coordinates
+        }
         const distance = Math.sqrt(
           Math.pow(area.coordinates.latitude - latlng.lat, 2) +
           Math.pow(area.coordinates.longitude - latlng.lng, 2)
@@ -243,6 +246,9 @@ const SingaporeMap: React.FC<MapComponentProps> = ({
           let minDistance = Infinity;
 
           districtAreas.forEach(area => {
+            if (!area.coordinates || typeof area.coordinates.latitude !== 'number' || typeof area.coordinates.longitude !== 'number') {
+              return; // Skip areas with invalid coordinates
+            }
             const distance = Math.sqrt(
               Math.pow(area.coordinates.latitude - clickLatlng.lat, 2) +
               Math.pow(area.coordinates.longitude - clickLatlng.lng, 2)
@@ -324,7 +330,7 @@ const SingaporeMap: React.FC<MapComponentProps> = ({
         ))}
 
         {/* Area markers for precise selection */}
-        {areas.map((area) => {
+        {areas.filter(area => area.coordinates && typeof area.coordinates.latitude === 'number' && typeof area.coordinates.longitude === 'number').map((area) => {
           const isSelected = selectedArea?.id === area.id;
           
           const customIcon = L.divIcon({

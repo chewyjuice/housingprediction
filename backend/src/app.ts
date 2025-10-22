@@ -295,6 +295,10 @@ export class App {
     this.app.use('/api/processing', createProcessingRoutes(this.db));
     this.app.use('/api/predictions', createPredictionRoutes(this.db));
     this.app.use('/api/orchestration', createOrchestrationRoutes(this.db, this.serviceRegistry));
+    
+    // Performance monitoring routes
+    const { createPerformanceRoutes } = await import('./routes/performanceRoutes');
+    this.app.use('/api/performance', createPerformanceRoutes(this.db));
 
     // 404 handler for undefined routes
     this.app.use('*', (req: Request, res: Response) => {

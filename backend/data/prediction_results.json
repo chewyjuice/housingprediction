@@ -1,0 +1,682 @@
+[
+  {
+    "id": "pred_1761052291353_yd7cbzpxq",
+    "requestId": "req_1761052289341_irqskl5o5",
+    "predictedPrice": 420450.32131577644,
+    "predictedPricePerSqft": 467.16702368419607,
+    "propertyType": "HDB",
+    "unitSize": 900,
+    "roomType": "4-room",
+    "confidenceInterval": {
+      "lower": 357382.77311840997,
+      "upper": 483517.8695131429,
+      "lowerPerSqft": 397.09197013156665,
+      "upperPerSqft": 537.2420772368255
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Tiong Bahru area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.8441412597412431,
+    "generatedAt": "2025-10-21T13:11:31.353Z"
+  },
+  {
+    "id": "pred_1761052503584_pzowxlby4",
+    "requestId": "req_1761052501570_cb5xram9i",
+    "predictedPrice": 1139128.0455852223,
+    "predictedPricePerSqft": 1518.8373941136297,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "confidenceInterval": {
+      "lower": 968258.838747439,
+      "upper": 1309997.2524230056,
+      "lowerPerSqft": 1291.0117849965852,
+      "upperPerSqft": 1746.6630032306741
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Tiong Bahru area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.770428402287046,
+    "generatedAt": "2025-10-21T13:15:03.584Z"
+  },
+  {
+    "id": "pred_1761052578361_d1c6wc7a7",
+    "requestId": "req_1761052576347_1axwfghez",
+    "predictedPrice": 467696.6776530077,
+    "predictedPricePerSqft": 467.69667765300767,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "3-room",
+    "confidenceInterval": {
+      "lower": 397542.17600505654,
+      "upper": 537851.1793009589,
+      "lowerPerSqft": 397.5421760050565,
+      "upperPerSqft": 537.8511793009588
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Tiong Bahru area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.8869920944288866,
+    "generatedAt": "2025-10-21T13:16:18.361Z"
+  },
+  {
+    "id": "pred_1761052626776_gt3056krx",
+    "requestId": "req_1761052624764_2llusyhau",
+    "predictedPrice": 1050052.8784891139,
+    "predictedPricePerSqft": 1312.5660981113924,
+    "propertyType": "Condo",
+    "unitSize": 800,
+    "roomType": "2-room",
+    "confidenceInterval": {
+      "lower": 892544.9467157468,
+      "upper": 1207560.810262481,
+      "lowerPerSqft": 1115.6811833946836,
+      "upperPerSqft": 1509.4510128281013
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Raffles Place area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.8170440947641965,
+    "generatedAt": "2025-10-21T13:17:06.776Z"
+  },
+  {
+    "id": "pred_1761052694287_7cgnzj5m9",
+    "requestId": "req_1761052692278_dnol5qssq",
+    "predictedPrice": 475932.528152408,
+    "predictedPricePerSqft": 475.932528152408,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "3-room",
+    "confidenceInterval": {
+      "lower": 404542.6489295468,
+      "upper": 547322.4073752692,
+      "lowerPerSqft": 404.5426489295468,
+      "upperPerSqft": 547.3224073752692
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Tiong Bahru area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.8903246346311267,
+    "generatedAt": "2025-10-21T13:18:14.287Z"
+  },
+  {
+    "id": "pred_1761052727066_m05il6563",
+    "requestId": "req_1761052725063_dq35svg25",
+    "predictedPrice": 492102.769244711,
+    "predictedPricePerSqft": 492.102769244711,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "3-room",
+    "confidenceInterval": {
+      "lower": 418287.3538580043,
+      "upper": 565918.1846314176,
+      "lowerPerSqft": 418.28735385800434,
+      "upperPerSqft": 565.9181846314176
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Tiong Bahru area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.8784705793177975,
+    "generatedAt": "2025-10-21T13:18:47.066Z"
+  },
+  {
+    "id": "pred_1761052861919_cd9ttxhv6",
+    "requestId": "req_1761052859910_ub3dgwwpu",
+    "predictedPrice": 478054.19524948497,
+    "predictedPricePerSqft": 478.05419524948496,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "3-room",
+    "confidenceInterval": {
+      "lower": 406346.0659620622,
+      "upper": 549762.3245369077,
+      "lowerPerSqft": 406.3460659620622,
+      "upperPerSqft": 549.7623245369077
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Tiong Bahru area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.7600850592889434,
+    "generatedAt": "2025-10-21T13:21:01.919Z"
+  },
+  {
+    "id": "pred_1761052918831_jogvnl5nv",
+    "requestId": "req_1761052916818_b8bsjexhf",
+    "predictedPrice": 489684.91664196784,
+    "predictedPricePerSqft": 489.68491664196785,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "3-room",
+    "confidenceInterval": {
+      "lower": 416232.17914567265,
+      "upper": 563137.654138263,
+      "lowerPerSqft": 416.23217914567266,
+      "upperPerSqft": 563.137654138263
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Tiong Bahru area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.7559361484748428,
+    "generatedAt": "2025-10-21T13:21:58.831Z"
+  },
+  {
+    "id": "pred_1761052961937_hcjtvuqdy",
+    "requestId": "req_1761052959927_g1r6x4k9l",
+    "predictedPrice": 499870.70138488384,
+    "predictedPricePerSqft": 499.87070138488383,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "3-room",
+    "confidenceInterval": {
+      "lower": 424890.09617715125,
+      "upper": 574851.3065926164,
+      "lowerPerSqft": 424.89009617715124,
+      "upperPerSqft": 574.8513065926164
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Tiong Bahru area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.8077914466939704,
+    "generatedAt": "2025-10-21T13:22:41.937Z"
+  },
+  {
+    "id": "pred_1761053566649_k883683ks",
+    "requestId": "req_1761053564643_qteggpt8o",
+    "predictedPrice": 1117614.7703068643,
+    "predictedPricePerSqft": 1490.1530270758192,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "confidenceInterval": {
+      "lower": 949972.5547608347,
+      "upper": 1285256.985852894,
+      "lowerPerSqft": 1266.6300730144462,
+      "upperPerSqft": 1713.6759811371921
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Tiong Bahru area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.9083836305838174,
+    "generatedAt": "2025-10-21T13:32:46.650Z"
+  },
+  {
+    "id": "pred_1761053586266_8e43d9st6",
+    "requestId": "req_1761053584250_ekhmw08ws",
+    "predictedPrice": 489842.5983805378,
+    "predictedPricePerSqft": 489.8425983805378,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "confidenceInterval": {
+      "lower": 416366.2086234571,
+      "upper": 563318.9881376185,
+      "lowerPerSqft": 416.36620862345717,
+      "upperPerSqft": 563.3189881376185
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Orchard area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.8826434138440228,
+    "generatedAt": "2025-10-21T13:33:06.266Z"
+  },
+  {
+    "id": "pred_1761119122010_j9d7np2p6",
+    "requestId": "req_1761119119994_wzz7lfzkb",
+    "predictedPrice": 503352.5826681903,
+    "predictedPricePerSqft": 503.3525826681903,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "confidenceInterval": {
+      "lower": 427849.69526796177,
+      "upper": 578855.4700684189,
+      "lowerPerSqft": 427.84969526796175,
+      "upperPerSqft": 578.8554700684189
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Orchard area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.8065583730602087,
+    "generatedAt": "2025-10-22T07:45:22.010Z"
+  },
+  {
+    "id": "pred_1761119277017_hi2fvlush",
+    "requestId": "req_1761119275009_pcc9a9jei",
+    "predictedPrice": 497619.887728858,
+    "predictedPricePerSqft": 497.619887728858,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "3-room",
+    "confidenceInterval": {
+      "lower": 422976.9045695293,
+      "upper": 572262.8708881866,
+      "lowerPerSqft": 422.97690456952927,
+      "upperPerSqft": 572.2628708881866
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Tiong Bahru area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.9209370164035502,
+    "generatedAt": "2025-10-22T07:47:57.017Z"
+  },
+  {
+    "id": "pred_1761119379406_9k79wn58a",
+    "requestId": "req_1761119377391_qodtf633l",
+    "predictedPrice": 468665.01083190803,
+    "predictedPricePerSqft": 468.66501083190803,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "confidenceInterval": {
+      "lower": 398365.2592071218,
+      "upper": 538964.7624566943,
+      "lowerPerSqft": 398.3652592071218,
+      "upperPerSqft": 538.9647624566942
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Orchard area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.7726889195829897,
+    "generatedAt": "2025-10-22T07:49:39.406Z"
+  },
+  {
+    "id": "pred_1761119403653_2k3tprocr",
+    "requestId": "req_1761119401639_e8b7i8qhx",
+    "predictedPrice": 469235.5558334718,
+    "predictedPricePerSqft": 469.23555583347184,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "confidenceInterval": {
+      "lower": 398850.22245845105,
+      "upper": 539620.8892084926,
+      "lowerPerSqft": 398.85022245845107,
+      "upperPerSqft": 539.6208892084926
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Bukit Timah area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.7757542652546149,
+    "generatedAt": "2025-10-22T07:50:03.653Z"
+  },
+  {
+    "id": "pred_1761119529138_uw8nadkcg",
+    "requestId": "req_1761119527124_1j17zm95z",
+    "predictedPrice": 494155.49235484004,
+    "predictedPricePerSqft": 494.15549235484,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "3-room",
+    "confidenceInterval": {
+      "lower": 420032.168501614,
+      "upper": 568278.8162080661,
+      "lowerPerSqft": 420.032168501614,
+      "upperPerSqft": 568.278816208066
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Tiong Bahru area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.7644648881220076,
+    "generatedAt": "2025-10-22T07:52:09.138Z"
+  },
+  {
+    "id": "pred_1761119611592_qnn4y7tch",
+    "requestId": "req_1761119609583_8hdxs94jv",
+    "predictedPrice": 489705.5418417892,
+    "predictedPricePerSqft": 489.7055418417892,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "confidenceInterval": {
+      "lower": 416249.7105655208,
+      "upper": 563161.3731180576,
+      "lowerPerSqft": 416.24971056552084,
+      "upperPerSqft": 563.1613731180576
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Ang Mo Kio area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.924082564167236,
+    "generatedAt": "2025-10-22T07:53:31.592Z"
+  },
+  {
+    "id": "pred_1761119967020_ob6ur8kea",
+    "requestId": "req_1761119965012_c82h3peo4",
+    "predictedPrice": 473429.98853933834,
+    "predictedPricePerSqft": 473.42998853933835,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "confidenceInterval": {
+      "lower": 402415.4902584376,
+      "upper": 544444.4868202391,
+      "lowerPerSqft": 402.4154902584376,
+      "upperPerSqft": 544.4444868202391
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Ang Mo Kio area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.8276274859788059,
+    "generatedAt": "2025-10-22T07:59:27.020Z"
+  },
+  {
+    "id": "pred_1761120036614_cvf4qtje0",
+    "requestId": "req_1761120034604_67wcuuo71",
+    "predictedPrice": 1118120.2775608634,
+    "predictedPricePerSqft": 1490.8270367478178,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "confidenceInterval": {
+      "lower": 950402.2359267339,
+      "upper": 1285838.319194993,
+      "lowerPerSqft": 1267.2029812356452,
+      "upperPerSqft": 1714.4510922599904
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Tiong Bahru area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.8993025142088141,
+    "generatedAt": "2025-10-22T08:00:36.614Z"
+  },
+  {
+    "id": "pred_1761120092970_ymj8x1eye",
+    "requestId": "req_1761120090958_1sa4jjwjj",
+    "predictedPrice": 1137782.2498573577,
+    "predictedPricePerSqft": 1517.0429998098102,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "confidenceInterval": {
+      "lower": 967114.912378754,
+      "upper": 1308449.5873359614,
+      "lowerPerSqft": 1289.4865498383388,
+      "upperPerSqft": 1744.5994497812817
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Orchard area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.7785994102098994,
+    "generatedAt": "2025-10-22T08:01:32.971Z"
+  }
+]
