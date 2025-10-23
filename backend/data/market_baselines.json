@@ -1,0 +1,154 @@
+[
+  {
+    "id": "simulated_baselines",
+    "baselines": {
+      "orchard": {
+        "HDB": 0,
+        "Condo": 2200,
+        "Landed": 3500
+      },
+      "marina-bay": {
+        "HDB": 0,
+        "Condo": 2000,
+        "Landed": 3200
+      },
+      "raffles-place": {
+        "HDB": 0,
+        "Condo": 1900,
+        "Landed": 3000
+      },
+      "bukit-timah": {
+        "HDB": 650,
+        "Condo": 1800,
+        "Landed": 2800
+      },
+      "central-area": {
+        "HDB": 600,
+        "Condo": 1700,
+        "Landed": 2600
+      },
+      "tampines": {
+        "HDB": 450,
+        "Condo": 1200,
+        "Landed": 1800
+      },
+      "bedok": {
+        "HDB": 420,
+        "Condo": 1100,
+        "Landed": 1700
+      },
+      "pasir-ris": {
+        "HDB": 400,
+        "Condo": 1000,
+        "Landed": 1600
+      },
+      "jurong-east": {
+        "HDB": 380,
+        "Condo": 950,
+        "Landed": 1500
+      },
+      "clementi": {
+        "HDB": 480,
+        "Condo": 1250,
+        "Landed": 1900
+      },
+      "bishan": {
+        "HDB": 520,
+        "Condo": 1350,
+        "Landed": 2000
+      },
+      "ang-mo-kio": {
+        "HDB": 460,
+        "Condo": 1150,
+        "Landed": 1750
+      },
+      "hougang": {
+        "HDB": 440,
+        "Condo": 1100,
+        "Landed": 1650
+      },
+      "sengkang": {
+        "HDB": 430,
+        "Condo": 1080,
+        "Landed": 1620
+      },
+      "punggol": {
+        "HDB": 450,
+        "Condo": 1120,
+        "Landed": 1680
+      },
+      "woodlands": {
+        "HDB": 350,
+        "Condo": 900,
+        "Landed": 1400
+      },
+      "yishun": {
+        "HDB": 340,
+        "Condo": 850,
+        "Landed": 1300
+      },
+      "jurong-west": {
+        "HDB": 360,
+        "Condo": 920,
+        "Landed": 1420
+      },
+      "choa-chu-kang": {
+        "HDB": 370,
+        "Condo": 940,
+        "Landed": 1450
+      },
+      "bukit-batok": {
+        "HDB": 380,
+        "Condo": 960,
+        "Landed": 1480
+      },
+      "bukit-panjang": {
+        "HDB": 390,
+        "Condo": 980,
+        "Landed": 1500
+      },
+      "geylang": {
+        "HDB": 500,
+        "Condo": 1300,
+        "Landed": 1950
+      },
+      "marine-parade": {
+        "HDB": 550,
+        "Condo": 1400,
+        "Landed": 2100
+      },
+      "kallang-whampoa": {
+        "HDB": 520,
+        "Condo": 1320,
+        "Landed": 1980
+      },
+      "toa-payoh": {
+        "HDB": 480,
+        "Condo": 1280,
+        "Landed": 1920
+      },
+      "queenstown": {
+        "HDB": 600,
+        "Condo": 1500,
+        "Landed": 2250
+      },
+      "bukit-merah": {
+        "HDB": 580,
+        "Condo": 1450,
+        "Landed": 2180
+      },
+      "serangoon": {
+        "HDB": 470,
+        "Condo": 1180,
+        "Landed": 1770
+      },
+      "sembawang": {
+        "HDB": 360,
+        "Condo": 900,
+        "Landed": 1350
+      }
+    },
+    "generatedAt": "2025-10-23T14:23:41.477Z",
+    "dataSource": "simulated_data"
+  }
+]

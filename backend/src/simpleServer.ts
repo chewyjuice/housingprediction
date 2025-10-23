@@ -7,23 +7,24 @@ dotenv.config({ path: '.env.local' });
 const PORT = process.env.PORT || 8000;
 
 async function startServer() {
-  const app = new SimpleApp();
-  
   try {
-    // Initialize the app
-    await app.initialize();
+    console.log('🇸🇬 Singapore Housing Predictor API - Inference Mode');
+    console.log('=============================================');
+    console.log(`🚀 Starting server on port ${PORT}`);
+    console.log(`📍 Health check: http://localhost:${PORT}/api/health`);
+    console.log(`🔍 Areas: http://localhost:${PORT}/api/areas`);
+    console.log(`📊 Predictions: http://localhost:${PORT}/api/predictions/request`);
+    console.log(`🧠 Model info: http://localhost:${PORT}/api/model/info`);
+    console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+    console.log(`💾 Storage: File-based (no database required)`);
+    console.log(`🔒 Mode: Inference-only (no training endpoints)`);
+    console.log('=============================================');
     
-    // Start the server
-    const server = app.getApp().listen(PORT, () => {
-      console.log('🇸🇬 Singapore Housing Predictor API - Simple Mode');
-      console.log('=============================================');
-      console.log(`🚀 Server running on port ${PORT}`);
-      console.log(`📍 Health check: http://localhost:${PORT}/health`);
-      console.log(`🔍 Area search: http://localhost:${PORT}/api/areas/search`);
-      console.log(`📊 Predictions: http://localhost:${PORT}/api/predictions/request`);
-      console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
-      console.log(`💾 Storage: File-based (no database required)`);
-      console.log('=============================================');
+    const app = new SimpleApp();
+    
+    // Start the server using the listen method
+    const server = app.app.listen(PORT, () => {
+      console.log(`✅ Server successfully started on port ${PORT}`);
     });
 
     // Graceful shutdown handling

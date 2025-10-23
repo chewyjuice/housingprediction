@@ -678,5 +678,1090 @@
     ],
     "modelAccuracy": 0.7785994102098994,
     "generatedAt": "2025-10-22T08:01:32.971Z"
+  },
+  {
+    "id": "pred_1761122620848_tfoac8yk5",
+    "requestId": "req_1761122618830_lhrtb8ibe",
+    "predictedPrice": 5546558.396107291,
+    "predictedPricePerSqft": 2218.6233584429165,
+    "propertyType": "Landed",
+    "unitSize": 2500,
+    "roomType": "Semi-D",
+    "confidenceInterval": {
+      "lower": 4714574.636691198,
+      "upper": 6378542.155523384,
+      "lowerPerSqft": 1885.829854676479,
+      "upperPerSqft": 2551.416862209354
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Yishun area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "modelAccuracy": 0.7935439411814311,
+    "generatedAt": "2025-10-22T08:43:40.848Z"
+  },
+  {
+    "id": "pred_1761211720071_lo49daov2",
+    "requestId": "req_1761211718050_rkuuma8g4",
+    "predictedPrice": 491727.38961238076,
+    "predictedPricePerSqft": 491.72738961238076,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "confidenceInterval": {
+      "lower": 417968.28117052367,
+      "upper": 565486.4980542379,
+      "lowerPerSqft": 417.96828117052365,
+      "upperPerSqft": 565.4864980542379
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Ang Mo Kio area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "relatedNews": [
+      {
+        "id": "news_1761211720071_4",
+        "title": "Property tax adjustments affect Ang Mo Kio market dynamics",
+        "source": "Channel NewsAsia",
+        "publishedAt": "2025-10-05T09:28:40.071Z",
+        "category": "Policy & Regulation",
+        "relevanceScore": 0.9934051044815122,
+        "summary": "The District 20 area continues to attract investor interest due to its strategic location and ongoing infrastructure improvements. This trend is particularly beneficial for HDB properties in the vicinity.",
+        "url": "https://channelnewsasia.com/singapore/property/1761211720071"
+      },
+      {
+        "id": "news_1761211720070_2",
+        "title": "District 20 emerges as hotspot for property investment",
+        "source": "PropertyGuru",
+        "publishedAt": "2025-10-07T09:28:40.070Z",
+        "category": "Market Trends",
+        "relevanceScore": 0.9664828643500484,
+        "summary": "Government initiatives and private sector investments in District 20 are creating a positive outlook for residential property values, especially for HDB units.",
+        "url": "https://propertyguru.com/singapore/property/1761211720070"
+      },
+      {
+        "id": "news_1761211720070_1",
+        "title": "District 20 emerges as hotspot for property investment",
+        "source": "Today Online",
+        "publishedAt": "2025-09-25T09:28:40.070Z",
+        "category": "Market Trends",
+        "relevanceScore": 0.8763068036307262,
+        "summary": "Industry experts note that Ang Mo Kio has shown resilient market performance, with HDB properties maintaining steady growth despite broader market fluctuations.",
+        "url": "https://todayonline.com/singapore/property/1761211720070"
+      },
+      {
+        "id": "news_1761211720071_3",
+        "title": "Strong demand for HDB properties in Ang Mo Kio",
+        "source": "Channel NewsAsia",
+        "publishedAt": "2025-09-27T09:28:40.071Z",
+        "category": "Market Trends",
+        "relevanceScore": 0.8356248164779382,
+        "summary": "Government initiatives and private sector investments in District 20 are creating a positive outlook for residential property values, especially for HDB units.",
+        "url": "https://channelnewsasia.com/singapore/property/1761211720071"
+      },
+      {
+        "id": "news_1761211720069_0",
+        "title": "Analysts predict continued growth in Ang Mo Kio property market",
+        "source": "EdgeProp Singapore",
+        "publishedAt": "2025-10-04T09:28:40.069Z",
+        "category": "Market Trends",
+        "relevanceScore": 0.7756382340975838,
+        "summary": "The combination of improved connectivity and planned developments makes Ang Mo Kio an attractive location for both homebuyers and investors looking at HDB properties.",
+        "url": "https://edgepropsingapore.com/singapore/property/1761211720070"
+      }
+    ],
+    "modelAccuracy": 0.7927138553288674,
+    "generatedAt": "2025-10-23T09:28:40.079Z"
+  },
+  {
+    "id": "pred_1761211781372_ozszcrqmy",
+    "requestId": "req_1761211779360_p4hbxgwnk",
+    "predictedPrice": 991758.4078613615,
+    "predictedPricePerSqft": 1322.3445438151487,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "confidenceInterval": {
+      "lower": 842994.6466821573,
+      "upper": 1140522.1690405658,
+      "lowerPerSqft": 1123.9928622428763,
+      "upperPerSqft": 1520.696225387421
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Tiong Bahru area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "relatedNews": [
+      {
+        "id": "news_1761211781371_1",
+        "title": "Updated development guidelines for District 3 announced",
+        "source": "EdgeProp Singapore",
+        "publishedAt": "2025-10-22T09:29:41.371Z",
+        "category": "Policy & Regulation",
+        "relevanceScore": 0.9553814555461999,
+        "summary": "The District 3 area continues to attract investor interest due to its strategic location and ongoing infrastructure improvements. This trend is particularly beneficial for Condo properties in the vicinity.",
+        "url": "https://edgepropsingapore.com/singapore/property/1761211781371"
+      },
+      {
+        "id": "news_1761211781371_2",
+        "title": "Government housing grants boost Condo affordability",
+        "source": "Today Online",
+        "publishedAt": "2025-10-20T09:29:41.371Z",
+        "category": "Policy & Regulation",
+        "relevanceScore": 0.9233460096617515,
+        "summary": "The District 3 area continues to attract investor interest due to its strategic location and ongoing infrastructure improvements. This trend is particularly beneficial for Condo properties in the vicinity.",
+        "url": "https://todayonline.com/singapore/property/1761211781371"
+      },
+      {
+        "id": "news_1761211781371_0",
+        "title": "Tourism recovery benefits Tiong Bahru property values",
+        "source": "Channel NewsAsia",
+        "publishedAt": "2025-09-30T09:29:41.371Z",
+        "category": "Economic Factors",
+        "relevanceScore": 0.7167539904154178,
+        "summary": "The combination of improved connectivity and planned developments makes Tiong Bahru an attractive location for both homebuyers and investors looking at Condo properties.",
+        "url": "https://channelnewsasia.com/singapore/property/1761211781371"
+      },
+      {
+        "id": "news_1761211781372_3",
+        "title": "Foreign buyer restrictions tighten in prime areas like District 3",
+        "source": "Today Online",
+        "publishedAt": "2025-10-07T09:29:41.372Z",
+        "category": "Policy & Regulation",
+        "relevanceScore": 0.7112348589801443,
+        "summary": "The combination of improved connectivity and planned developments makes Tiong Bahru an attractive location for both homebuyers and investors looking at Condo properties.",
+        "url": "https://todayonline.com/singapore/property/1761211781372"
+      }
+    ],
+    "modelAccuracy": 0.8474992542454195,
+    "generatedAt": "2025-10-23T09:29:41.372Z"
+  },
+  {
+    "id": "pred_1761211854399_581w9nas1",
+    "requestId": "req_1761211852376_u8scj5n92",
+    "predictedPrice": 1022448.632056544,
+    "predictedPricePerSqft": 1363.2648427420586,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "confidenceInterval": {
+      "lower": 869081.3372480624,
+      "upper": 1175815.9268650254,
+      "lowerPerSqft": 1158.7751163307498,
+      "upperPerSqft": 1567.7545691533674
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Orchard area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "relatedNews": [
+      {
+        "id": "news_1761211854395_0",
+        "title": "Employment hub expansion near Orchard boosts housing demand",
+        "source": "The Straits Times",
+        "publishedAt": "2025-10-01T09:30:54.395Z",
+        "category": "Economic Factors",
+        "relevanceScore": 0.9881761854889501,
+        "summary": "Recent developments in Orchard are expected to significantly impact Condo property values. Market analysts suggest this could lead to increased demand and price appreciation over the next 3 years.",
+        "url": "https://thestraitstimes.com/singapore/property/1761211854395"
+      },
+      {
+        "id": "news_1761211854396_4",
+        "title": "Government announces infrastructure upgrades in District 9",
+        "source": "Today Online",
+        "publishedAt": "2025-10-08T09:30:54.396Z",
+        "category": "Development",
+        "relevanceScore": 0.9103304901178292,
+        "summary": "Industry experts note that Orchard has shown resilient market performance, with Condo properties maintaining steady growth despite broader market fluctuations.",
+        "url": "https://todayonline.com/singapore/property/1761211854396"
+      },
+      {
+        "id": "news_1761211854396_3",
+        "title": "Economic growth drives property investment in District 9",
+        "source": "Today Online",
+        "publishedAt": "2025-10-18T09:30:54.396Z",
+        "category": "Economic Factors",
+        "relevanceScore": 0.8441793443144507,
+        "summary": "Government initiatives and private sector investments in District 9 are creating a positive outlook for residential property values, especially for Condo units.",
+        "url": "https://todayonline.com/singapore/property/1761211854396"
+      },
+      {
+        "id": "news_1761211854395_1",
+        "title": "Strong demand for Condo properties in Orchard",
+        "source": "Business Times",
+        "publishedAt": "2025-10-15T09:30:54.395Z",
+        "category": "Market Trends",
+        "relevanceScore": 0.8377244739704243,
+        "summary": "Government initiatives and private sector investments in District 9 are creating a positive outlook for residential property values, especially for Condo units.",
+        "url": "https://businesstimes.com/singapore/property/1761211854395"
+      },
+      {
+        "id": "news_1761211854396_2",
+        "title": "Orchard selected for major urban redevelopment project",
+        "source": "The Straits Times",
+        "publishedAt": "2025-10-04T09:30:54.396Z",
+        "category": "Development",
+        "relevanceScore": 0.7211467038967732,
+        "summary": "Industry experts note that Orchard has shown resilient market performance, with Condo properties maintaining steady growth despite broader market fluctuations.",
+        "url": "https://thestraitstimes.com/singapore/property/1761211854396"
+      }
+    ],
+    "modelAccuracy": 0.8388578456731746,
+    "generatedAt": "2025-10-23T09:30:54.400Z"
+  },
+  {
+    "id": "pred_1761227706971_05qcvw9s1",
+    "requestId": "req_1761227704078_09nag1auu",
+    "predictedPrice": 770879.7188667265,
+    "predictedPricePerSqft": 770.8797188667265,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "confidenceInterval": {
+      "lower": 655247.7610367176,
+      "upper": 886511.6766967354,
+      "lowerPerSqft": 655.2477610367175,
+      "upperPerSqft": 886.5116766967355
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Bukit Timah area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "relatedNews": [
+      {
+        "id": "news_1761227706971_2",
+        "title": "Interest rate changes influence Bukit Timah property demand",
+        "source": "EdgeProp Singapore",
+        "publishedAt": "2025-10-08T13:55:06.971Z",
+        "category": "Economic Factors",
+        "relevanceScore": 0.9988973208403765,
+        "summary": "The District 10 area continues to attract investor interest due to its strategic location and ongoing infrastructure improvements. This trend is particularly beneficial for HDB properties in the vicinity.",
+        "url": "https://edgepropsingapore.com/singapore/property/1761227706971"
+      },
+      {
+        "id": "news_1761227706971_3",
+        "title": "Analysts predict continued growth in Bukit Timah property market",
+        "source": "EdgeProp Singapore",
+        "publishedAt": "2025-09-28T13:55:06.971Z",
+        "category": "Market Trends",
+        "relevanceScore": 0.9354970809726368,
+        "summary": "The District 10 area continues to attract investor interest due to its strategic location and ongoing infrastructure improvements. This trend is particularly beneficial for HDB properties in the vicinity.",
+        "url": "https://edgepropsingapore.com/singapore/property/1761227706971"
+      },
+      {
+        "id": "news_1761227706971_1",
+        "title": "Bukit Timah selected for major urban redevelopment project",
+        "source": "PropertyGuru",
+        "publishedAt": "2025-10-04T13:55:06.971Z",
+        "category": "Development",
+        "relevanceScore": 0.9221308791387547,
+        "summary": "Recent developments in Bukit Timah are expected to significantly impact HDB property values. Market analysts suggest this could lead to increased demand and price appreciation over the next 5 years.",
+        "url": "https://propertyguru.com/singapore/property/1761227706971"
+      },
+      {
+        "id": "news_1761227706971_0",
+        "title": "Analysts predict continued growth in Bukit Timah property market",
+        "source": "EdgeProp Singapore",
+        "publishedAt": "2025-10-09T13:55:06.971Z",
+        "category": "Market Trends",
+        "relevanceScore": 0.8668709984412944,
+        "summary": "The combination of improved connectivity and planned developments makes Bukit Timah an attractive location for both homebuyers and investors looking at HDB properties.",
+        "url": "https://edgepropsingapore.com/singapore/property/1761227706971"
+      },
+      {
+        "id": "news_1761227706971_4",
+        "title": "Tourism recovery benefits Bukit Timah property values",
+        "source": "Business Times",
+        "publishedAt": "2025-09-30T13:55:06.971Z",
+        "category": "Economic Factors",
+        "relevanceScore": 0.7786512698526705,
+        "summary": "Government initiatives and private sector investments in District 10 are creating a positive outlook for residential property values, especially for HDB units.",
+        "url": "https://businesstimes.com/singapore/property/1761227706971"
+      }
+    ],
+    "modelAccuracy": 0.8875276679349019,
+    "generatedAt": "2025-10-23T13:55:06.971Z"
+  },
+  {
+    "id": "pred_1761227732543_l7d4qzlks",
+    "requestId": "req_1761227730529_u6qu7h4zc",
+    "predictedPrice": 1411126.9678828127,
+    "predictedPricePerSqft": 1881.5026238437501,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "confidenceInterval": {
+      "lower": 1199457.922700391,
+      "upper": 1622796.0130652345,
+      "lowerPerSqft": 1599.2772302671876,
+      "upperPerSqft": 2163.7280174203124
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Tiong Bahru area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "relatedNews": [
+      {
+        "id": "news_1761227732543_1",
+        "title": "Interest rate changes influence Tiong Bahru property demand",
+        "source": "Channel NewsAsia",
+        "publishedAt": "2025-10-20T13:55:32.543Z",
+        "category": "Economic Factors",
+        "relevanceScore": 0.9709423661463479,
+        "summary": "Recent developments in Tiong Bahru are expected to significantly impact Condo property values. Market analysts suggest this could lead to increased demand and price appreciation over the next 5 years.",
+        "url": "https://channelnewsasia.com/singapore/property/1761227732543"
+      },
+      {
+        "id": "news_1761227732543_3",
+        "title": "Analysts predict continued growth in Tiong Bahru property market",
+        "source": "PropertyGuru",
+        "publishedAt": "2025-10-02T13:55:32.543Z",
+        "category": "Market Trends",
+        "relevanceScore": 0.8888487779140143,
+        "summary": "Recent developments in Tiong Bahru are expected to significantly impact Condo property values. Market analysts suggest this could lead to increased demand and price appreciation over the next 5 years.",
+        "url": "https://propertyguru.com/singapore/property/1761227732543"
+      },
+      {
+        "id": "news_1761227732543_0",
+        "title": "New shopping mall development approved for Tiong Bahru area",
+        "source": "PropertyGuru",
+        "publishedAt": "2025-10-18T13:55:32.543Z",
+        "category": "Development",
+        "relevanceScore": 0.8487970050873497,
+        "summary": "Government initiatives and private sector investments in District 3 are creating a positive outlook for residential property values, especially for Condo units.",
+        "url": "https://propertyguru.com/singapore/property/1761227732543"
+      },
+      {
+        "id": "news_1761227732543_2",
+        "title": "Employment hub expansion near Tiong Bahru boosts housing demand",
+        "source": "Business Times",
+        "publishedAt": "2025-10-23T13:55:32.543Z",
+        "category": "Economic Factors",
+        "relevanceScore": 0.8453067089845399,
+        "summary": "Industry experts note that Tiong Bahru has shown resilient market performance, with Condo properties maintaining steady growth despite broader market fluctuations.",
+        "url": "https://businesstimes.com/singapore/property/1761227732543"
+      },
+      {
+        "id": "news_1761227732543_4",
+        "title": "New cooling measures may impact District 3 property prices",
+        "source": "The Straits Times",
+        "publishedAt": "2025-10-13T13:55:32.543Z",
+        "category": "Policy & Regulation",
+        "relevanceScore": 0.8026508216216945,
+        "summary": "The District 3 area continues to attract investor interest due to its strategic location and ongoing infrastructure improvements. This trend is particularly beneficial for Condo properties in the vicinity.",
+        "url": "https://thestraitstimes.com/singapore/property/1761227732543"
+      }
+    ],
+    "modelAccuracy": 0.7828047015509113,
+    "generatedAt": "2025-10-23T13:55:32.544Z"
+  },
+  {
+    "id": "pred_1761228420842_yfubzuya2",
+    "requestId": "req_1761228418834_1u3bvla2n",
+    "predictedPrice": 1406009.6564714033,
+    "predictedPricePerSqft": 1874.679541961871,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "confidenceInterval": {
+      "lower": 1195108.2080006928,
+      "upper": 1616911.1049421139,
+      "lowerPerSqft": 1593.4776106675904,
+      "upperPerSqft": 2155.881473256152
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Tiong Bahru area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "relatedNews": [
+      {
+        "id": "news_1761228420842_1",
+        "title": "Condo transactions increase 15% in District 3",
+        "source": "Channel NewsAsia",
+        "publishedAt": "2025-09-24T14:07:00.842Z",
+        "category": "Market Trends",
+        "relevanceScore": 0.9782626329716912,
+        "summary": "Industry experts note that Tiong Bahru has shown resilient market performance, with Condo properties maintaining steady growth despite broader market fluctuations.",
+        "url": "https://channelnewsasia.com/singapore/property/1761228420842"
+      },
+      {
+        "id": "news_1761228420841_0",
+        "title": "Tech sector growth impacts District 3 residential market",
+        "source": "Business Times",
+        "publishedAt": "2025-09-26T14:07:00.841Z",
+        "category": "Economic Factors",
+        "relevanceScore": 0.8719332492996275,
+        "summary": "Recent developments in Tiong Bahru are expected to significantly impact Condo property values. Market analysts suggest this could lead to increased demand and price appreciation over the next 5 years.",
+        "url": "https://businesstimes.com/singapore/property/1761228420842"
+      },
+      {
+        "id": "news_1761228420842_2",
+        "title": "New cooling measures may impact District 3 property prices",
+        "source": "Channel NewsAsia",
+        "publishedAt": "2025-10-06T14:07:00.842Z",
+        "category": "Policy & Regulation",
+        "relevanceScore": 0.7929682778483624,
+        "summary": "The combination of improved connectivity and planned developments makes Tiong Bahru an attractive location for both homebuyers and investors looking at Condo properties.",
+        "url": "https://channelnewsasia.com/singapore/property/1761228420842"
+      }
+    ],
+    "modelAccuracy": 0.8817808760102954,
+    "generatedAt": "2025-10-23T14:07:00.842Z"
+  },
+  {
+    "id": "pred_1761229402477_5zp3u50p9",
+    "requestId": "req_1761229400464_7nuju5lj4",
+    "predictedPrice": 1407049.2311709335,
+    "predictedPricePerSqft": 1876.0656415612445,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "confidenceInterval": {
+      "lower": 1195991.8464952935,
+      "upper": 1618106.6158465734,
+      "lowerPerSqft": 1594.6557953270578,
+      "upperPerSqft": 2157.475487795431
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Tiong Bahru area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "relatedNews": [
+      {
+        "id": "news_1761229402477_0",
+        "title": "New MRT station planned for Tiong Bahru to boost connectivity",
+        "source": "PropertyGuru",
+        "publishedAt": "2025-10-02T14:23:22.477Z",
+        "category": "Development",
+        "relevanceScore": 0.9057401152650639,
+        "summary": "The combination of improved connectivity and planned developments makes Tiong Bahru an attractive location for both homebuyers and investors looking at Condo properties.",
+        "url": "https://propertyguru.com/singapore/property/1761229402477"
+      },
+      {
+        "id": "news_1761229402477_4",
+        "title": "Tech sector growth impacts District 3 residential market",
+        "source": "The Straits Times",
+        "publishedAt": "2025-10-15T14:23:22.477Z",
+        "category": "Economic Factors",
+        "relevanceScore": 0.9052852229603042,
+        "summary": "The District 3 area continues to attract investor interest due to its strategic location and ongoing infrastructure improvements. This trend is particularly beneficial for Condo properties in the vicinity.",
+        "url": "https://thestraitstimes.com/singapore/property/1761229402477"
+      },
+      {
+        "id": "news_1761229402477_2",
+        "title": "Tiong Bahru selected for major urban redevelopment project",
+        "source": "Today Online",
+        "publishedAt": "2025-09-25T14:23:22.477Z",
+        "category": "Development",
+        "relevanceScore": 0.8483108309983446,
+        "summary": "Government initiatives and private sector investments in District 3 are creating a positive outlook for residential property values, especially for Condo units.",
+        "url": "https://todayonline.com/singapore/property/1761229402477"
+      },
+      {
+        "id": "news_1761229402477_1",
+        "title": "Government announces infrastructure upgrades in District 3",
+        "source": "The Straits Times",
+        "publishedAt": "2025-10-10T14:23:22.477Z",
+        "category": "Development",
+        "relevanceScore": 0.7756373727486688,
+        "summary": "The combination of improved connectivity and planned developments makes Tiong Bahru an attractive location for both homebuyers and investors looking at Condo properties.",
+        "url": "https://thestraitstimes.com/singapore/property/1761229402477"
+      },
+      {
+        "id": "news_1761229402477_3",
+        "title": "Government housing grants boost Condo affordability",
+        "source": "PropertyGuru",
+        "publishedAt": "2025-10-23T14:23:22.477Z",
+        "category": "Policy & Regulation",
+        "relevanceScore": 0.7038601142431317,
+        "summary": "Government initiatives and private sector investments in District 3 are creating a positive outlook for residential property values, especially for Condo units.",
+        "url": "https://propertyguru.com/singapore/property/1761229402477"
+      }
+    ],
+    "modelAccuracy": 0.8952398700497718,
+    "generatedAt": "2025-10-23T14:23:22.477Z"
+  },
+  {
+    "id": "pred_1761229458485_eh1eptxsw",
+    "requestId": "req_1761229456466_qtfvoakio",
+    "predictedPrice": 1427889.5357069015,
+    "predictedPricePerSqft": 1903.8527142758685,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "confidenceInterval": {
+      "lower": 1213706.1053508662,
+      "upper": 1642072.9660629367,
+      "lowerPerSqft": 1618.2748071344881,
+      "upperPerSqft": 2189.430621417249
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Tiong Bahru area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "relatedNews": [
+      {
+        "id": "news_1761229458485_3",
+        "title": "New cooling measures may impact District 3 property prices",
+        "source": "PropertyGuru",
+        "publishedAt": "2025-09-30T14:24:18.485Z",
+        "category": "Policy & Regulation",
+        "relevanceScore": 0.957016834714818,
+        "summary": "Recent developments in Tiong Bahru are expected to significantly impact Condo property values. Market analysts suggest this could lead to increased demand and price appreciation over the next 5 years.",
+        "url": "https://propertyguru.com/singapore/property/1761229458485"
+      },
+      {
+        "id": "news_1761229458485_4",
+        "title": "Government housing grants boost Condo affordability",
+        "source": "Business Times",
+        "publishedAt": "2025-09-25T14:24:18.485Z",
+        "category": "Policy & Regulation",
+        "relevanceScore": 0.9533889113518861,
+        "summary": "Government initiatives and private sector investments in District 3 are creating a positive outlook for residential property values, especially for Condo units.",
+        "url": "https://businesstimes.com/singapore/property/1761229458485"
+      },
+      {
+        "id": "news_1761229458485_0",
+        "title": "New shopping mall development approved for Tiong Bahru area",
+        "source": "Today Online",
+        "publishedAt": "2025-10-12T14:24:18.485Z",
+        "category": "Development",
+        "relevanceScore": 0.9334922492306348,
+        "summary": "The District 3 area continues to attract investor interest due to its strategic location and ongoing infrastructure improvements. This trend is particularly beneficial for Condo properties in the vicinity.",
+        "url": "https://todayonline.com/singapore/property/1761229458485"
+      },
+      {
+        "id": "news_1761229458485_1",
+        "title": "Economic growth drives property investment in District 3",
+        "source": "The Straits Times",
+        "publishedAt": "2025-10-05T14:24:18.485Z",
+        "category": "Economic Factors",
+        "relevanceScore": 0.8590964095329706,
+        "summary": "The combination of improved connectivity and planned developments makes Tiong Bahru an attractive location for both homebuyers and investors looking at Condo properties.",
+        "url": "https://thestraitstimes.com/singapore/property/1761229458485"
+      },
+      {
+        "id": "news_1761229458485_2",
+        "title": "Strong demand for Condo properties in Tiong Bahru",
+        "source": "Today Online",
+        "publishedAt": "2025-10-01T14:24:18.485Z",
+        "category": "Market Trends",
+        "relevanceScore": 0.7328478348291539,
+        "summary": "The combination of improved connectivity and planned developments makes Tiong Bahru an attractive location for both homebuyers and investors looking at Condo properties.",
+        "url": "https://todayonline.com/singapore/property/1761229458485"
+      }
+    ],
+    "modelAccuracy": 0.8020893072110014,
+    "generatedAt": "2025-10-23T14:24:18.485Z"
+  },
+  {
+    "id": "pred_1761232325259_0ot67mlc3",
+    "requestId": "req_1761232323181_uzmc6rk25",
+    "predictedPrice": 495410.188936472,
+    "predictedPricePerSqft": 495.410188936472,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "confidenceInterval": {
+      "lower": 421098.6605960012,
+      "upper": 569721.7172769428,
+      "lowerPerSqft": 421.0986605960012,
+      "upperPerSqft": 569.7217172769429
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Bedok area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "relatedNews": [
+      {
+        "id": "news_1761232325259_1",
+        "title": "Strong demand for HDB properties in Bedok",
+        "source": "Channel NewsAsia",
+        "publishedAt": "2025-10-17T15:12:05.259Z",
+        "category": "Market Trends",
+        "relevanceScore": 0.9986779765544191,
+        "summary": "Recent developments in Bedok are expected to significantly impact HDB property values. Market analysts suggest this could lead to increased demand and price appreciation over the next 5 years.",
+        "url": "https://channelnewsasia.com/singapore/property/1761232325259"
+      },
+      {
+        "id": "news_1761232325259_4",
+        "title": "New MRT station planned for Bedok to boost connectivity",
+        "source": "Business Times",
+        "publishedAt": "2025-10-09T15:12:05.259Z",
+        "category": "Development",
+        "relevanceScore": 0.8910612491319357,
+        "summary": "Industry experts note that Bedok has shown resilient market performance, with HDB properties maintaining steady growth despite broader market fluctuations.",
+        "url": "https://businesstimes.com/singapore/property/1761232325259"
+      },
+      {
+        "id": "news_1761232325259_3",
+        "title": "Property tax adjustments affect Bedok market dynamics",
+        "source": "The Straits Times",
+        "publishedAt": "2025-10-19T15:12:05.259Z",
+        "category": "Policy & Regulation",
+        "relevanceScore": 0.8629859872768534,
+        "summary": "Government initiatives and private sector investments in District 16 are creating a positive outlook for residential property values, especially for HDB units.",
+        "url": "https://thestraitstimes.com/singapore/property/1761232325259"
+      },
+      {
+        "id": "news_1761232325258_0",
+        "title": "Strong demand for HDB properties in Bedok",
+        "source": "Channel NewsAsia",
+        "publishedAt": "2025-10-02T15:12:05.258Z",
+        "category": "Market Trends",
+        "relevanceScore": 0.8073430358618174,
+        "summary": "Recent developments in Bedok are expected to significantly impact HDB property values. Market analysts suggest this could lead to increased demand and price appreciation over the next 5 years.",
+        "url": "https://channelnewsasia.com/singapore/property/1761232325259"
+      },
+      {
+        "id": "news_1761232325259_2",
+        "title": "Government announces infrastructure upgrades in District 16",
+        "source": "Channel NewsAsia",
+        "publishedAt": "2025-10-10T15:12:05.259Z",
+        "category": "Development",
+        "relevanceScore": 0.7069296562470312,
+        "summary": "The combination of improved connectivity and planned developments makes Bedok an attractive location for both homebuyers and investors looking at HDB properties.",
+        "url": "https://channelnewsasia.com/singapore/property/1761232325259"
+      }
+    ],
+    "modelAccuracy": 0.7536317314137585,
+    "generatedAt": "2025-10-23T15:12:05.260Z"
+  },
+  {
+    "id": "pred_1761233087126_zsuip36rx",
+    "requestId": "req_1761233085060_q9y7raasc",
+    "predictedPrice": 1350789.427959141,
+    "predictedPricePerSqft": 1801.0525706121882,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "confidenceInterval": {
+      "lower": 1148171.01376527,
+      "upper": 1553407.8421530123,
+      "lowerPerSqft": 1530.89468502036,
+      "upperPerSqft": 2071.2104562040163
+    },
+    "influencingFactors": [
+      {
+        "developmentId": "dev_transport",
+        "impactWeight": 0.25,
+        "description": "Transportation improvements in Katong area"
+      },
+      {
+        "developmentId": "dev_commercial",
+        "impactWeight": 0.2,
+        "description": "Commercial development projects nearby"
+      },
+      {
+        "developmentId": "dev_residential",
+        "impactWeight": 0.15,
+        "description": "New residential developments in the district"
+      }
+    ],
+    "relatedNews": [
+      {
+        "id": "news_1761233087124_1",
+        "title": "Government housing grants boost Condo affordability",
+        "source": "Channel NewsAsia",
+        "publishedAt": "2025-10-22T15:24:47.124Z",
+        "category": "Policy & Regulation",
+        "relevanceScore": 0.99664923133823,
+        "summary": "Government initiatives and private sector investments in District 15 are creating a positive outlook for residential property values, especially for Condo units.",
+        "url": "https://channelnewsasia.com/singapore/property/1761233087125"
+      },
+      {
+        "id": "news_1761233087112_0",
+        "title": "Economic growth drives property investment in District 15",
+        "source": "EdgeProp Singapore",
+        "publishedAt": "2025-09-28T15:24:47.112Z",
+        "category": "Economic Factors",
+        "relevanceScore": 0.8861344655221898,
+        "summary": "Industry experts note that Katong has shown resilient market performance, with Condo properties maintaining steady growth despite broader market fluctuations.",
+        "url": "https://edgepropsingapore.com/singapore/property/1761233087124"
+      },
+      {
+        "id": "news_1761233087125_2",
+        "title": "Condo transactions increase 15% in District 15",
+        "source": "PropertyGuru",
+        "publishedAt": "2025-10-21T15:24:47.125Z",
+        "category": "Market Trends",
+        "relevanceScore": 0.8646564845808583,
+        "summary": "The District 15 area continues to attract investor interest due to its strategic location and ongoing infrastructure improvements. This trend is particularly beneficial for Condo properties in the vicinity.",
+        "url": "https://propertyguru.com/singapore/property/1761233087125"
+      },
+      {
+        "id": "news_1761233087125_3",
+        "title": "Tourism recovery benefits Katong property values",
+        "source": "Business Times",
+        "publishedAt": "2025-10-18T15:24:47.125Z",
+        "category": "Economic Factors",
+        "relevanceScore": 0.7951563365465019,
+        "summary": "Industry experts note that Katong has shown resilient market performance, with Condo properties maintaining steady growth despite broader market fluctuations.",
+        "url": "https://businesstimes.com/singapore/property/1761233087125"
+      }
+    ],
+    "modelAccuracy": 0.8731445563393064,
+    "generatedAt": "2025-10-23T15:24:47.126Z"
+  },
+  {
+    "id": "req_1761238412666_lztnmwcdt",
+    "predictedPrice": 11125553,
+    "predictedPricePerUnit": 11126,
+    "confidenceInterval": {
+      "lower": 8344165,
+      "upper": 13906942,
+      "lowerPerUnit": 8344,
+      "upperPerUnit": 13907
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 9597000,
+      "marketTrend": -4.58,
+      "transactionVolume": 1511,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.5
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.82,
+      "sampleSize": 1511,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-23T16:53:32.947Z"
+  },
+  {
+    "id": "req_1761238722630_g7ygwj85f",
+    "predictedPrice": 2580544,
+    "predictedPricePerUnit": 2581,
+    "confidenceInterval": {
+      "lower": 2167657,
+      "upper": 2993431,
+      "lowerPerUnit": 2168,
+      "upperPerUnit": 2993
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 2226000,
+      "marketTrend": 2.75,
+      "transactionVolume": 959,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.68
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.87,
+      "sampleSize": 959,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-23T16:58:42.933Z"
+  },
+  {
+    "id": "req_1761238843804_8suiejy68",
+    "predictedPrice": 2580544,
+    "predictedPricePerUnit": 2581,
+    "confidenceInterval": {
+      "lower": 2167657,
+      "upper": 2993431,
+      "lowerPerUnit": 2168,
+      "upperPerUnit": 2993
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 2226000,
+      "marketTrend": 2.75,
+      "transactionVolume": 959,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.68
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.87,
+      "sampleSize": 959,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-23T17:00:43.901Z"
+  },
+  {
+    "id": "req_1761238977756_5e8yiv5fz",
+    "predictedPrice": 1131162,
+    "predictedPricePerUnit": 1508,
+    "confidenceInterval": {
+      "lower": 950176,
+      "upper": 1312148,
+      "lowerPerUnit": 1267,
+      "upperPerUnit": 1750
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 975750,
+      "marketTrend": 0.75,
+      "transactionVolume": 609,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.68
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.87,
+      "sampleSize": 609,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-23T17:02:57.860Z"
+  },
+  {
+    "id": "req_1761239692631_dgrkp6gut",
+    "predictedPrice": 8518346,
+    "predictedPricePerUnit": 8518,
+    "confidenceInterval": {
+      "lower": 6729493,
+      "upper": 10307199,
+      "lowerPerUnit": 6729,
+      "upperPerUnit": 10307
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 7348000,
+      "marketTrend": 0.14,
+      "transactionVolume": 1724,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.58
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.82,
+      "sampleSize": 1724,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-23T17:14:52.877Z"
+  },
+  {
+    "id": "req_1761239711346_fm8vv0ww0",
+    "predictedPrice": 9948890,
+    "predictedPricePerUnit": 9949,
+    "confidenceInterval": {
+      "lower": 8008857,
+      "upper": 11888924,
+      "lowerPerUnit": 8009,
+      "upperPerUnit": 11889
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 8582000,
+      "marketTrend": 1.87,
+      "transactionVolume": 3686,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.61
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.82,
+      "sampleSize": 3686,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-23T17:15:11.561Z"
+  },
+  {
+    "id": "req_1761239716119_fcid3cn1c",
+    "predictedPrice": 1124206,
+    "predictedPricePerUnit": 1499,
+    "confidenceInterval": {
+      "lower": 933091,
+      "upper": 1315321,
+      "lowerPerUnit": 1244,
+      "upperPerUnit": 1754
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 969750,
+      "marketTrend": 1.87,
+      "transactionVolume": 3686,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.66
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.87,
+      "sampleSize": 3686,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-23T17:15:16.176Z"
+  },
+  {
+    "id": "req_1761240112233_9k5vrrv6d",
+    "predictedPrice": 1935408,
+    "predictedPricePerUnit": 2581,
+    "predictedPricePerSqft": 2581,
+    "confidenceInterval": {
+      "lower": 1625743,
+      "upper": 2245073,
+      "lowerPerUnit": 2168,
+      "upperPerUnit": 2993,
+      "lowerPerSqft": 2168,
+      "upperPerSqft": 2993
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 1669500,
+      "marketTrend": 2.75,
+      "transactionVolume": 959,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.68
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.87,
+      "sampleSize": 959,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-23T17:21:52.347Z"
+  },
+  {
+    "id": "req_1761240136720_ua7jqvvgi",
+    "predictedPrice": 1132901,
+    "predictedPricePerUnit": 1511,
+    "predictedPricePerSqft": 1511,
+    "confidenceInterval": {
+      "lower": 957301,
+      "upper": 1308500,
+      "lowerPerUnit": 1276,
+      "upperPerUnit": 1745,
+      "lowerPerSqft": 1276,
+      "upperPerSqft": 1745
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 977250,
+      "marketTrend": -3.56,
+      "transactionVolume": 594,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.69
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.87,
+      "sampleSize": 594,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-23T17:22:16.814Z"
   }
 ]

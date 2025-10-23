@@ -14,7 +14,7 @@ const singaporeBoundary = {
     type: "Polygon" as const,
     coordinates: [[
       [103.6, 1.16],
-      [104.1, 1.16], 
+      [104.1, 1.16],
       [104.1, 1.48],
       [103.6, 1.48],
       [103.6, 1.16]
@@ -22,64 +22,28 @@ const singaporeBoundary = {
   }
 };
 
-// Singapore districts with approximate boundaries
-const singaporeDistricts = [
-  {
-    id: 'central',
-    name: 'Central',
-    coordinates: [[
-      [103.82, 1.28],
-      [103.87, 1.28],
-      [103.87, 1.32],
-      [103.82, 1.32],
-      [103.82, 1.28]
-    ]]
-  },
-  {
-    id: 'north',
-    name: 'North',
-    coordinates: [[
-      [103.75, 1.38],
-      [103.85, 1.38],
-      [103.85, 1.45],
-      [103.75, 1.45],
-      [103.75, 1.38]
-    ]]
-  },
-  {
-    id: 'east',
-    name: 'East',
-    coordinates: [[
-      [103.87, 1.32],
-      [103.98, 1.32],
-      [103.98, 1.38],
-      [103.87, 1.38],
-      [103.87, 1.32]
-    ]]
-  },
-  {
-    id: 'west',
-    name: 'West',
-    coordinates: [[
-      [103.65, 1.32],
-      [103.82, 1.32],
-      [103.82, 1.38],
-      [103.65, 1.38],
-      [103.65, 1.32]
-    ]]
-  },
-  {
-    id: 'south',
-    name: 'South',
-    coordinates: [[
-      [103.75, 1.25],
-      [103.85, 1.25],
-      [103.85, 1.32],
-      [103.75, 1.32],
-      [103.75, 1.25]
-    ]]
-  }
-];
+// Enhanced URA district colors for better visualization
+const getDistrictColor = (uraCode?: string): string => {
+  if (!uraCode) return '#3388ff';
+
+  const districtNum = parseInt(uraCode.substring(1));
+
+  if (districtNum <= 8) return '#e74c3c';      // Central districts - Red
+  if (districtNum <= 15) return '#f39c12';     // Prime districts - Orange  
+  if (districtNum <= 20) return '#2ecc71';     // Mature estates - Green
+  return '#3498db';                            // Non-mature/Outer - Blue
+};
+
+const getDistrictOpacity = (uraCode?: string): number => {
+  if (!uraCode) return 0.6;
+
+  const districtNum = parseInt(uraCode.substring(1));
+
+  if (districtNum <= 8) return 0.8;      // Central districts - More opaque
+  if (districtNum <= 15) return 0.7;     // Prime districts
+  if (districtNum <= 20) return 0.6;     // Mature estates
+  return 0.5;                            // Non-mature/Outer - More transparent
+};
 
 interface MapClickHandlerProps {
   onMapClick: (latlng: L.LatLng) => void;
@@ -157,7 +121,7 @@ const SingaporeMap: React.FC<MapComponentProps> = ({
   onAreaSelect,
   onAreaHover
 }) => {
-  const [hoveredDistrict, setHoveredDistrict] = useState<string | null>(null);
+
   const [clickedLocation, setClickedLocation] = useState<L.LatLng | null>(null);
 
   // Singapore center coordinates
@@ -165,7 +129,7 @@ const SingaporeMap: React.FC<MapComponentProps> = ({
 
   const handleMapClick = useCallback((latlng: L.LatLng) => {
     setClickedLocation(latlng);
-    
+
     // Find the closest area to the clicked location
     if (areas.length > 0) {
       let closestArea: Area | null = null;
@@ -179,7 +143,7 @@ const SingaporeMap: React.FC<MapComponentProps> = ({
           Math.pow(area.coordinates.latitude - latlng.lat, 2) +
           Math.pow(area.coordinates.longitude - latlng.lng, 2)
         );
-        
+
         if (distance < minDistance) {
           minDistance = distance;
           closestArea = area;
@@ -193,104 +157,13 @@ const SingaporeMap: React.FC<MapComponentProps> = ({
     }
   }, [areas, onAreaSelect]);
 
-  const getDistrictStyle = (districtId: string) => {
-    const isHovered = hoveredDistrict === districtId;
-    const isSelected = selectedArea?.district.toLowerCase() === districtId;
-    
-    return {
-      fillColor: isSelected ? '#3B82F6' : isHovered ? '#93C5FD' : '#E5E7EB',
-      weight: 2,
-      opacity: 1,
-      color: isSelected ? '#1D4ED8' : '#6B7280',
-      dashArray: '',
-      fillOpacity: isSelected ? 0.7 : isHovered ? 0.5 : 0.3
-    };
+
+
+  // Create GeoJSON features for Singapore boundary
+  const singaporeFeature = {
+    type: "FeatureCollection" as const,
+    features: [singaporeBoundary]
   };
-
-  const onEachDistrict = (feature: any, layer: L.Layer) => {
-    const districtId = feature.properties.id;
-    const districtName = feature.properties.name;
-    
-    layer.on({
-      mouseover: (e) => {
-        setHoveredDistrict(districtId);
-        onAreaHover && onAreaHover(areas.find(area => 
-          area.district.toLowerCase() === districtId
-        ) || null);
-        
-        // Highlight on hover
-        const target = e.target;
-        target.setStyle({
-          weight: 3,
-          fillOpacity: 0.6
-        });
-      },
-      mouseout: (e) => {
-        setHoveredDistrict(null);
-        onAreaHover && onAreaHover(null);
-        
-        // Reset style
-        const target = e.target;
-        target.setStyle(getDistrictStyle(districtId));
-      },
-      click: (e) => {
-        // Find areas in this district
-        const districtAreas = areas.filter(area => 
-          area.district.toLowerCase() === districtId
-        );
-        
-        if (districtAreas.length > 0) {
-          // Select the first area in the district or the one closest to click
-          const clickLatlng = e.latlng;
-          let closestArea = districtAreas[0];
-          let minDistance = Infinity;
-
-          districtAreas.forEach(area => {
-            if (!area.coordinates || typeof area.coordinates.latitude !== 'number' || typeof area.coordinates.longitude !== 'number') {
-              return; // Skip areas with invalid coordinates
-            }
-            const distance = Math.sqrt(
-              Math.pow(area.coordinates.latitude - clickLatlng.lat, 2) +
-              Math.pow(area.coordinates.longitude - clickLatlng.lng, 2)
-            );
-            
-            if (distance < minDistance) {
-              minDistance = distance;
-              closestArea = area;
-            }
-          });
-
-          onAreaSelect(closestArea);
-        }
-      }
-    });
-
-    // Bind popup with district information
-    const districtAreasCount = areas.filter(area => 
-      area.district.toLowerCase() === districtId
-    ).length;
-    
-    layer.bindPopup(`
-      <div class="text-center">
-        <h3 class="font-semibold text-lg">${districtName} District</h3>
-        <p class="text-sm text-gray-600">${districtAreasCount} areas available</p>
-        <p class="text-xs text-gray-500 mt-1">Click to select an area in this district</p>
-      </div>
-    `);
-  };
-
-  // Create GeoJSON features for districts
-  const districtFeatures = singaporeDistricts.map(district => ({
-    type: "Feature" as const,
-    properties: {
-      id: district.id,
-      name: district.name
-    },
-    geometry: {
-      type: "Polygon" as const,
-      coordinates: district.coordinates
-    }
-  }));
 
   return (
     <div className="relative w-full h-full">
@@ -305,7 +178,7 @@ const SingaporeMap: React.FC<MapComponentProps> = ({
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        
+
         {/* Singapore boundary */}
         <GeoJSON
           data={singaporeBoundary}
@@ -319,38 +192,54 @@ const SingaporeMap: React.FC<MapComponentProps> = ({
           }}
         />
 
-        {/* District boundaries */}
-        {districtFeatures.map((feature, index) => (
-          <GeoJSON
-            key={`district-${feature.properties.id}`}
-            data={feature}
-            style={() => getDistrictStyle(feature.properties.id)}
-            onEachFeature={onEachDistrict}
-          />
-        ))}
+        {/* Singapore boundary */}
+        <GeoJSON
+          data={singaporeFeature}
+          style={() => ({
+            fillColor: 'transparent',
+            weight: 2,
+            opacity: 0.5,
+            color: '#6B7280',
+            dashArray: '10, 5',
+            fillOpacity: 0
+          })}
+        />
 
         {/* Area markers for precise selection */}
         {areas.filter(area => area.coordinates && typeof area.coordinates.latitude === 'number' && typeof area.coordinates.longitude === 'number').map((area) => {
           const isSelected = selectedArea?.id === area.id;
-          
+
+          // Get district-specific styling
+          const districtColorClass = area.uraCode ? {
+            'D01': 'bg-red-500', 'D02': 'bg-red-500', 'D03': 'bg-red-500', 'D04': 'bg-red-500',
+            'D05': 'bg-red-500', 'D06': 'bg-red-500', 'D07': 'bg-red-500', 'D08': 'bg-red-500',
+            'D09': 'bg-orange-500', 'D10': 'bg-orange-500', 'D11': 'bg-orange-500', 'D12': 'bg-orange-500',
+            'D13': 'bg-orange-500', 'D14': 'bg-orange-500', 'D15': 'bg-orange-500',
+            'D16': 'bg-green-500', 'D17': 'bg-green-500', 'D18': 'bg-green-500', 'D19': 'bg-green-500', 'D20': 'bg-green-500',
+            'D21': 'bg-blue-500', 'D22': 'bg-blue-500', 'D23': 'bg-blue-500', 'D24': 'bg-blue-500',
+            'D25': 'bg-blue-500', 'D26': 'bg-blue-500', 'D27': 'bg-blue-500', 'D28': 'bg-blue-500'
+          }[area.uraCode] || 'bg-gray-500' : 'bg-gray-500';
+
           const customIcon = L.divIcon({
             html: `
               <div class="relative">
-                <div class="w-4 h-4 rounded-full ${
-                  isSelected 
-                    ? 'bg-blue-600 border-2 border-white shadow-lg' 
-                    : 'bg-red-500 border border-white shadow-md'
-                } transform transition-transform hover:scale-110"></div>
+                <div class="w-5 h-5 rounded-full ${isSelected
+                ? 'bg-blue-600 border-2 border-white shadow-lg scale-125'
+                : `${districtColorClass} border border-white shadow-md`
+              } transform transition-all hover:scale-110">
+                  ${area.uraCode ? `<div class="text-white text-xs font-bold leading-5 text-center">${area.uraCode.substring(1)}</div>` : ''}
+                </div>
                 ${isSelected ? `
-                  <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-2 py-1 rounded text-xs whitespace-nowrap">
+                  <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-2 py-1 rounded text-xs whitespace-nowrap z-50">
                     ${area.name}
+                    ${area.uraCode ? `<br><span class="text-blue-200">${area.uraCode}</span>` : ''}
                   </div>
                 ` : ''}
               </div>
             `,
             className: 'custom-marker',
-            iconSize: [16, 16],
-            iconAnchor: [8, 8]
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
           });
 
           return (
@@ -365,22 +254,43 @@ const SingaporeMap: React.FC<MapComponentProps> = ({
               }}
             >
               <Popup>
-                <div className="text-center min-w-[150px]">
+                <div className="text-center min-w-[200px]">
                   <h3 className="font-semibold text-lg">{area.name}</h3>
-                  <p className="text-sm text-gray-600">{area.district} District</p>
+                  <p className="text-sm text-gray-600">{area.district}</p>
+
+                  {/* Enhanced URA District Information */}
+                  {area.enhancedInfo && (
+                    <div className="mt-2 p-2 bg-gray-50 rounded text-left">
+                      <p className="text-xs font-medium text-blue-600">
+                        URA Code: {area.enhancedInfo.uraCode}
+                      </p>
+                      <p className="text-xs text-gray-700">
+                        Planning Area: {area.enhancedInfo.planningArea}
+                      </p>
+                      {area.enhancedInfo.subDistricts.length > 0 && (
+                        <div className="mt-1">
+                          <p className="text-xs font-medium text-gray-600">Sub-districts:</p>
+                          <p className="text-xs text-gray-500">
+                            {area.enhancedInfo.subDistricts.slice(0, 3).join(', ')}
+                            {area.enhancedInfo.subDistricts.length > 3 && ` +${area.enhancedInfo.subDistricts.length - 3} more`}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
                   {area.postalCodes && area.postalCodes.length > 0 && (
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-gray-500 mt-2">
                       Postal: {area.postalCodes.slice(0, 3).join(', ')}
                       {area.postalCodes.length > 3 && '...'}
                     </p>
                   )}
                   <button
                     onClick={() => onAreaSelect(area)}
-                    className={`mt-2 px-3 py-1 rounded text-sm transition-colors ${
-                      isSelected
+                    className={`mt-2 px-3 py-1 rounded text-sm transition-colors ${isSelected
                         ? 'bg-green-500 text-white'
                         : 'bg-blue-500 hover:bg-blue-600 text-white'
-                    }`}
+                      }`}
                   >
                     {isSelected ? 'Selected' : 'Select Area'}
                   </button>
@@ -418,29 +328,40 @@ const SingaporeMap: React.FC<MapComponentProps> = ({
 
         {/* Custom map controls */}
         <MapControls
-          onZoomIn={() => {}}
-          onZoomOut={() => {}}
+          onZoomIn={() => { }}
+          onZoomOut={() => { }}
           onResetView={() => setClickedLocation(null)}
         />
       </MapContainer>
 
-      {/* Map legend */}
-      <div className="absolute bottom-4 left-4 bg-white rounded-lg shadow-md p-3 z-[1000]">
-        <h4 className="text-sm font-semibold mb-2">Map Legend</h4>
+      {/* Enhanced URA District Legend */}
+      <div className="absolute bottom-4 left-4 bg-white rounded-lg shadow-md p-3 z-[1000] max-w-xs">
+        <h4 className="text-sm font-semibold mb-2">URA District Tiers</h4>
         <div className="space-y-1 text-xs">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-red-500 border border-white"></div>
-            <span>Available Areas</span>
+            <div className="w-4 h-4 rounded-full bg-red-500 border border-white flex items-center justify-center text-white text-xs font-bold">1</div>
+            <span>Central (D01-D08)</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-blue-600 border-2 border-white"></div>
-            <span>Selected Area</span>
+            <div className="w-4 h-4 rounded-full bg-orange-500 border border-white flex items-center justify-center text-white text-xs font-bold">9</div>
+            <span>Prime/Mature (D09-D15)</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-gray-300 border border-gray-400" style={{borderStyle: 'dashed'}}></div>
-            <span>District Boundaries</span>
+            <div className="w-4 h-4 rounded-full bg-green-500 border border-white flex items-center justify-center text-white text-xs font-bold">16</div>
+            <span>Mature Estates (D16-D20)</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded-full bg-blue-500 border border-white flex items-center justify-center text-white text-xs font-bold">21</div>
+            <span>Non-mature/Outer (D21-D28)</span>
+          </div>
+          <div className="flex items-center gap-2 mt-2 pt-2 border-t border-gray-200">
+            <div className="w-4 h-4 rounded-full bg-blue-600 border-2 border-white scale-125"></div>
+            <span>Selected District</span>
           </div>
         </div>
+        <p className="text-xs text-gray-500 mt-2">
+          Numbers show URA district codes (e.g., D01, D09)
+        </p>
       </div>
 
       {/* Selection info */}

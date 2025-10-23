@@ -4,6 +4,9 @@ export interface Area {
   id: string;
   name: string;
   district: string;
+  planningArea?: string;
+  uraCode?: string;
+  subDistricts?: string[];
   postalCodes: string[];
   coordinates: {
     latitude: number;
@@ -17,6 +20,11 @@ export interface Area {
     mrtProximity: number;
     cbdDistance: number;
     amenityScore: number;
+  };
+  enhancedInfo?: {
+    uraCode: string;
+    planningArea: string;
+    subDistricts: string[];
   };
 }
 
@@ -44,6 +52,33 @@ export interface PredictionRequest {
   userId?: string;
 }
 
+export interface NewsArticle {
+  id: string;
+  title: string;
+  source: string;
+  publishedAt: string;
+  category: string;
+  relevanceScore: number;
+  summary: string;
+  url: string;
+}
+
+export interface MarketAnalysis {
+  currentMarketPrice: number;
+  marketTrend: number;
+  transactionVolume: number;
+  priceGrowthRate: number;
+  marketConfidence: number;
+}
+
+export interface ComparableTransaction {
+  price: number;
+  pricePerUnit: number;
+  date: string;
+  area: number;
+  type: string;
+}
+
 export interface PredictionResult {
   id: string;
   requestId: string;
@@ -63,6 +98,9 @@ export interface PredictionResult {
     impactWeight: number;
     description: string;
   }[];
+  relatedNews?: NewsArticle[];
+  marketAnalysis?: MarketAnalysis;
+  comparableTransactions?: ComparableTransaction[];
   modelAccuracy?: number;
   generatedAt: Date;
 }

@@ -5,6 +5,7 @@ import rateLimit from 'express-rate-limit';
 import { Router } from 'express';
 import { SimpleAreaController } from './controllers/SimpleAreaController';
 import { fileStorage } from './database/fileStorage';
+import { marketBasedPredictionModel, MarketPredictionInput } from './services/MarketBasedPredictionModel';
 
 export class SimpleApp {
   public app: Application;
@@ -49,56 +50,268 @@ export class SimpleApp {
       legacyHeaders: false,
     });
 
-    this.app.use('/api/', generalLimiter);
+    this.app.use(generalLimiter);
 
     // Body parsing middleware
     this.app.use(express.json({ limit: '10mb' }));
     this.app.use(express.urlencoded({ extended: true, limit: '10mb' }));
-  }
-
-  private initializeRoutes(): void {
+  } 
+ private initializeRoutes(): void {
     // Health check endpoint
-    this.app.get('/health', async (req: Request, res: Response) => {
+    this.app.get('/api/health', (req: Request, res: Response) => {
+      res.json({
+        success: true,
+        message: 'Singapore Housing Predictor API is running',
+        timestamp: new Date().toISOString(),
+        version: '1.0.0'
+      });
+    });
+
+    // Areas endpoint
+    const areaRouter = Router();
+    const areaController = new SimpleAreaController();
+    
+    areaRouter.get('/', async (req: Request, res: Response) => {
       try {
-        // Test file storage
-        await fileStorage.readData('test');
-        
+        const areas = await areaController.getOrInitializeAreas();
         res.json({
           success: true,
-          data: {
-            status: 'healthy',
-            timestamp: new Date().toISOString(),
-            version: '1.0.0',
-            database: {
-              status: 'connected',
-              type: 'file-storage',
-              lastChecked: new Date().toISOString()
-            }
-          },
-          message: 'Singapore Housing Predictor API - Simple Mode'
+          data: areas
         });
       } catch (error) {
-        res.status(503).json({
+        console.error('[API] Error getting areas:', error);
+        res.status(500).json({
           success: false,
-          error: 'Health check failed',
-          message: 'Unable to determine system health'
+          error: 'Failed to get areas'
         });
       }
     });
 
-    // Area routes
-    const areaController = new SimpleAreaController();
-    const areaRouter = Router();
-    
-    areaRouter.get('/search', areaController.searchAreas);
-    areaRouter.get('/districts', areaController.getDistricts);
-    areaRouter.get('/nearby', areaController.getNearbyAreas);
-    areaRouter.post('/validate', areaController.validateCoordinates);
-    areaRouter.get('/:id', areaController.getAreaById);
-    
+    // Areas search endpoint
+    areaRouter.get('/search', async (req: Request, res: Response) => {
+      try {
+        const areas = await areaController.getOrInitializeAreas();
+        const { name, district, postalCode } = req.query;
+        
+        let filteredAreas = areas;
+        
+        if (name) {
+          filteredAreas = filteredAreas.filter(area => 
+            area.name.toLowerCase().includes((name as string).toLowerCase())
+          );
+        }
+        
+        if (district) {
+          filteredAreas = filteredAreas.filter(area => 
+            area.district === district
+          );
+        }
+        
+        res.json({
+          success: true,
+          data: filteredAreas
+        });
+      } catch (error) {
+        console.error('[API] Error searching areas:', error);
+        res.status(500).json({
+          success: false,
+          error: 'Failed to search areas'
+        });
+      }
+    });
+
+    // Get districts endpoint
+    areaRouter.get('/districts', async (req: Request, res: Response) => {
+      try {
+        const areas = await areaController.getOrInitializeAreas();
+        const districts = [...new Set(areas.map(area => area.district))].sort();
+        
+        res.json({
+          success: true,
+          data: districts
+        });
+      } catch (error) {
+        console.error('[API] Error getting districts:', error);
+        res.status(500).json({
+          success: false,
+          error: 'Failed to get districts'
+        });
+      }
+    });
+
+    // Areas nearby endpoint
+    areaRouter.get('/nearby', async (req: Request, res: Response) => {
+      try {
+        const areas = await areaController.getOrInitializeAreas();
+        const { latitude, longitude, radius = 5 } = req.query;
+        
+        if (!latitude || !longitude) {
+          res.status(400).json({
+            success: false,
+            error: 'Latitude and longitude are required'
+          });
+          return;
+        }
+        
+        // Simple distance calculation (for demo purposes)
+        const lat = parseFloat(latitude as string);
+        const lng = parseFloat(longitude as string);
+        const radiusKm = parseFloat(radius as string);
+        
+        const nearbyAreas = areas.filter(area => {
+          if (!area.coordinates) return false;
+          const distance = Math.sqrt(
+            Math.pow(area.coordinates.latitude - lat, 2) + 
+            Math.pow(area.coordinates.longitude - lng, 2)
+          ) * 111; // Rough km conversion
+          return distance <= radiusKm;
+        });
+        
+        res.json({
+          success: true,
+          data: nearbyAreas
+        });
+      } catch (error) {
+        console.error('[API] Error getting nearby areas:', error);
+        res.status(500).json({
+          success: false,
+          error: 'Failed to get nearby areas'
+        });
+      }
+    });
+
+    // Areas validation endpoint
+    areaRouter.post('/validate', async (req: Request, res: Response) => {
+      try {
+        const { latitude, longitude } = req.body;
+        
+        if (!latitude || !longitude) {
+          res.status(400).json({
+            success: false,
+            error: 'Latitude and longitude are required'
+          });
+          return;
+        }
+        
+        const areas = await areaController.getOrInitializeAreas();
+        
+        // Find the closest area (simplified)
+        let closestArea = null;
+        let minDistance = Infinity;
+        
+        areas.forEach(area => {
+          if (area.coordinates) {
+            const distance = Math.sqrt(
+              Math.pow(area.coordinates.latitude - latitude, 2) + 
+              Math.pow(area.coordinates.longitude - longitude, 2)
+            );
+            if (distance < minDistance) {
+              minDistance = distance;
+              closestArea = area;
+            }
+          }
+        });
+        
+        res.json({
+          success: true,
+          data: closestArea
+        });
+      } catch (error) {
+        console.error('[API] Error validating coordinates:', error);
+        res.status(500).json({
+          success: false,
+          error: 'Failed to validate coordinates'
+        });
+      }
+    });
+
+    // Get area by ID endpoint (must come last to avoid conflicts)
+    areaRouter.get('/:areaId', async (req: Request, res: Response) => {
+      try {
+        const areas = await areaController.getOrInitializeAreas();
+        const area = areas.find(a => a.id === req.params.areaId);
+        
+        if (!area) {
+          res.status(404).json({
+            success: false,
+            error: 'Area not found'
+          });
+          return;
+        }
+        
+        res.json({
+          success: true,
+          data: area
+        });
+      } catch (error) {
+        console.error('[API] Error getting area by ID:', error);
+        res.status(500).json({
+          success: false,
+          error: 'Failed to get area'
+        });
+      }
+    });
+
     this.app.use('/api/areas', areaRouter);
 
-    // Simple prediction endpoint (mock for now)
+    // Model inference endpoints only
+    this.app.get('/api/model/info', async (req: Request, res: Response) => {
+      try {
+        const { modelTrainingService } = await import('./services/ModelTrainingService');
+        const modelInfo = modelTrainingService.getCurrentModelInfo();
+        
+        if (modelInfo) {
+          // Only return inference-relevant information
+          res.json({
+            success: true,
+            data: {
+              version: modelInfo.version,
+              trainedAt: modelInfo.trainedAt,
+              accuracy: modelInfo.accuracy,
+              dataRange: modelInfo.dataRange,
+              availableDistricts: Object.keys(modelInfo.modelWeights),
+              availablePropertyTypes: ['HDB', 'Condo', 'Landed'],
+              status: 'ready_for_inference'
+            }
+          });
+        } else {
+          res.json({
+            success: true,
+            data: { 
+              message: 'No trained model available',
+              status: 'no_model'
+            }
+          });
+        }
+      } catch (error) {
+        console.error('[API] Error getting model info:', error);
+        res.status(500).json({
+          success: false,
+          error: 'Failed to get model information'
+        });
+      }
+    });
+
+    // Market summary endpoint (inference only)
+    this.app.get('/api/resale/summary', async (req: Request, res: Response) => {
+      try {
+        const { resalePriceExtractor } = await import('./services/ResalePriceExtractor');
+        const summary = await resalePriceExtractor.getMarketSummary();
+        
+        res.json({
+          success: true,
+          data: summary
+        });
+      } catch (error) {
+        console.error('[API] Error getting market summary:', error);
+        res.status(500).json({
+          success: false,
+          error: 'Failed to get market summary'
+        });
+      }
+    });
+
+    // Prediction endpoint (inference only)
     this.app.post('/api/predictions/request', async (req: Request, res: Response) => {
       try {
         const { areaId, timeframeYears, propertyType, unitSize, roomType } = req.body;
@@ -112,12 +325,11 @@ export class SimpleApp {
           return;
         }
 
-        // Get area data using the same method as the area controller
+        // Get area data
         const areaController = new SimpleAreaController();
         const areas = await areaController.getOrInitializeAreas();
         const area = areas.find(a => a.id === areaId);
         if (!area) {
-          console.log('Area not found for ID:', areaId, 'Available areas:', areas.map(a => a.id));
           res.status(404).json({
             success: false,
             error: 'Area not found'
@@ -135,184 +347,273 @@ export class SimpleApp {
           timeframeYears,
           propertyType,
           unitSize: unitSize || 1000,
-          roomType,
-          status: 'processing',
-          createdAt: new Date().toISOString()
+          roomType: roomType || null,
+          requestedAt: new Date().toISOString(),
+          status: 'processing'
         };
-        
+
         await fileStorage.appendData('prediction_requests', predictionRequest);
 
-        // Simulate processing and generate result
-        setTimeout(async () => {
-          try {
-            console.log(`[PREDICTION] Generating prediction for requestId: ${requestId}`);
-            const result = await this.generatePrediction(area, predictionRequest);
-            console.log(`[PREDICTION] Generated result with id: ${result.id} for requestId: ${result.requestId}`);
-            await fileStorage.appendData('prediction_results', result);
-            console.log(`[PREDICTION] Stored result for requestId: ${result.requestId}`);
-          } catch (error) {
-            console.error('Error generating prediction:', error);
-          }
-        }, 2000); // 2 second delay to simulate processing
+        // Make prediction using market-based model
+        const predictionInput: MarketPredictionInput = {
+          areaId,
+          district: area.district || 'District 1', // Use area's district
+          timeframeYears,
+          propertyType,
+          unitSize: unitSize || 1000,
+          roomType
+        };
 
-        res.status(201).json({
+        const prediction = await marketBasedPredictionModel.generatePrediction(predictionInput);
+
+        // Store prediction result
+        const predictionResult = {
+          id: requestId,
+          ...prediction,
+          generatedAt: new Date().toISOString()
+        };
+
+        await fileStorage.appendData('prediction_results', predictionResult);
+
+        res.json({
           success: true,
           data: {
             requestId,
-            areaId,
-            timeframeYears,
-            status: 'processing',
-            message: 'Prediction request created and processing started'
+            prediction: predictionResult
           }
         });
 
       } catch (error) {
-        console.error('Error creating prediction request:', error);
+        console.error('[API] Error making prediction:', error);
         res.status(500).json({
           success: false,
-          error: 'Internal server error'
+          error: 'Failed to make prediction'
         });
       }
     });
 
-    // Get prediction result
-    this.app.get('/api/predictions/request/:requestId', async (req: Request, res: Response) => {
+    // Prediction history endpoint (must come before /:requestId route)
+    this.app.get('/api/predictions/history', async (req: Request, res: Response) => {
       try {
-        const { requestId } = req.params;
-        console.log(`[PREDICTION] Looking for result with requestId: ${requestId}`);
-        
         const results = await fileStorage.readData('prediction_results');
-        console.log(`[PREDICTION] Found ${results.length} total results in storage`);
+        const { limit = 50, offset = 0 } = req.query;
         
-        if (results.length > 0) {
-          console.log(`[PREDICTION] Available requestIds: ${results.map((r: any) => r.requestId).join(', ')}`);
+        const startIndex = parseInt(offset as string) || 0;
+        const limitNum = parseInt(limit as string) || 50;
+        
+        const paginatedResults = results.slice(startIndex, startIndex + limitNum);
+        
+        res.json({
+          success: true,
+          data: {
+            predictions: paginatedResults,
+            total: results.length,
+            offset: startIndex,
+            limit: limitNum
+          }
+        });
+      } catch (error) {
+        console.error('[API] Error getting prediction history:', error);
+        res.status(500).json({
+          success: false,
+          error: 'Failed to get prediction history'
+        });
+      }
+    });
+
+    // Prediction validation endpoint (stub)
+    this.app.post('/api/predictions/validate', async (req: Request, res: Response) => {
+      try {
+        const { areaId, propertyType, timeframeYears } = req.body;
+        
+        // Basic validation
+        const errors: string[] = [];
+        
+        if (!areaId) errors.push('Area ID is required');
+        if (!propertyType) errors.push('Property type is required');
+        if (!timeframeYears || timeframeYears < 1 || timeframeYears > 20) {
+          errors.push('Timeframe must be between 1 and 20 years');
         }
         
-        const result = results.find((r: any) => r.requestId === requestId);
+        res.json({
+          success: true,
+          data: {
+            isValid: errors.length === 0,
+            errors
+          }
+        });
+      } catch (error) {
+        console.error('[API] Error validating prediction request:', error);
+        res.status(500).json({
+          success: false,
+          error: 'Failed to validate prediction request'
+        });
+      }
+    });
+
+    // Get all predictions (for admin/debugging)
+    this.app.get('/api/predictions', async (req: Request, res: Response) => {
+      try {
+        const results = await fileStorage.readData('prediction_results');
+        res.json({
+          success: true,
+          data: results.slice(-20) // Return last 20 predictions
+        });
+      } catch (error) {
+        console.error('[API] Error getting predictions:', error);
+        res.status(500).json({
+          success: false,
+          error: 'Failed to get predictions'
+        });
+      }
+    });
+
+    // Prediction statistics endpoint
+    this.app.get('/api/predictions/statistics/:areaId', async (req: Request, res: Response) => {
+      try {
+        const { areaId } = req.params;
+        const results = await fileStorage.readData('prediction_results');
         
+        // Filter predictions for this area
+        const areaPredictions = results.filter((r: any) => r.areaId === areaId);
+        
+        if (areaPredictions.length === 0) {
+          res.json({
+            success: true,
+            data: {
+              totalPredictions: 0,
+              averageAccuracy: 0,
+              lastPrediction: null
+            }
+          });
+          return;
+        }
+        
+        const totalPredictions = areaPredictions.length;
+        const averageAccuracy = areaPredictions.reduce((sum: number, p: any) => 
+          sum + (p.modelAccuracy || 0.8), 0) / totalPredictions;
+        const lastPrediction = areaPredictions[areaPredictions.length - 1] as any;
+        
+        res.json({
+          success: true,
+          data: {
+            totalPredictions,
+            averageAccuracy,
+            lastPrediction: lastPrediction?.generatedAt || null
+          }
+        });
+      } catch (error) {
+        console.error('[API] Error getting prediction statistics:', error);
+        res.status(500).json({
+          success: false,
+          error: 'Failed to get prediction statistics'
+        });
+      }
+    });
+
+    // Get prediction results (must come after specific routes)
+    this.app.get('/api/predictions/:requestId', async (req: Request, res: Response) => {
+      try {
+        const { requestId } = req.params;
+        const results = await fileStorage.readData('prediction_results');
+        const result = results.find((r: any) => r.id === requestId);
+
         if (!result) {
-          console.log(`[PREDICTION] Result not found for requestId: ${requestId}`);
           res.status(404).json({
             success: false,
-            error: 'Prediction result not found'
+            error: 'Prediction not found'
           });
           return;
         }
 
-        console.log(`[PREDICTION] Result found for requestId: ${requestId}`);
         res.json({
           success: true,
           data: result
         });
-
       } catch (error) {
-        console.error('Error getting prediction result:', error);
+        console.error('[API] Error getting prediction:', error);
         res.status(500).json({
           success: false,
-          error: 'Internal server error'
+          error: 'Failed to get prediction'
         });
       }
     });
 
-    // 404 handler for undefined routes
-    this.app.use('*', (req: Request, res: Response) => {
-      res.status(404).json({
+    // Stub endpoints for inference-only mode (not implemented)
+    this.app.post('/api/crawler/trigger', (req: Request, res: Response) => {
+      res.status(501).json({
         success: false,
-        error: 'Route not found',
-        message: `The requested route ${req.method} ${req.originalUrl} does not exist`
+        error: 'Crawler functionality not available in inference-only mode'
       });
     });
-  }
 
-  private async generatePrediction(area: any, request: any) {
-    // Simple prediction algorithm based on area characteristics
-    const basePrices = {
-      'HDB': 400,
-      'Condo': 1200,
-      'Landed': 1800
-    };
+    this.app.get('/api/crawler/status/:jobId', (req: Request, res: Response) => {
+      res.status(501).json({
+        success: false,
+        error: 'Crawler functionality not available in inference-only mode'
+      });
+    });
 
-    const basePricePerSqft = basePrices[request.propertyType as keyof typeof basePrices] || 1000;
-    
-    // Apply area-based multipliers
-    let areaMultiplier = 1.0;
-    if (area.district.toLowerCase().includes('central') || area.district.toLowerCase().includes('orchard')) {
-      areaMultiplier = 1.5;
-    } else if (area.district.toLowerCase().includes('marina') || area.district.toLowerCase().includes('raffles')) {
-      areaMultiplier = 1.4;
-    }
+    this.app.delete('/api/cache/area/:areaId', (req: Request, res: Response) => {
+      res.status(501).json({
+        success: false,
+        error: 'Cache management not available in inference-only mode'
+      });
+    });
 
-    // Apply time-based growth
-    const annualGrowthRate = 0.03 + (Math.random() * 0.02); // 3-5% annual growth
-    const timeMultiplier = Math.pow(1 + annualGrowthRate, request.timeframeYears);
+    this.app.get('/api/cache/stats', (req: Request, res: Response) => {
+      res.status(501).json({
+        success: false,
+        error: 'Cache management not available in inference-only mode'
+      });
+    });
 
-    const predictedPricePerSqft = basePricePerSqft * areaMultiplier * timeMultiplier;
-    const predictedPrice = predictedPricePerSqft * request.unitSize;
-
-    // Generate confidence interval
-    const confidenceRange = predictedPrice * 0.15; // ±15%
-
-    return {
-      id: `pred_${Date.now()}_${Math.random().toString(36).substring(2, 11)}`,
-      requestId: request.id,
-      predictedPrice,
-      predictedPricePerSqft,
-      propertyType: request.propertyType,
-      unitSize: request.unitSize,
-      roomType: request.roomType,
-      confidenceInterval: {
-        lower: predictedPrice - confidenceRange,
-        upper: predictedPrice + confidenceRange,
-        lowerPerSqft: predictedPricePerSqft - (confidenceRange / request.unitSize),
-        upperPerSqft: predictedPricePerSqft + (confidenceRange / request.unitSize)
-      },
-      influencingFactors: [
-        {
-          developmentId: 'dev_transport',
-          impactWeight: 0.25,
-          description: `Transportation improvements in ${area.name} area`
-        },
-        {
-          developmentId: 'dev_commercial',
-          impactWeight: 0.20,
-          description: `Commercial development projects nearby`
-        },
-        {
-          developmentId: 'dev_residential',
-          impactWeight: 0.15,
-          description: `New residential developments in the district`
+    this.app.get('/api/services', (req: Request, res: Response) => {
+      res.json({
+        success: true,
+        data: {
+          status: 'inference-only',
+          services: {
+            prediction: 'active',
+            model: 'active',
+            areas: 'active',
+            crawler: 'disabled',
+            cache: 'disabled'
+          }
         }
-      ],
-      modelAccuracy: 0.75 + Math.random() * 0.20, // 75-95% accuracy
-      generatedAt: new Date().toISOString()
-    };
+      });
+    });
   }
 
   private initializeErrorHandling(): void {
+    // 404 handler
+    this.app.use('*', (req: Request, res: Response) => {
+      res.status(404).json({
+        success: false,
+        error: 'Endpoint not found'
+      });
+    });
+
     // Global error handler
     this.app.use((error: Error, req: Request, res: Response, next: any) => {
-      console.error('Unhandled error:', error);
-      
+      console.error('[API] Unhandled error:', error);
       res.status(500).json({
         success: false,
-        error: 'Internal server error',
-        message: process.env.NODE_ENV === 'development' ? error.message : 'Something went wrong'
+        error: 'Internal server error'
       });
     });
   }
 
-  public async initialize(): Promise<void> {
-    try {
-      // Initialize file storage
-      await fileStorage.readData('test');
-      console.log('✅ File storage initialized successfully');
-    } catch (error) {
-      console.error('❌ Failed to initialize file storage:', error);
-      throw error;
-    }
+  public listen(port: number): void {
+    this.app.listen(port, () => {
+      console.log(`🚀 Singapore Housing Predictor API running on port ${port}`);
+      console.log(`📊 Inference-only mode - no training endpoints exposed`);
+    });
   }
 
   public getApp(): Application {
     return this.app;
   }
 }
+
+export default SimpleApp;

@@ -198,5 +198,253 @@
     "roomType": "2-bedroom",
     "status": "processing",
     "createdAt": "2025-10-22T08:01:30.958Z"
+  },
+  {
+    "id": "req_1761122618830_lhrtb8ibe",
+    "areaId": "yishun",
+    "timeframeYears": 5,
+    "propertyType": "Landed",
+    "unitSize": 2500,
+    "roomType": "Semi-D",
+    "status": "processing",
+    "createdAt": "2025-10-22T08:43:38.830Z"
+  },
+  {
+    "id": "req_1761211718050_rkuuma8g4",
+    "areaId": "ang-mo-kio",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "status": "processing",
+    "createdAt": "2025-10-23T09:28:38.050Z"
+  },
+  {
+    "id": "req_1761211779360_p4hbxgwnk",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 3,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "status": "processing",
+    "createdAt": "2025-10-23T09:29:39.360Z"
+  },
+  {
+    "id": "req_1761211852376_u8scj5n92",
+    "areaId": "orchard",
+    "timeframeYears": 3,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "status": "processing",
+    "createdAt": "2025-10-23T09:30:52.376Z"
+  },
+  {
+    "id": "req_1761221142376_reyrankgr",
+    "areaId": "orchard",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 1000,
+    "status": "processing",
+    "createdAt": "2025-10-23T12:05:42.377Z"
+  },
+  {
+    "id": "req_1761222548114_g7l2nhakm",
+    "areaId": "orchard",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 1000,
+    "status": "processing",
+    "createdAt": "2025-10-23T12:29:08.114Z"
+  },
+  {
+    "id": "req_1761223073678_2ehzta188",
+    "areaId": "tampines",
+    "timeframeYears": 3,
+    "propertyType": "HDB",
+    "unitSize": 900,
+    "roomType": "4-room",
+    "status": "processing",
+    "createdAt": "2025-10-23T12:37:53.678Z"
+  },
+  {
+    "id": "req_1761223562962_5h643pflx",
+    "areaId": "bishan",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "status": "processing",
+    "createdAt": "2025-10-23T12:46:02.962Z"
+  },
+  {
+    "id": "req_1761227704078_09nag1auu",
+    "areaId": "bukit-timah",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "status": "processing",
+    "createdAt": "2025-10-23T13:55:04.078Z"
+  },
+  {
+    "id": "req_1761227730529_u6qu7h4zc",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "status": "processing",
+    "createdAt": "2025-10-23T13:55:30.529Z"
+  },
+  {
+    "id": "req_1761228418834_1u3bvla2n",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "status": "processing",
+    "createdAt": "2025-10-23T14:06:58.834Z"
+  },
+  {
+    "id": "req_1761229400464_7nuju5lj4",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "status": "processing",
+    "createdAt": "2025-10-23T14:23:20.464Z"
+  },
+  {
+    "id": "req_1761229456466_qtfvoakio",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "status": "processing",
+    "createdAt": "2025-10-23T14:24:16.466Z"
+  },
+  {
+    "id": "req_1761232323181_uzmc6rk25",
+    "areaId": "bedok",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "status": "processing",
+    "createdAt": "2025-10-23T15:12:03.181Z"
+  },
+  {
+    "id": "req_1761233085060_q9y7raasc",
+    "areaId": "katong",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "status": "processing",
+    "createdAt": "2025-10-23T15:24:45.061Z"
+  },
+  {
+    "id": "req_1761238412666_lztnmwcdt",
+    "areaId": "marina-bay",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "requestedAt": "2025-10-23T16:53:32.666Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761238722630_g7ygwj85f",
+    "areaId": "orchard",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 1000,
+    "roomType": null,
+    "requestedAt": "2025-10-23T16:58:42.630Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761238843804_8suiejy68",
+    "areaId": "orchard",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 1000,
+    "roomType": null,
+    "requestedAt": "2025-10-23T17:00:43.804Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761238977756_5e8yiv5fz",
+    "areaId": "little-india",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "requestedAt": "2025-10-23T17:02:57.756Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761239642836_majaq4o6i",
+    "areaId": "potong-pasir",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "requestedAt": "2025-10-23T17:14:02.836Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761239692631_dgrkp6gut",
+    "areaId": "geylang",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "requestedAt": "2025-10-23T17:14:52.631Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761239711346_fm8vv0ww0",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "requestedAt": "2025-10-23T17:15:11.346Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761239716119_fcid3cn1c",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "requestedAt": "2025-10-23T17:15:16.119Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761240112233_9k5vrrv6d",
+    "areaId": "orchard",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "requestedAt": "2025-10-23T17:21:52.233Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761240136720_ua7jqvvgi",
+    "areaId": "city-hall",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "requestedAt": "2025-10-23T17:22:16.720Z",
+    "status": "processing"
   }
 ]

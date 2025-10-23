@@ -174,6 +174,11 @@ const ResultsVisualization: React.FC<ExtendedResultsDisplayProps> = ({
   };
 
   const formatFullPrice = (price: number): string => {
+    // Handle NaN, undefined, null, or invalid numbers
+    if (!price || isNaN(price) || !isFinite(price)) {
+      return 'S$0';
+    }
+    
     return new Intl.NumberFormat('en-SG', {
       style: 'currency',
       currency: 'SGD',
@@ -253,7 +258,7 @@ const ResultsVisualization: React.FC<ExtendedResultsDisplayProps> = ({
             <div className="text-sm text-gray-600">Room Type</div>
           </div>
           <div className="text-center p-3 bg-gray-50 rounded-lg">
-            <div className="text-lg font-bold text-gray-900">{result.unitSize.toLocaleString()}</div>
+            <div className="text-lg font-bold text-gray-900">{(result.unitSize || 0).toLocaleString()}</div>
             <div className="text-sm text-gray-600">Size (sqft)</div>
           </div>
           <div className="text-center p-3 bg-gray-50 rounded-lg">
@@ -280,7 +285,7 @@ const ResultsVisualization: React.FC<ExtendedResultsDisplayProps> = ({
               </p>
               <div className="text-sm text-blue-600">
                 <p>{result.propertyType} - {result.roomType}</p>
-                <p>{result.unitSize.toLocaleString()} sqft • {selectedArea?.name}</p>
+                <p>{(result.unitSize || 0).toLocaleString()} sqft • {selectedArea?.name}</p>
                 <p className="mt-1">Confidence: {getConfidencePercentage().toFixed(0)}%</p>
               </div>
             </div>
@@ -393,7 +398,7 @@ const ResultsVisualization: React.FC<ExtendedResultsDisplayProps> = ({
                 <p className="text-xs mb-2 line-clamp-2">{development.description}</p>
                 <div className="flex justify-between items-center text-xs">
                   <span>Impact: {development.impactScore}/10</span>
-                  <span>{new Date(development.dateAnnounced).toLocaleDateString()}</span>
+                  <span>{development.dateAnnounced ? new Date(development.dateAnnounced).toLocaleDateString() : 'TBD'}</span>
                 </div>
               </div>
             ))}
@@ -494,9 +499,99 @@ const ResultsVisualization: React.FC<ExtendedResultsDisplayProps> = ({
             </div>
             <div className="text-center p-4 bg-gray-50 rounded-lg">
               <div className="text-2xl font-bold text-gray-900">
-                {new Date(result.generatedAt).toLocaleDateString()}
+                {result.generatedAt ? new Date(result.generatedAt).toLocaleDateString() : 'Unknown'}
               </div>
               <div className="text-sm text-gray-600">Generated On</div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Related News Articles */}
+      {result.relatedNews && result.relatedNews.length > 0 && (
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            📰 Related News & Market Analysis
+          </h3>
+          <p className="text-sm text-gray-600 mb-4">
+            Recent news articles that contributed to this prediction analysis
+          </p>
+          <div className="space-y-4">
+            {result.relatedNews.map((article, index) => (
+              <div key={article.id} className="border rounded-lg p-4 hover:bg-gray-50 transition-colors">
+                <div className="flex justify-between items-start mb-2">
+                  <div className="flex-1">
+                    <h4 className="font-medium text-gray-900 hover:text-blue-600 cursor-pointer">
+                      {article.title}
+                    </h4>
+                    <div className="flex items-center space-x-3 mt-1">
+                      <span className="text-sm text-gray-500">{article.source}</span>
+                      <span className="text-sm text-gray-400">•</span>
+                      <span className="text-sm text-gray-500">
+                        {article.publishedAt ? new Date(article.publishedAt).toLocaleDateString() : 'Unknown'}
+                      </span>
+                      <span className="text-sm text-gray-400">•</span>
+                      <span className={`text-xs px-2 py-1 rounded-full ${
+                        article.category === 'Development' ? 'bg-green-100 text-green-800' :
+                        article.category === 'Market Trends' ? 'bg-blue-100 text-blue-800' :
+                        article.category === 'Policy & Regulation' ? 'bg-purple-100 text-purple-800' :
+                        'bg-orange-100 text-orange-800'
+                      }`}>
+                        {article.category}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="ml-4 text-right">
+                    <div className="flex items-center">
+                      <span className="text-xs text-gray-500 mr-1">Relevance:</span>
+                      <span className="text-sm font-medium text-gray-700">
+                        {(article.relevanceScore * 100).toFixed(0)}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                
+                <p className="text-sm text-gray-600 mb-3 leading-relaxed">
+                  {article.summary}
+                </p>
+                
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center">
+                    <div className="w-full bg-gray-200 rounded-full h-1.5 w-20">
+                      <div 
+                        className="bg-blue-500 h-1.5 rounded-full transition-all duration-300"
+                        style={{ width: `${article.relevanceScore * 100}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                  <a 
+                    href={article.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-xs text-blue-600 hover:text-blue-800 font-medium"
+                  >
+                    Read Full Article →
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+            <div className="flex items-start">
+              <div className="flex-shrink-0">
+                <svg className="w-5 h-5 text-blue-500 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <h4 className="text-sm font-medium text-blue-900">How News Analysis Works</h4>
+                <p className="text-sm text-blue-700 mt-1">
+                  Our AI analyzes recent news articles, government announcements, and market reports to identify factors 
+                  that may influence property prices in your selected area. Articles are ranked by relevance and 
+                  incorporated into the prediction model.
+                </p>
+              </div>
             </div>
           </div>
         </div>

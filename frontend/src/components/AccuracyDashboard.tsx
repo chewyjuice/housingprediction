@@ -294,7 +294,7 @@ const AccuracyDashboard: React.FC<AccuracyDashboardProps> = ({
           
           <div className="p-4 bg-green-50 rounded-lg border border-green-200">
             <div className="text-2xl font-bold text-green-700">
-              {overallStats.totalPredictions.toLocaleString()}
+              {(overallStats.totalPredictions || 0).toLocaleString()}
             </div>
             <div className="text-sm text-green-600">Total Predictions</div>
           </div>

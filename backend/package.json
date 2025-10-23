@@ -12,7 +12,14 @@
     "migrate": "ts-node src/scripts/migrate.ts up",
     "migrate:down": "ts-node src/scripts/migrate.ts down",
     "migrate:status": "ts-node src/scripts/migrate.ts status",
-    "seed-areas": "ts-node src/scripts/seed-areas.ts"
+    "seed-areas": "ts-node src/scripts/seed-areas.ts",
+    "extract-resale": "ts-node src/scripts/extract-resale-data.ts",
+    "extract-comprehensive": "ts-node src/scripts/extract-comprehensive-data.ts",
+    "test:ura-api": "ts-node src/scripts/test-ura-api.ts",
+    "test:propertyguru": "ts-node src/scripts/test-propertyguru-scraping.ts",
+    "test:enhanced-districts": "ts-node src/scripts/test-enhanced-districts.ts",
+    "test:hdb-datagovsg": "ts-node src/scripts/test-hdb-datagovsg.ts",
+    "validate-apis": "ts-node src/scripts/validate-apis.ts"
   },
   "dependencies": {
     "express": "^4.18.2",

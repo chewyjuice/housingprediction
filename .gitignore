@@ -17,6 +17,12 @@ dist/
 */.env
 */.env.local
 
+# API Keys and Secrets
+backend/config/secrets.json
+config/secrets.json
+secrets.json
+**/secrets.json
+
 # Logs
 npm-debug.log*
 yarn-debug.log*

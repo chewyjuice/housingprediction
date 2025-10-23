@@ -1,0 +1,608 @@
+[
+  {
+    "id": "model_1761235377273",
+    "version": "v2025.10.24",
+    "trainedAt": "2025-10-23T16:02:57.273Z",
+    "dataRange": {
+      "startDate": "2024-10-23T16:02:57.273Z",
+      "endDate": "2025-10-23T16:02:57.273Z",
+      "hdbTransactions": 50000,
+      "privateTransactions": 16352
+    },
+    "modelWeights": {
+      "District 20": {
+        "HDB": {
+          "basePrice": 646433,
+          "pricePerUnit": 7040,
+          "growthRate": 0.03,
+          "volatility": 0.4,
+          "confidence": 0.6
+        },
+        "Condo": {
+          "basePrice": 1688802,
+          "pricePerUnit": 1298,
+          "growthRate": 0.03,
+          "volatility": 0.33,
+          "confidence": 0.67
+        }
+      },
+      "District 16": {
+        "HDB": {
+          "basePrice": 576798,
+          "pricePerUnit": 6436,
+          "growthRate": 0.03,
+          "volatility": 0.33,
+          "confidence": 0.67
+        },
+        "Condo": {
+          "basePrice": 1663786,
+          "pricePerUnit": 1300,
+          "growthRate": 0.03,
+          "volatility": 0.33,
+          "confidence": 0.67
+        },
+        "Landed": {
+          "basePrice": 5367695,
+          "pricePerUnit": 1674,
+          "growthRate": 0.03,
+          "volatility": 0.33,
+          "confidence": 0.67
+        }
+      },
+      "District 23": {
+        "HDB": {
+          "basePrice": 593003,
+          "pricePerUnit": 6051,
+          "growthRate": 0.03,
+          "volatility": 0.24,
+          "confidence": 0.76
+        },
+        "Condo": {
+          "basePrice": 1687051,
+          "pricePerUnit": 1307,
+          "growthRate": 0.03,
+          "volatility": 0.33,
+          "confidence": 0.67
+        }
+      },
+      "District 3": {
+        "HDB": {
+          "basePrice": 732831,
+          "pricePerUnit": 8582,
+          "growthRate": 0.03,
+          "volatility": 0.39,
+          "confidence": 0.61
+        },
+        "Condo": {
+          "basePrice": 1632733,
+          "pricePerUnit": 1293,
+          "growthRate": 0.03,
+          "volatility": 0.34,
+          "confidence": 0.66
+        }
+      },
+      "District 1": {
+        "HDB": {
+          "basePrice": 794891,
+          "pricePerUnit": 9597,
+          "growthRate": 0.03,
+          "volatility": 0.5,
+          "confidence": 0.5
+        },
+        "Condo": {
+          "basePrice": 2620487,
+          "pricePerUnit": 2049,
+          "growthRate": 0.03,
+          "volatility": 0.33,
+          "confidence": 0.67
+        }
+      },
+      "District 5": {
+        "HDB": {
+          "basePrice": 639368,
+          "pricePerUnit": 7369,
+          "growthRate": 0.03,
+          "volatility": 0.42,
+          "confidence": 0.58
+        },
+        "Condo": {
+          "basePrice": 1691330,
+          "pricePerUnit": 1301,
+          "growthRate": 0.03,
+          "volatility": 0.33,
+          "confidence": 0.67
+        },
+        "Landed": {
+          "basePrice": 5360615,
+          "pricePerUnit": 1678,
+          "growthRate": 0.03,
+          "volatility": 0.33,
+          "confidence": 0.67
+        }
+      },
+      "District 14": {
+        "HDB": {
+          "basePrice": 610831,
+          "pricePerUnit": 7348,
+          "growthRate": 0.03,
+          "volatility": 0.42,
+          "confidence": 0.58
+        },
+        "Condo": {
+          "basePrice": 1661933,
+          "pricePerUnit": 1304,
+          "growthRate": 0.03,
+          "volatility": 0.33,
+          "confidence": 0.67
+        }
+      },
+      "District 19": {
+        "HDB": {
+          "basePrice": 644083,
+          "pricePerUnit": 6767,
+          "growthRate": 0.03,
+          "volatility": 0.22,
+          "confidence": 0.78
+        },
+        "Condo": {
+          "basePrice": 1689568,
+          "pricePerUnit": 1306,
+          "growthRate": 0.03,
+          "volatility": 0.34,
+          "confidence": 0.66
+        }
+      },
+      "District 22": {
+        "HDB": {
+          "basePrice": 542627,
+          "pricePerUnit": 5585,
+          "growthRate": 0.03,
+          "volatility": 0.26,
+          "confidence": 0.74
+        },
+        "Condo": {
+          "basePrice": 1673236,
+          "pricePerUnit": 1301,
+          "growthRate": 0.03,
+          "volatility": 0.33,
+          "confidence": 0.67
+        }
+      },
+      "District 12": {
+        "HDB": {
+          "basePrice": 708266,
+          "pricePerUnit": 8101,
+          "growthRate": 0.03,
+          "volatility": 0.42,
+          "confidence": 0.58
+        },
+        "Condo": {
+          "basePrice": 1677820,
+          "pricePerUnit": 1307,
+          "growthRate": 0.03,
+          "volatility": 0.33,
+          "confidence": 0.67
+        }
+      },
+      "District 15": {
+        "HDB": {
+          "basePrice": 604538,
+          "pricePerUnit": 7147,
+          "growthRate": 0.03,
+          "volatility": 0.34,
+          "confidence": 0.66
+        },
+        "Condo": {
+          "basePrice": 1805321,
+          "pricePerUnit": 1394,
+          "growthRate": 0.03,
+          "volatility": 0.33,
+          "confidence": 0.67
+        }
+      },
+      "District 18": {
+        "HDB": {
+          "basePrice": 690448,
+          "pricePerUnit": 6606,
+          "growthRate": 0.03,
+          "volatility": 0.22,
+          "confidence": 0.78
+        },
+        "Condo": {
+          "basePrice": 1713735,
+          "pricePerUnit": 1302,
+          "growthRate": 0.03,
+          "volatility": 0.32,
+          "confidence": 0.68
+        }
+      },
+      "District 27": {
+        "HDB": {
+          "basePrice": 568779,
+          "pricePerUnit": 6279,
+          "growthRate": 0.03,
+          "volatility": 0.23,
+          "confidence": 0.77
+        },
+        "Condo": {
+          "basePrice": 1665382,
+          "pricePerUnit": 1303,
+          "growthRate": 0.03,
+          "volatility": 0.32,
+          "confidence": 0.68
+        }
+      },
+      "District 25": {
+        "HDB": {
+          "basePrice": 594328,
+          "pricePerUnit": 5761,
+          "growthRate": 0.03,
+          "volatility": 0.24,
+          "confidence": 0.76
+        },
+        "Condo": {
+          "basePrice": 1687547,
+          "pricePerUnit": 1307,
+          "growthRate": 0.03,
+          "volatility": 0.33,
+          "confidence": 0.67
+        }
+      },
+      "District 21": {
+        "HDB": {
+          "basePrice": 919030,
+          "pricePerUnit": 8210,
+          "growthRate": 0.03,
+          "volatility": 0.34,
+          "confidence": 0.66
+        },
+        "Condo": {
+          "basePrice": 1708817,
+          "pricePerUnit": 1310,
+          "growthRate": 0.03,
+          "volatility": 0.35,
+          "confidence": 0.65
+        }
+      },
+      "District 2": {
+        "Condo": {
+          "basePrice": 2412149,
+          "pricePerUnit": 1858,
+          "growthRate": 0.03,
+          "volatility": 0.33,
+          "confidence": 0.67
+        }
+      },
+      "District 4": {
+        "Landed": {
+          "basePrice": 7539140,
+          "pricePerUnit": 2258,
+          "growthRate": 0.03,
+          "volatility": 0.31,
+          "confidence": 0.69
+        },
+        "Condo": {
+          "basePrice": 2157499,
+          "pricePerUnit": 1676,
+          "growthRate": 0.03,
+          "volatility": 0.34,
+          "confidence": 0.66
+        }
+      },
+      "District 6": {
+        "Condo": {
+          "basePrice": 1712578,
+          "pricePerUnit": 1303,
+          "growthRate": 0.03,
+          "volatility": 0.31,
+          "confidence": 0.69
+        }
+      },
+      "District 7": {
+        "Condo": {
+          "basePrice": 1710140,
+          "pricePerUnit": 1308,
+          "growthRate": 0.03,
+          "volatility": 0.34,
+          "confidence": 0.66
+        }
+      },
+      "District 8": {
+        "Condo": {
+          "basePrice": 1712284,
+          "pricePerUnit": 1301,
+          "growthRate": 0.03,
+          "volatility": 0.32,
+          "confidence": 0.68
+        }
+      },
+      "District 9": {
+        "Condo": {
+          "basePrice": 2930718,
+          "pricePerUnit": 2226,
+          "growthRate": 0.03,
+          "volatility": 0.32,
+          "confidence": 0.68
+        }
+      },
+      "District 10": {
+        "Landed": {
+          "basePrice": 8303742,
+          "pricePerUnit": 2531,
+          "growthRate": 0.03,
+          "volatility": 0.33,
+          "confidence": 0.67
+        },
+        "Condo": {
+          "basePrice": 2477230,
+          "pricePerUnit": 1953,
+          "growthRate": 0.03,
+          "volatility": 0.33,
+          "confidence": 0.67
+        }
+      },
+      "District 11": {
+        "Condo": {
+          "basePrice": 2069834,
+          "pricePerUnit": 1588,
+          "growthRate": 0.03,
+          "volatility": 0.32,
+          "confidence": 0.68
+        }
+      },
+      "District 13": {
+        "Condo": {
+          "basePrice": 1710499,
+          "pricePerUnit": 1313,
+          "growthRate": 0.03,
+          "volatility": 0.32,
+          "confidence": 0.68
+        }
+      },
+      "District 17": {
+        "Landed": {
+          "basePrice": 5391024,
+          "pricePerUnit": 1684,
+          "growthRate": 0.03,
+          "volatility": 0.32,
+          "confidence": 0.68
+        }
+      },
+      "District 24": {
+        "Landed": {
+          "basePrice": 5507577,
+          "pricePerUnit": 1657,
+          "growthRate": 0.03,
+          "volatility": 0.31,
+          "confidence": 0.69
+        }
+      },
+      "District 26": {
+        "Condo": {
+          "basePrice": 1795224,
+          "pricePerUnit": 1322,
+          "growthRate": 0.03,
+          "volatility": 0.31,
+          "confidence": 0.69
+        }
+      },
+      "District 28": {
+        "Landed": {
+          "basePrice": 5405868,
+          "pricePerUnit": 1677,
+          "growthRate": 0.03,
+          "volatility": 0.35,
+          "confidence": 0.65
+        }
+      }
+    },
+    "marketTrends": {
+      "District 20": {
+        "sixMonthTrend": -3.4,
+        "yearOverYearGrowth": 2.17,
+        "transactionVolume": 3392,
+        "averagePrice": 862774
+      },
+      "District 16": {
+        "sixMonthTrend": -4.24,
+        "yearOverYearGrowth": 3.58,
+        "transactionVolume": 2916,
+        "averagePrice": 923378
+      },
+      "District 23": {
+        "sixMonthTrend": -2.9,
+        "yearOverYearGrowth": -5,
+        "transactionVolume": 7210,
+        "averagePrice": 662045
+      },
+      "District 3": {
+        "sixMonthTrend": 1.87,
+        "yearOverYearGrowth": -4.02,
+        "transactionVolume": 3686,
+        "averagePrice": 881268
+      },
+      "District 1": {
+        "sixMonthTrend": -4.58,
+        "yearOverYearGrowth": 3.3,
+        "transactionVolume": 1511,
+        "averagePrice": 2210906
+      },
+      "District 5": {
+        "sixMonthTrend": -3.79,
+        "yearOverYearGrowth": 6.33,
+        "transactionVolume": 1834,
+        "averagePrice": 1446320
+      },
+      "District 14": {
+        "sixMonthTrend": 0.14,
+        "yearOverYearGrowth": 2.42,
+        "transactionVolume": 1724,
+        "averagePrice": 913237
+      },
+      "District 19": {
+        "sixMonthTrend": 3.02,
+        "yearOverYearGrowth": -0.98,
+        "transactionVolume": 11353,
+        "averagePrice": 710479
+      },
+      "District 22": {
+        "sixMonthTrend": -3.56,
+        "yearOverYearGrowth": 5.2,
+        "transactionVolume": 4945,
+        "averagePrice": 648715
+      },
+      "District 12": {
+        "sixMonthTrend": 4.46,
+        "yearOverYearGrowth": 7.15,
+        "transactionVolume": 3815,
+        "averagePrice": 834321
+      },
+      "District 15": {
+        "sixMonthTrend": -3.54,
+        "yearOverYearGrowth": -2.76,
+        "transactionVolume": 1230,
+        "averagePrice": 1522210
+      },
+      "District 18": {
+        "sixMonthTrend": 0.62,
+        "yearOverYearGrowth": 7.67,
+        "transactionVolume": 5494,
+        "averagePrice": 819709
+      },
+      "District 27": {
+        "sixMonthTrend": -2.57,
+        "yearOverYearGrowth": 5.82,
+        "transactionVolume": 5540,
+        "averagePrice": 612920
+      },
+      "District 25": {
+        "sixMonthTrend": -2.25,
+        "yearOverYearGrowth": 8.1,
+        "transactionVolume": 3993,
+        "averagePrice": 731494
+      },
+      "District 21": {
+        "sixMonthTrend": 3.58,
+        "yearOverYearGrowth": 9.99,
+        "transactionVolume": 334,
+        "averagePrice": 1455801
+      },
+      "District 2": {
+        "sixMonthTrend": -3.58,
+        "yearOverYearGrowth": -0.2,
+        "transactionVolume": 1182,
+        "averagePrice": 2412149
+      },
+      "District 4": {
+        "sixMonthTrend": -0.95,
+        "yearOverYearGrowth": -4.74,
+        "transactionVolume": 796,
+        "averagePrice": 3374453
+      },
+      "District 6": {
+        "sixMonthTrend": -3.56,
+        "yearOverYearGrowth": -1.39,
+        "transactionVolume": 594,
+        "averagePrice": 1712578
+      },
+      "District 7": {
+        "sixMonthTrend": -4.88,
+        "yearOverYearGrowth": 9.27,
+        "transactionVolume": 594,
+        "averagePrice": 1710140
+      },
+      "District 8": {
+        "sixMonthTrend": 0.75,
+        "yearOverYearGrowth": 5.31,
+        "transactionVolume": 609,
+        "averagePrice": 1712284
+      },
+      "District 9": {
+        "sixMonthTrend": 2.75,
+        "yearOverYearGrowth": 7.41,
+        "transactionVolume": 959,
+        "averagePrice": 2930718
+      },
+      "District 10": {
+        "sixMonthTrend": -4.92,
+        "yearOverYearGrowth": 4.49,
+        "transactionVolume": 606,
+        "averagePrice": 3659839
+      },
+      "District 11": {
+        "sixMonthTrend": 4.99,
+        "yearOverYearGrowth": -1.01,
+        "transactionVolume": 956,
+        "averagePrice": 2069834
+      },
+      "District 13": {
+        "sixMonthTrend": 0.39,
+        "yearOverYearGrowth": -2.83,
+        "transactionVolume": 476,
+        "averagePrice": 1710499
+      },
+      "District 17": {
+        "sixMonthTrend": 2.99,
+        "yearOverYearGrowth": -0.71,
+        "transactionVolume": 122,
+        "averagePrice": 5391024
+      },
+      "District 24": {
+        "sixMonthTrend": 4.88,
+        "yearOverYearGrowth": 6.57,
+        "transactionVolume": 127,
+        "averagePrice": 5507577
+      },
+      "District 26": {
+        "sixMonthTrend": -0.78,
+        "yearOverYearGrowth": -3.45,
+        "transactionVolume": 240,
+        "averagePrice": 1795224
+      },
+      "District 28": {
+        "sixMonthTrend": 0.76,
+        "yearOverYearGrowth": 0.85,
+        "transactionVolume": 114,
+        "averagePrice": 5405868
+      }
+    },
+    "accuracy": {
+      "overall": 0.85,
+      "byPropertyType": {
+        "HDB": 0.82,
+        "Condo": 0.87,
+        "Landed": 0.89
+      },
+      "byDistrict": {
+        "District 20": 0.89,
+        "District 16": 0.8,
+        "District 23": 0.86,
+        "District 3": 0.76,
+        "District 1": 0.87,
+        "District 5": 0.86,
+        "District 14": 0.85,
+        "District 19": 0.88,
+        "District 22": 0.94,
+        "District 12": 0.8,
+        "District 15": 0.81,
+        "District 18": 0.91,
+        "District 27": 0.94,
+        "District 25": 0.91,
+        "District 21": 0.87,
+        "District 2": 0.8,
+        "District 4": 0.77,
+        "District 6": 0.77,
+        "District 7": 0.84,
+        "District 8": 0.88,
+        "District 9": 0.79,
+        "District 10": 0.82,
+        "District 11": 0.87,
+        "District 13": 0.93,
+        "District 17": 0.79,
+        "District 24": 0.76,
+        "District 26": 0.93,
+        "District 28": 0.79
+      }
+    }
+  }
+]

@@ -5,6 +5,9 @@ import SingaporeMap from './components/SingaporeMap';
 import PredictionForm from './components/PredictionForm';
 import ResultsVisualization from './components/ResultsVisualization';
 import AccuracyDashboard from './components/AccuracyDashboard';
+import MarketDataStatus from './components/MarketDataStatus';
+import EnhancedDistrictPanel from './components/EnhancedDistrictPanel';
+import APIValidationStatus from './components/APIValidationStatus';
 import { AppProvider, useAppContext } from './contexts/AppContext';
 import { NotificationProvider, useNotificationHelpers } from './components/NotificationSystem';
 import HealthStatus from './components/HealthStatus';
@@ -12,6 +15,83 @@ import ErrorBoundary from './components/ErrorBoundary';
 import { Area, CreatePredictionRequest, PredictionResult } from './types';
 import { singaporeAreas } from './data/singaporeAreas';
 import apiService from './services/api';
+
+// Helper functions for enhanced URA district mapping
+const getDistrictCoordinates = (uraCode: string): { latitude: number, longitude: number } => {
+  const districtCoordinates: { [key: string]: { latitude: number, longitude: number } } = {
+    'D01': { latitude: 1.2966, longitude: 103.8547 }, // Downtown Core
+    'D02': { latitude: 1.2792, longitude: 103.8480 }, // Outram
+    'D03': { latitude: 1.2966, longitude: 103.8038 }, // Queenstown
+    'D04': { latitude: 1.2731, longitude: 103.8198 }, // Harbourfront
+    'D05': { latitude: 1.3138, longitude: 103.7652 }, // Clementi
+    'D06': { latitude: 1.2930, longitude: 103.8520 }, // Museum
+    'D07': { latitude: 1.2988, longitude: 103.8581 }, // Rochor
+    'D08': { latitude: 1.3200, longitude: 103.8520 }, // Novena
+    'D09': { latitude: 1.3048, longitude: 103.8318 }, // Orchard
+    'D10': { latitude: 1.3294, longitude: 103.8077 }, // Bukit Timah
+    'D11': { latitude: 1.3185, longitude: 103.8436 }, // Newton
+    'D12': { latitude: 1.3343, longitude: 103.8474 }, // Toa Payoh
+    'D13': { latitude: 1.3200, longitude: 103.8700 }, // Kallang
+    'D14': { latitude: 1.3200, longitude: 103.8900 }, // Geylang
+    'D15': { latitude: 1.3017, longitude: 103.9056 }, // Marine Parade
+    'D16': { latitude: 1.3236, longitude: 103.9273 }, // Bedok
+    'D17': { latitude: 1.3571, longitude: 103.9870 }, // Changi
+    'D18': { latitude: 1.3496, longitude: 103.9568 }, // Tampines
+    'D19': { latitude: 1.3617, longitude: 103.8862 }, // Hougang
+    'D20': { latitude: 1.3521, longitude: 103.8198 }, // Bishan
+    'D21': { latitude: 1.3587, longitude: 103.7718 }, // Bukit Batok
+    'D22': { latitude: 1.3329, longitude: 103.7436 }, // Jurong East
+    'D23': { latitude: 1.3773, longitude: 103.7664 }, // Bukit Panjang
+    'D24': { latitude: 1.4304, longitude: 103.7171 }, // Lim Chu Kang
+    'D25': { latitude: 1.4382, longitude: 103.7890 }, // Woodlands
+    'D26': { latitude: 1.4491, longitude: 103.8185 }, // Sembawang
+    'D27': { latitude: 1.4294, longitude: 103.8356 }, // Yishun
+    'D28': { latitude: 1.4065, longitude: 103.8690 }  // Seletar
+  };
+  
+  return districtCoordinates[uraCode] || { latitude: 1.3521, longitude: 103.8198 }; // Default to Singapore center
+};
+
+const getDistrictBoundaries = (uraCode: string): any => {
+  // Simplified boundaries - in production, you'd use actual GeoJSON data
+  const coords = getDistrictCoordinates(uraCode);
+  const offset = 0.015; // Approximate boundary size
+  
+  return {
+    type: 'Polygon',
+    coordinates: [[
+      [coords.longitude - offset, coords.latitude - offset],
+      [coords.longitude + offset, coords.latitude - offset],
+      [coords.longitude + offset, coords.latitude + offset],
+      [coords.longitude - offset, coords.latitude + offset],
+      [coords.longitude - offset, coords.latitude - offset]
+    ]]
+  };
+};
+
+const getDistrictCBDDistance = (uraCode: string): number => {
+  const cbdDistances: { [key: string]: number } = {
+    'D01': 0.5, 'D02': 1.0, 'D03': 3.0, 'D04': 2.5, 'D05': 8.0,
+    'D06': 0.8, 'D07': 1.2, 'D08': 4.0, 'D09': 2.5, 'D10': 6.0,
+    'D11': 3.5, 'D12': 5.0, 'D13': 3.0, 'D14': 4.5, 'D15': 7.0,
+    'D16': 12.0, 'D17': 20.0, 'D18': 18.0, 'D19': 15.0, 'D20': 10.0,
+    'D21': 15.0, 'D22': 25.0, 'D23': 20.0, 'D24': 30.0, 'D25': 28.0,
+    'D26': 25.0, 'D27': 22.0, 'D28': 18.0
+  };
+  
+  return cbdDistances[uraCode] || 10.0;
+};
+
+const getDistrictAmenityScore = (planningArea: string): number => {
+  const amenityScores: { [key: string]: number } = {
+    'Orchard': 9.5, 'Downtown Core': 9.0, 'Bukit Timah': 8.5, 'Newton': 8.0,
+    'Toa Payoh': 7.5, 'Bishan': 7.5, 'Queenstown': 7.0, 'Marine Parade': 7.0,
+    'Bedok': 6.5, 'Tampines': 6.5, 'Hougang': 6.0, 'Jurong East': 6.0,
+    'Woodlands': 5.5, 'Yishun': 5.5, 'Clementi': 7.0, 'Geylang': 6.0
+  };
+  
+  return amenityScores[planningArea] || 6.0;
+};
 
 // Fix for default markers in react-leaflet
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -62,13 +142,58 @@ const AppContent: React.FC = () => {
 
   const loadAreas = async () => {
     try {
-      console.log('Loading areas from backend...');
+      console.log('Loading enhanced URA districts from backend...');
       setLoading('areas', true);
+      
+      // Try to load enhanced URA districts first
+      try {
+        const uraResponse = await fetch('/api/districts/ura');
+        const uraData = await uraResponse.json();
+        
+        if (uraData.success && uraData.data.districts) {
+          console.log('Enhanced URA districts loaded:', uraData.data.districts.length, 'districts');
+          
+          // Convert URA districts to Area format
+          const enhancedAreas: Area[] = uraData.data.districts.map((district: any) => ({
+            id: district.areaId,
+            name: `${district.district} (${district.planningArea})`,
+            district: district.district,
+            planningArea: district.planningArea,
+            uraCode: district.code,
+            subDistricts: district.subDistricts,
+            postalCodes: [], // Will be populated from other sources
+            coordinates: {
+              latitude: getDistrictCoordinates(district.code).latitude,
+              longitude: getDistrictCoordinates(district.code).longitude,
+              boundaries: getDistrictBoundaries(district.code)
+            },
+            characteristics: {
+              mrtProximity: 0.5, // Default values - can be enhanced later
+              cbdDistance: getDistrictCBDDistance(district.code),
+              amenityScore: getDistrictAmenityScore(district.planningArea)
+            },
+            enhancedInfo: {
+              uraCode: district.code,
+              planningArea: district.planningArea,
+              subDistricts: district.subDistricts
+            }
+          }));
+          
+          setAreas(enhancedAreas);
+          dispatch({ type: 'SET_AREAS', payload: enhancedAreas });
+          showSuccess('Enhanced Districts Loaded', `Loaded ${enhancedAreas.length} URA districts with planning areas`);
+          return;
+        }
+      } catch (uraError) {
+        console.warn('Failed to load URA districts, trying legacy areas:', uraError);
+      }
+      
+      // Fallback to legacy area search
       const response = await apiService.searchAreas({ query: '' });
-      console.log('Areas response:', response);
+      console.log('Legacy areas response:', response);
       
       if (response.success && response.data) {
-        console.log('Areas loaded successfully:', response.data.length, 'areas');
+        console.log('Legacy areas loaded successfully:', response.data.length, 'areas');
         setAreas(response.data);
         dispatch({ type: 'SET_AREAS', payload: response.data });
       } else {
@@ -78,6 +203,7 @@ const AppContent: React.FC = () => {
       console.warn('Failed to load areas from backend, using static data:', error);
       // Keep using static data as fallback
       dispatch({ type: 'SET_AREAS', payload: singaporeAreas });
+      showWarning('Using Static Data', 'Could not load live district data, using fallback areas');
     } finally {
       setLoading('areas', false);
     }
@@ -185,6 +311,35 @@ const AppContent: React.FC = () => {
         // Generate mock influencing factors
         const influencingFactors = generateInfluencingFactors(state.selectedArea, request.timeframeYears, request.propertyType);
         
+        // Generate demo news articles
+        const demoNews = generateDemoNews(state.selectedArea, request.timeframeYears, request.propertyType);
+        
+        // Generate demo market analysis
+        const demoMarketAnalysis = {
+          currentMarketPrice: Math.round(predictedPrice * 0.9), // Slightly lower than prediction
+          marketTrend: -2 + Math.random() * 8, // -2% to +6% trend
+          transactionVolume: 50 + Math.floor(Math.random() * 200), // 50-250 transactions
+          priceGrowthRate: 0.02 + Math.random() * 0.06, // 2-8% annual growth
+          marketConfidence: 0.6 + Math.random() * 0.3 // 60-90% confidence
+        };
+        
+        // Generate demo comparable transactions
+        const demoComparables = Array.from({ length: 5 }, (_, i) => {
+          const variance = 0.8 + Math.random() * 0.4; // ±20% price variance
+          const transactionPrice = Math.round(predictedPrice * variance);
+          const areaVariance = 0.9 + Math.random() * 0.2; // ±10% area variance
+          const transactionArea = Math.round((request.unitSize || 1000) * areaVariance);
+          
+          return {
+            price: transactionPrice,
+            pricePerUnit: Math.round(transactionPrice / transactionArea),
+            date: new Date(Date.now() - (i + 1) * 30 * 24 * 60 * 60 * 1000).toISOString(), // Last few months
+            area: transactionArea,
+            type: request.propertyType === 'HDB' ? `${request.roomType || '4-room'} HDB` : 
+                  request.propertyType === 'Condo' ? 'Condominium' : 'Landed Property'
+          };
+        });
+
         const result: PredictionResult = {
           id: `pred_${Date.now()}`,
           requestId: `req_${Date.now()}`,
@@ -200,6 +355,9 @@ const AppContent: React.FC = () => {
             upperPerSqft: predictedPricePerSqft + confidenceRangePerSqft
           },
           influencingFactors,
+          relatedNews: demoNews,
+          marketAnalysis: demoMarketAnalysis,
+          comparableTransactions: demoComparables,
           modelAccuracy: 0.78 + Math.random() * 0.15, // 78-93% accuracy
           generatedAt: new Date()
         };
@@ -289,6 +447,44 @@ const AppContent: React.FC = () => {
     return factors.slice(0, 3 + Math.floor(Math.random() * 2)); // 3-4 factors
   };
 
+  const generateDemoNews = (area: Area, timeframe: number, propertyType: 'HDB' | 'Condo' | 'Landed') => {
+    const newsTemplates = [
+      {
+        category: 'Development',
+        title: `${area.name} selected for major infrastructure upgrade project`,
+        summary: `The government has announced significant infrastructure improvements for ${area.name}, including enhanced connectivity and public amenities. These developments are expected to boost property values over the next ${timeframe} years.`
+      },
+      {
+        category: 'Market Trends',
+        title: `${propertyType} prices in ${area.district} show strong growth momentum`,
+        summary: `Recent market analysis indicates that ${propertyType} properties in ${area.district} have outperformed the broader market, with sustained demand from both local and foreign buyers driving price appreciation.`
+      },
+      {
+        category: 'Policy & Regulation',
+        title: `New housing policies to benefit ${area.district} residents`,
+        summary: `Recent policy changes are expected to have a positive impact on the ${area.district} property market, particularly for ${propertyType} properties, with improved financing options and development incentives.`
+      },
+      {
+        category: 'Economic Factors',
+        title: `Economic growth drives property investment in ${area.name}`,
+        summary: `Strong economic fundamentals and job market growth in the region are attracting property investors to ${area.name}, creating upward pressure on ${propertyType} property prices.`
+      }
+    ];
+
+    const sources = ['The Straits Times', 'Channel NewsAsia', 'Business Times', 'PropertyGuru'];
+    
+    return newsTemplates.slice(0, 3).map((template, index) => ({
+      id: `demo_news_${index}`,
+      title: template.title,
+      source: sources[index % sources.length],
+      publishedAt: new Date(Date.now() - (index + 1) * 7 * 24 * 60 * 60 * 1000).toISOString(), // Last few weeks
+      category: template.category,
+      relevanceScore: 0.85 + Math.random() * 0.15, // 85-100% relevance
+      summary: template.summary,
+      url: `https://demo-news.com/article/${index + 1}`
+    }));
+  };
+
   // Removed unused formatPrice function
 
   return (
@@ -345,6 +541,26 @@ const AppContent: React.FC = () => {
                 }`}
               >
                 Historical Accuracy
+              </button>
+              <button
+                onClick={() => setActiveTab('data')}
+                className={`py-2 px-1 border-b-2 font-medium text-sm ${
+                  state.activeTab === 'data'
+                    ? 'border-blue-500 text-blue-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                }`}
+              >
+                Market Data
+              </button>
+              <button
+                onClick={() => setActiveTab('districts')}
+                className={`py-2 px-1 border-b-2 font-medium text-sm ${
+                  state.activeTab === 'districts'
+                    ? 'border-blue-500 text-blue-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                }`}
+              >
+                Enhanced Districts
               </button>
             </nav>
           </div>
@@ -431,6 +647,34 @@ const AppContent: React.FC = () => {
             selectedArea={state.selectedArea}
             isLoading={state.loading.accuracy}
           />
+        )}
+
+        {/* Market Data Tab Content */}
+        {state.activeTab === 'data' && (
+          <MarketDataStatus />
+        )}
+
+        {/* Enhanced Districts Tab Content */}
+        {state.activeTab === 'districts' && (
+          <div className="space-y-6">
+            <APIValidationStatus 
+              onValidationComplete={(isValid) => {
+                if (isValid) {
+                  showSuccess('API Validation', 'All APIs validated successfully');
+                } else {
+                  showWarning('API Validation', 'Some APIs have issues - check validation details');
+                }
+              }}
+            />
+            <EnhancedDistrictPanel 
+              selectedArea={state.selectedArea}
+              onRetrainModel={() => {
+                showSuccess('Model Retraining', 'Enhanced model retraining completed successfully');
+                // Optionally reload areas or refresh model info
+                loadAreas();
+              }}
+            />
+          </div>
         )}
 
         {/* Features Section - Show only on prediction tab */}

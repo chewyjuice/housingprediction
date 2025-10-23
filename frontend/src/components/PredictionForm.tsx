@@ -312,7 +312,7 @@ const PredictionForm: React.FC<PredictionFormProps> = ({
             >
               {propertyConfigs[formState.propertyType].roomTypes.map((room) => (
                 <option key={room.value} value={room.value}>
-                  {room.label} (~{room.size.toLocaleString()} sqft)
+                  {room.label} (~{(room.size || 0).toLocaleString()} sqft)
                 </option>
               ))}
             </select>
@@ -347,7 +347,7 @@ const PredictionForm: React.FC<PredictionFormProps> = ({
             <h4 className="font-medium text-blue-900 mb-2">Prediction Summary</h4>
             <div className="text-sm text-blue-800 space-y-1">
               <p><span className="font-medium">Property:</span> {formState.propertyType} - {formState.roomType}</p>
-              <p><span className="font-medium">Unit Size:</span> {formState.unitSize.toLocaleString()} sqft</p>
+              <p><span className="font-medium">Unit Size:</span> {(formState.unitSize || 0).toLocaleString()} sqft</p>
               <p><span className="font-medium">Timeframe:</span> {formState.timeframeYears} year{formState.timeframeYears > 1 ? 's' : ''}</p>
               <p><span className="font-medium">Description:</span> {getTimeframeDescription(formState.timeframeYears)}</p>
               {selectedArea && (

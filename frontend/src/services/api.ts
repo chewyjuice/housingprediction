@@ -64,7 +64,7 @@ class ApiService {
 
   // Health check
   async checkHealth(): Promise<ApiResponse<any>> {
-    return this.request('/health');
+    return this.request('/api/health');
   }
 
   // Area-related API calls
@@ -111,7 +111,7 @@ class ApiService {
   }
 
   async getPredictionResult(requestId: string): Promise<ApiResponse<PredictionResult>> {
-    return this.request(`/api/predictions/request/${requestId}`);
+    return this.request(`/api/predictions/${requestId}`);
   }
 
   async processPrediction(requestId: string, propertyType: string): Promise<ApiResponse<PredictionResult>> {

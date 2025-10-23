@@ -29,7 +29,7 @@ interface AppState {
   accuracyMetrics: AccuracyMetrics[];
   
   // UI states
-  activeTab: 'prediction' | 'accuracy';
+  activeTab: 'prediction' | 'accuracy' | 'data' | 'districts';
   isBackendConnected: boolean;
   lastHealthCheck: Date | null;
 }
@@ -44,7 +44,7 @@ type AppAction =
   | { type: 'SET_PREDICTION_RESULT'; payload: PredictionResult | null }
   | { type: 'SET_PREDICTION_HISTORY'; payload: PredictionResult[] }
   | { type: 'SET_ACCURACY_METRICS'; payload: AccuracyMetrics[] }
-  | { type: 'SET_ACTIVE_TAB'; payload: 'prediction' | 'accuracy' }
+  | { type: 'SET_ACTIVE_TAB'; payload: 'prediction' | 'accuracy' | 'data' | 'districts' }
   | { type: 'SET_BACKEND_CONNECTION'; payload: boolean }
   | { type: 'SET_LAST_HEALTH_CHECK'; payload: Date }
   | { type: 'CLEAR_ERRORS' }
@@ -192,7 +192,7 @@ interface AppContextType {
   setSelectedArea: (area: Area | null) => void;
   setHoveredArea: (area: Area | null) => void;
   setPredictionResult: (result: PredictionResult | null) => void;
-  setActiveTab: (tab: 'prediction' | 'accuracy') => void;
+  setActiveTab: (tab: 'prediction' | 'accuracy' | 'data' | 'districts') => void;
   resetPrediction: () => void;
 }
 
@@ -231,7 +231,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     dispatch({ type: 'SET_PREDICTION_RESULT', payload: result });
   };
   
-  const setActiveTab = (tab: 'prediction' | 'accuracy') => {
+  const setActiveTab = (tab: 'prediction' | 'accuracy' | 'data' | 'districts') => {
     dispatch({ type: 'SET_ACTIVE_TAB', payload: tab });
   };
   

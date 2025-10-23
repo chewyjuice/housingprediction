@@ -2,105 +2,302 @@
 
 A full-stack web application that predicts housing prices in Singapore based on area selection and real-time development data.
 
-## Project Structure
+## 🚀 Quick Start
 
-```
-singapore-housing-predictor/
-├── frontend/                 # React.js frontend application
-│   ├── src/
-│   ├── public/
-│   ├── package.json
-│   ├── tsconfig.json
-│   ├── tailwind.config.js
-│   └── Dockerfile
-├── backend/                  # Node.js/Express backend API
-│   ├── src/
-│   ├── package.json
-│   ├── tsconfig.json
-│   ├── jest.config.js
-│   └── Dockerfile
-├── ml-service/              # Python ML service
-│   ├── main.py
-│   ├── requirements.txt
-│   └── Dockerfile
-├── shared/                  # Shared TypeScript types
-│   └── types/
-│       └── index.ts
-├── docker-compose.yml       # Multi-service orchestration
-├── nginx.conf              # Reverse proxy configuration
-└── README.md
+### Option 1: Automated Scripts (Recommended)
+
+**Windows:**
+```bash
+# Start the application
+scripts\start.bat
+
+# Stop the application
+scripts\stop.bat
 ```
 
-## Technology Stack
+**Linux/Mac:**
+```bash
+# Start the application
+./scripts/start.sh
 
-### Frontend
-- React.js with TypeScript
-- Leaflet.js for interactive maps
-- Chart.js for data visualization
-- Tailwind CSS for styling
+# Stop the application
+./scripts/stop.sh
+```
 
-### Backend
-- Node.js with Express.js
-- TypeScript for type safety
-- PostgreSQL for data storage
-- Redis for caching and job queues
-- Bull for background job processing
+### Option 2: Manual Setup
 
-### ML Service
-- Python with FastAPI
-- scikit-learn for machine learning
-- Beautiful Soup + Scrapy for web crawling
-- NLTK for natural language processing
+**Prerequisites:**
+- Node.js 18+ 
+- npm or yarn
 
-### Infrastructure
-- Docker for containerization
-- nginx for reverse proxy
-- Docker Compose for orchestration
-
-## Getting Started
-
-### Prerequisites
-- Docker and Docker Compose
-- Node.js 18+ (for local development)
-- Python 3.11+ (for local development)
-
-### Quick Start with Docker
-
-1. Clone the repository
-2. Copy environment files:
-   ```bash
-   cp backend/.env.example backend/.env
-   cp frontend/.env.example frontend/.env
-   cp ml-service/.env.example ml-service/.env
-   ```
-3. Start all services:
-   ```bash
-   docker-compose up -d
-   ```
-4. Access the application at http://localhost
-
-### Local Development
-
-#### Backend
+**Start Backend:**
 ```bash
 cd backend
 npm install
-npm run dev
+npm run dev:simple
 ```
 
-#### Frontend
+**Start Frontend (in new terminal):**
 ```bash
 cd frontend
 npm install
 npm start
 ```
 
-#### ML Service
-```bash
-cd ml-service
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8001
+**Access the Application:**
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8000
+
+## 📁 Project Structure
+
 ```
+singapore-housing-predictor/
+├── scripts/                 # Startup/shutdown scripts
+│   ├── start.bat           # Windows startup script
+│   ├── stop.bat            # Windows shutdown script
+│   ├── start.sh            # Linux/Mac startup script
+│   └── stop.sh             # Linux/Mac shutdown script
+├── frontend/                # React.js frontend application
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── .env.example
+├── backend/                 # Node.js/Express backend API
+│   ├── src/
+│   ├── data/               # File-based storage
+│   ├── package.json
+│   └── .env.example
+├── shared/                  # Shared TypeScript types
+│   └── types/
+└── README.md
+```
+
+## 🛠️ Technology Stack
+
+### Frontend
+- **React.js** with TypeScript
+- **Leaflet.js** for interactive Singapore map
+- **Chart.js** for prediction visualizations
+- **Tailwind CSS** for styling
+
+### Backend
+- **Node.js** with Express.js
+- **TypeScript** for type safety
+- **File-based storage** (no database required)
+- **Simple prediction engine** with area-based calculations
+
+## ✨ Features
+
+- **Interactive Singapore Map**: Click to select areas like Tiong Bahru, Raffles Place, etc.
+- **Price Predictions**: Get housing price forecasts for 1-10 years
+- **Multiple Property Types**: HDB, Condo, and Landed properties
+- **Confidence Intervals**: Statistical ranges for predictions
+- **Real-time Processing**: Live prediction generation with polling
+- **Responsive Design**: Works on desktop and mobile
+
+## 🎯 How to Use
+
+1. **Start the application** using the scripts above
+2. **Open your browser** to http://localhost:3000
+3. **Select an area** on the Singapore map
+4. **Fill out the prediction form**:
+   - Choose timeframe (1-10 years)
+   - Select property type (HDB/Condo/Landed)
+   - Set unit size and room type
+5. **Click "Get Price Prediction"**
+6. **View results** with price forecasts and confidence intervals
+
+## 🔄 Data Extraction Workflow
+
+The application implements a sophisticated **multi-source data extraction system** with automatic failover:
+
+### Data Source Hierarchy
+1. **Primary Sources** (Official APIs)
+   - Singapore Government API for HDB data
+   - URA API for private property transactions
+   
+2. **Backup Sources** (Web Scraping)
+   - PropertyGuru for market data validation
+   - 99.co for additional coverage
+   
+3. **Fallback Sources** (Simulated Data)
+   - Market-based realistic estimates
+   - Ensures system never fails completely
+
+### Extraction Process
+```bash
+# Test individual data sources
+npm run test:ura-api           # Verify URA API access and data structure
+npm run test:propertyguru      # Test PropertyGuru scraping capabilities
+
+# Extract data from all sources
+npm run extract-resale         # Multi-source extraction with automatic fallback
+
+# Monitor extraction status
+curl http://localhost:8000/api/resale/summary  # Check data source status
+```
+
+### Configuration Files
+- `backend/config/secrets.json` - API keys and credentials (gitignored)
+- `backend/.env` - Environment variables
+- Data automatically stored in `backend/data/` directory
+
+### Troubleshooting Data Sources
+- **URA API Issues**: Check your access key in `secrets.json`, verify API approval status
+- **Web Scraping Issues**: PropertyGuru may have changed their structure, check console logs
+- **No Data Available**: System automatically falls back to simulated realistic data
+
+## 🔧 Development
+
+### Backend Development
+```bash
+cd backend
+npm run dev:simple              # Simple mode (file storage)
+npm run dev                    # Full mode (with database)
+
+# Data Extraction (Choose one)
+npm run extract-resale         # Extract basic resale data (3 years)
+npm run extract-comprehensive  # Extract comprehensive 5-year data from all sources
+
+# Testing & Validation
+npm run validate-apis          # **NEW**: Comprehensive API validation for all data sources
+npm run test:hdb-datagovsg     # Test data.gov.sg HDB API connectivity and data structure
+npm run test:ura-api           # Test URA API connectivity and data structure
+npm run test:propertyguru      # Test PropertyGuru web scraping capabilities
+npm run test:enhanced-districts # Test enhanced URA district mapping and analysis
+npm test                       # Run tests
+
+# Model retraining with enhanced districts
+curl -X POST http://localhost:8000/api/model/retrain-enhanced
+
+# Comprehensive data extraction via API
+curl -X POST http://localhost:8000/api/resale/extract-comprehensive
+```
+
+### Frontend Development
+```bash
+cd frontend
+npm start            # Development server
+npm run build        # Production build
+npm test             # Run tests
+```
+
+### 📊 Multi-Source Real Estate Data Integration
+
+The application uses a **comprehensive multi-source data extraction system** for accurate Singapore property predictions:
+
+**Extract Latest Market Data:**
+```bash
+cd backend
+npm run extract-resale          # Extract from all available sources
+npm run test:ura-api           # Test URA API connectivity
+npm run test:propertyguru      # Test PropertyGuru scraping
+```
+
+**Data Sources (Priority Order):**
+1. **Singapore Government (HDB)**: **Enhanced data.gov.sg API integration** with proper resource ID and batch processing
+2. **URA API (Private Properties)**: Urban Redevelopment Authority official private property transactions
+3. **PropertyGuru (Backup)**: Web scraping for additional market data
+4. **Simulated Data (Fallback)**: Realistic market-based estimates when APIs are unavailable
+
+**API Endpoints for Market Data:**
+- `GET /api/validate-apis` - **NEW**: Comprehensive API validation for all data sources
+- `POST /api/resale/extract` - Extract fresh data from all sources
+- `POST /api/resale/extract-comprehensive` - **NEW**: Extract comprehensive 5-year data from all sources
+- `GET /api/resale/summary` - View current data summary with source status
+- `GET /api/resale/baselines` - Get market price baselines by area and property type
+- `GET /api/districts/ura` - Get comprehensive URA district mapping with planning areas
+- `GET /api/districts/ura/:districtCode` - Get detailed information for specific district (e.g., D01, D09)
+- `POST /api/model/retrain-enhanced` - Retrain model with enhanced URA district data
+
+**Coverage:**
+- **HDB Properties**: **Enhanced data.gov.sg integration** with correct resource ID (`a1b0de62-0e54-4c2b-9c06-2fcbfe9d16b9`)
+- **5+ Years of Data**: Up to 500,000+ HDB transactions with proper date filtering and sorting
+- **Private Properties**: **Comprehensive URA API extraction** with multi-batch processing for complete historical data
+- **Areas**: Complete Singapore coverage with 28 URA districts and planning areas
+- **Granular Districts**: Sub-district analysis with planning areas and neighborhood-level data
+- **Batch Processing**: Intelligent batch extraction to get ALL available data (not just 100 transactions)
+- **Fallback System**: Automatic failover ensures data availability even when APIs are down
+
+**data.gov.sg HDB Data Integration:**
+- **No API Key Required**: Direct access to Singapore government data
+- **Resource ID**: `a1b0de62-0e54-4c2b-9c06-2fcbfe9d16b9` (HDB Resale Flat Prices)
+- **API Endpoint**: `https://data.gov.sg/api/action/datastore_search`
+- **Features**: Date filtering, sorting, batch processing, comprehensive coverage
+- **Test Command**: `npm run test:hdb-datagovsg`
+
+**URA API Setup:**
+1. Visit [URA Developer Portal](https://www.ura.gov.sg/maps/api/)
+2. Register for API access (requires approval)
+3. Get your Access Key from the portal
+4. Save it in `backend/config/secrets.json`:
+   ```json
+   {
+     "ura_access_key": "your_actual_access_key_here"
+   }
+   ```
+5. The system will automatically detect and use your key
+
+**Enhanced District Analysis:**
+- **28 URA Districts**: Complete coverage from D01 (Downtown Core) to D28 (Seletar)
+- **Planning Areas**: Detailed mapping to Singapore's official planning areas
+- **Sub-Districts**: Neighborhood-level analysis within each district
+- **Price Variations**: Sub-district price analysis and market trends
+- **Location Intelligence**: Enhanced location matching and area-specific insights
+
+**Data Source Status Monitoring:**
+- Real-time monitoring of all data sources
+- Automatic failover when sources are unavailable
+- Error tracking and recovery mechanisms
+- Source priority management for optimal data quality
+
+## 📊 API Endpoints
+
+### Health Check
+- `GET /health` - Check backend status
+
+### Areas
+- `GET /api/areas/search` - Search Singapore areas
+- `GET /api/areas/:id` - Get specific area details
+
+### Predictions
+- `POST /api/predictions/request` - Create prediction request
+- `GET /api/predictions/request/:id` - Get prediction result
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**"Prediction Failed" Error:**
+- Check browser console (F12) for detailed logs
+- Ensure both backend and frontend are running
+- Verify backend is accessible at http://localhost:8000
+
+**Port Already in Use:**
+- Backend (8000): Change port in backend/.env
+- Frontend (3000): React will prompt to use different port
+
+**Installation Issues:**
+- Clear npm cache: `npm cache clean --force`
+- Delete node_modules and reinstall: `rm -rf node_modules && npm install`
+
+### Debug Mode
+
+Enable detailed logging by opening browser console (F12) and watching for:
+- `[PREDICTION]` logs for prediction flow
+- `[POLLING]` logs for result polling
+- `[API]` logs for HTTP requests
+
+## 🚦 System Status
+
+The application includes built-in health monitoring:
+- **Green indicator**: Backend connected, full functionality
+- **Yellow indicator**: Demo mode, simulated predictions
+- **Red indicator**: Connection issues
+
+## 📝 License
+
+This project is licensed under the MIT License.
 
 ## Core Features
 
