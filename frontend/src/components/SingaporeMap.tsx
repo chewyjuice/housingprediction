@@ -26,7 +26,7 @@ const singaporeBoundary = {
 const getDistrictColor = (uraCode?: string): string => {
   if (!uraCode) return '#3388ff';
 
-  const districtNum = parseInt(uraCode.substring(1));
+  const districtNum = parseInt(uraCode.substring(1) || '0');
 
   if (districtNum <= 8) return '#e74c3c';      // Central districts - Red
   if (districtNum <= 15) return '#f39c12';     // Prime districts - Orange  
@@ -37,7 +37,7 @@ const getDistrictColor = (uraCode?: string): string => {
 const getDistrictOpacity = (uraCode?: string): number => {
   if (!uraCode) return 0.6;
 
-  const districtNum = parseInt(uraCode.substring(1));
+  const districtNum = parseInt(uraCode.substring(1) || '0');
 
   if (districtNum <= 8) return 0.8;      // Central districts - More opaque
   if (districtNum <= 15) return 0.7;     // Prime districts
@@ -227,7 +227,7 @@ const SingaporeMap: React.FC<MapComponentProps> = ({
                 ? 'bg-blue-600 border-2 border-white shadow-lg scale-125'
                 : `${districtColorClass} border border-white shadow-md`
               } transform transition-all hover:scale-110">
-                  ${area.uraCode ? `<div class="text-white text-xs font-bold leading-5 text-center">${area.uraCode.substring(1)}</div>` : ''}
+                  ${area.uraCode ? `<div class="text-white text-xs font-bold leading-5 text-center">${area.uraCode.substring(1) || ''}</div>` : ''}
                 </div>
                 ${isSelected ? `
                   <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-2 py-1 rounded text-xs whitespace-nowrap z-50">

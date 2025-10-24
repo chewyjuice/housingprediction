@@ -178,7 +178,7 @@ const MarketDataStatus: React.FC = () => {
 
             <div className="text-center p-3 bg-blue-50 rounded-lg border border-blue-200">
               <div className="text-2xl font-bold text-blue-900">
-                {summary.areasWithData.length}
+                {summary.areasWithData?.length || 0}
               </div>
               <div className="text-sm text-blue-700">Areas Covered</div>
             </div>

@@ -1763,5 +1763,1313 @@
       "dataRecency": "2025-10-23T16:02:57.273Z"
     },
     "generatedAt": "2025-10-23T17:22:16.814Z"
+  },
+  {
+    "id": "req_1761286081866_ufo4ey333",
+    "predictedPrice": 1132031,
+    "predictedPricePerUnit": 1509,
+    "predictedPricePerSqft": 1509,
+    "confidenceInterval": {
+      "lower": 950906,
+      "upper": 1313156,
+      "lowerPerUnit": 1268,
+      "upperPerUnit": 1751,
+      "lowerPerSqft": 1268,
+      "upperPerSqft": 1751
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 976500,
+      "marketTrend": 0.62,
+      "transactionVolume": 5494,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.68
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.87,
+      "sampleSize": 5494,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T06:08:01.966Z"
+  },
+  {
+    "id": "req_1761286511201_tbs7uwkpj",
+    "predictedPrice": 7060327,
+    "predictedPricePerUnit": 7845,
+    "predictedPricePerSqft": 7845,
+    "confidenceInterval": {
+      "lower": 6283691,
+      "upper": 7836963,
+      "lowerPerUnit": 6982,
+      "upperPerUnit": 8708,
+      "lowerPerSqft": 6982,
+      "upperPerSqft": 8708
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 6090300,
+      "marketTrend": 3.02,
+      "transactionVolume": 11353,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.78
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.82,
+      "sampleSize": 11353,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T06:15:11.492Z"
+  },
+  {
+    "id": "req_1761290204337_8ssb83n7f",
+    "predictedPrice": 9391279,
+    "predictedPricePerUnit": 9391,
+    "predictedPricePerSqft": 9391,
+    "confidenceInterval": {
+      "lower": 7419111,
+      "upper": 11363448,
+      "lowerPerUnit": 7419,
+      "upperPerUnit": 11363,
+      "lowerPerSqft": 7419,
+      "upperPerSqft": 11363
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 8101000,
+      "marketTrend": 4.46,
+      "transactionVolume": 3815,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.58
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.82,
+      "sampleSize": 3815,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T07:16:45.062Z"
+  },
+  {
+    "id": "req_1761291075228_glkoiu45p",
+    "predictedPrice": 11125553,
+    "predictedPricePerUnit": 11126,
+    "predictedPricePerSqft": 11126,
+    "confidenceInterval": {
+      "lower": 8344165,
+      "upper": 13906942,
+      "lowerPerUnit": 8344,
+      "upperPerUnit": 13907,
+      "lowerPerSqft": 8344,
+      "upperPerSqft": 13907
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 9597000,
+      "marketTrend": -4.58,
+      "transactionVolume": 1511,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.5
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.82,
+      "sampleSize": 1511,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T07:31:15.545Z"
+  },
+  {
+    "id": "req_1761291767947_b2epkiqw5",
+    "predictedPrice": 11125553,
+    "predictedPricePerUnit": 11126,
+    "predictedPricePerSqft": 11126,
+    "confidenceInterval": {
+      "lower": 8344165,
+      "upper": 13906942,
+      "lowerPerUnit": 8344,
+      "upperPerUnit": 13907,
+      "lowerPerSqft": 8344,
+      "upperPerSqft": 13907
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 9597000,
+      "marketTrend": -4.58,
+      "transactionVolume": 1511,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.5
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.82,
+      "sampleSize": 1511,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T07:42:48.195Z"
+  },
+  {
+    "id": "req_1761292401818_cjb5bxsx0",
+    "predictedPrice": 7658165,
+    "predictedPricePerUnit": 7658,
+    "predictedPricePerSqft": 7658,
+    "confidenceInterval": {
+      "lower": 6815766,
+      "upper": 8500563,
+      "lowerPerUnit": 6816,
+      "upperPerUnit": 8501,
+      "lowerPerSqft": 6816,
+      "upperPerSqft": 8501
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 6606000,
+      "marketTrend": 0.62,
+      "transactionVolume": 5494,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.78
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.82,
+      "sampleSize": 5494,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T07:53:22.066Z"
+  },
+  {
+    "id": "req_1761294559685_fkw1t6orn",
+    "predictedPrice": 7658165,
+    "predictedPricePerUnit": 7658,
+    "predictedPricePerSqft": 7658,
+    "confidenceInterval": {
+      "lower": 6815766,
+      "upper": 8500563,
+      "lowerPerUnit": 6816,
+      "upperPerUnit": 8501,
+      "lowerPerSqft": 6816,
+      "upperPerSqft": 8501
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 6606000,
+      "marketTrend": 0.62,
+      "transactionVolume": 5494,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.78
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.82,
+      "sampleSize": 5494,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T08:29:20.115Z"
+  },
+  {
+    "id": "req_1761294597360_swbk8h86c",
+    "predictedPrice": 7658165,
+    "predictedPricePerUnit": 7658,
+    "predictedPricePerSqft": 7658,
+    "confidenceInterval": {
+      "lower": 6815766,
+      "upper": 8500563,
+      "lowerPerUnit": 6816,
+      "upperPerUnit": 8501,
+      "lowerPerSqft": 6816,
+      "upperPerSqft": 8501
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 6606000,
+      "marketTrend": 0.62,
+      "transactionVolume": 5494,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.78
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.82,
+      "sampleSize": 5494,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T08:29:57.765Z"
+  },
+  {
+    "id": "req_1761294959893_cnsoprb6z",
+    "predictedPrice": 7060327,
+    "predictedPricePerUnit": 7845,
+    "predictedPricePerSqft": 7845,
+    "confidenceInterval": {
+      "lower": 6283691,
+      "upper": 7836963,
+      "lowerPerUnit": 6982,
+      "upperPerUnit": 8708,
+      "lowerPerSqft": 6982,
+      "upperPerSqft": 8708
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 6090300,
+      "marketTrend": 3.02,
+      "transactionVolume": 11353,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.78
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.82,
+      "sampleSize": 11353,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T08:36:00.245Z"
+  },
+  {
+    "id": "req_1761294961305_h63170fdn",
+    "predictedPrice": 4341076,
+    "predictedPricePerUnit": 6679,
+    "predictedPricePerSqft": 6679,
+    "confidenceInterval": {
+      "lower": 3820147,
+      "upper": 4862005,
+      "lowerPerUnit": 5877,
+      "upperPerUnit": 7480,
+      "lowerPerSqft": 5877,
+      "upperPerSqft": 7480
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 3744650,
+      "marketTrend": -2.25,
+      "transactionVolume": 3993,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.76
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.82,
+      "sampleSize": 3993,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T08:36:01.734Z"
+  },
+  {
+    "id": "req_1761294962755_j0fhs5e6f",
+    "predictedPrice": 10943779,
+    "predictedPricePerUnit": 9949,
+    "predictedPricePerSqft": 9949,
+    "confidenceInterval": {
+      "lower": 8809742,
+      "upper": 13077816,
+      "lowerPerUnit": 8009,
+      "upperPerUnit": 11889,
+      "lowerPerSqft": 8009,
+      "upperPerSqft": 11889
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 9440200,
+      "marketTrend": 1.87,
+      "transactionVolume": 3686,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.61
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.82,
+      "sampleSize": 3686,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T08:36:02.973Z"
+  },
+  {
+    "id": "req_1761294963991_2s99c2qor",
+    "predictedPrice": 1806381,
+    "predictedPricePerUnit": 2581,
+    "predictedPricePerSqft": 2581,
+    "confidenceInterval": {
+      "lower": 1517360,
+      "upper": 2095402,
+      "lowerPerUnit": 2168,
+      "upperPerUnit": 2993,
+      "lowerPerSqft": 2168,
+      "upperPerSqft": 2993
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 1558200,
+      "marketTrend": 2.75,
+      "transactionVolume": 959,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.68
+    },
+    "comparableTransactions": [
+      {
+        "price": 1894410,
+        "pricePerUnit": 2227,
+        "date": "2025-10-23",
+        "area": 850,
+        "type": "Condo"
+      },
+      {
+        "price": 2011240,
+        "pricePerUnit": 2750,
+        "date": "2025-10-23",
+        "area": 731,
+        "type": "Condo"
+      },
+      {
+        "price": 2295565,
+        "pricePerUnit": 2540,
+        "date": "2025-10-23",
+        "area": 904,
+        "type": "Condo"
+      },
+      {
+        "price": 1600712,
+        "pricePerUnit": 2244,
+        "date": "2025-10-23",
+        "area": 713,
+        "type": "Condo"
+      },
+      {
+        "price": 1520537,
+        "pricePerUnit": 2418,
+        "date": "2025-10-23",
+        "area": 629,
+        "type": "Condo"
+      }
+    ],
+    "modelMetrics": {
+      "accuracy": 0.87,
+      "sampleSize": 959,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T08:36:04.041Z"
+  },
+  {
+    "id": "req_1761294965068_n5u4oiekn",
+    "predictedPrice": 2375353,
+    "predictedPricePerUnit": 2375,
+    "predictedPricePerSqft": 2375,
+    "confidenceInterval": {
+      "lower": 1983419,
+      "upper": 2767286,
+      "lowerPerUnit": 1983,
+      "upperPerUnit": 2767,
+      "lowerPerSqft": 1983,
+      "upperPerSqft": 2767
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 2049000,
+      "marketTrend": -4.58,
+      "transactionVolume": 1511,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.67
+    },
+    "comparableTransactions": [
+      {
+        "price": 2765983,
+        "pricePerUnit": 2271,
+        "date": "2025-10-23",
+        "area": 1218,
+        "type": "Condo"
+      },
+      {
+        "price": 1976687,
+        "pricePerUnit": 2352,
+        "date": "2025-10-23",
+        "area": 840,
+        "type": "Condo"
+      },
+      {
+        "price": 1809669,
+        "pricePerUnit": 2437,
+        "date": "2025-10-23",
+        "area": 742,
+        "type": "Condo"
+      },
+      {
+        "price": 1723117,
+        "pricePerUnit": 2306,
+        "date": "2025-10-23",
+        "area": 747,
+        "type": "Condo"
+      },
+      {
+        "price": 1927290,
+        "pricePerUnit": 2198,
+        "date": "2025-10-23",
+        "area": 877,
+        "type": "Condo"
+      }
+    ],
+    "modelMetrics": {
+      "accuracy": 0.87,
+      "sampleSize": 1511,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T08:36:05.125Z"
+  },
+  {
+    "id": "req_1761294966139_aty7zwvao",
+    "predictedPrice": 754687,
+    "predictedPricePerUnit": 1509,
+    "predictedPricePerSqft": 1509,
+    "confidenceInterval": {
+      "lower": 633937,
+      "upper": 875437,
+      "lowerPerUnit": 1268,
+      "upperPerUnit": 1751,
+      "lowerPerSqft": 1268,
+      "upperPerSqft": 1751
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 651000,
+      "marketTrend": 0.62,
+      "transactionVolume": 5494,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.68
+    },
+    "comparableTransactions": [
+      {
+        "price": 765179,
+        "pricePerUnit": 1234,
+        "date": "2025-06-23",
+        "area": 620,
+        "type": "Condo"
+      },
+      {
+        "price": 758742,
+        "pricePerUnit": 1178,
+        "date": "2024-12-23",
+        "area": 644,
+        "type": "Condo"
+      },
+      {
+        "price": 867534,
+        "pricePerUnit": 1428,
+        "date": "2024-08-23",
+        "area": 607,
+        "type": "Condo"
+      },
+      {
+        "price": 910203,
+        "pricePerUnit": 1436,
+        "date": "2024-03-23",
+        "area": 634,
+        "type": "Condo"
+      },
+      {
+        "price": 953828,
+        "pricePerUnit": 1507,
+        "date": "2023-11-23",
+        "area": 633,
+        "type": "Condo"
+      }
+    ],
+    "modelMetrics": {
+      "accuracy": 0.87,
+      "sampleSize": 5494,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T08:36:06.199Z"
+  },
+  {
+    "id": "req_1761294967213_j5d4qnfl3",
+    "predictedPrice": 5075575,
+    "predictedPricePerUnit": 3384,
+    "predictedPricePerSqft": 3384,
+    "confidenceInterval": {
+      "lower": 3121479,
+      "upper": 7029671,
+      "lowerPerUnit": 2081,
+      "upperPerUnit": 4686,
+      "lowerPerSqft": 2081,
+      "upperPerSqft": 4686
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 2367156,
+      "marketTrend": 2.5,
+      "transactionVolume": 100,
+      "priceGrowthRate": 0.05062499999999992,
+      "marketConfidence": 0.9
+    },
+    "comparableTransactions": [
+      {
+        "price": 1501098,
+        "pricePerUnit": 1325,
+        "date": "2025-10-23",
+        "area": 1133,
+        "type": "Condo"
+      },
+      {
+        "price": 2151603,
+        "pricePerUnit": 1387,
+        "date": "2025-10-23",
+        "area": 1551,
+        "type": "Condo"
+      },
+      {
+        "price": 2879644,
+        "pricePerUnit": 1553,
+        "date": "2025-09-23",
+        "area": 1854,
+        "type": "Condo"
+      },
+      {
+        "price": 1901783,
+        "pricePerUnit": 1292,
+        "date": "2025-09-23",
+        "area": 1473,
+        "type": "Condo"
+      },
+      {
+        "price": 1701250,
+        "pricePerUnit": 1466,
+        "date": "2025-09-23",
+        "area": 1160,
+        "type": "Condo"
+      }
+    ],
+    "modelMetrics": {
+      "accuracy": 0.88,
+      "sampleSize": 100,
+      "dataRecency": "2025-10-24T08:36:07.607Z"
+    },
+    "generatedAt": "2025-10-24T08:36:07.656Z"
+  },
+  {
+    "id": "req_1761294968680_vw23zbhey",
+    "predictedPrice": 9615378,
+    "predictedPricePerUnit": 4808,
+    "predictedPricePerSqft": 4808,
+    "confidenceInterval": {
+      "lower": 5913458,
+      "upper": 13317299,
+      "lowerPerUnit": 2957,
+      "upperPerUnit": 6659,
+      "lowerPerSqft": 2957,
+      "upperPerSqft": 6659
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 2367156,
+      "marketTrend": 2.5,
+      "transactionVolume": 100,
+      "priceGrowthRate": 0.05062499999999992,
+      "marketConfidence": 0.9
+    },
+    "comparableTransactions": [
+      {
+        "price": 3532485,
+        "pricePerUnit": 2163,
+        "date": "2025-10-23",
+        "area": 1633,
+        "type": "Condo"
+      },
+      {
+        "price": 3196226,
+        "pricePerUnit": 2051,
+        "date": "2025-10-23",
+        "area": 1558,
+        "type": "Condo"
+      },
+      {
+        "price": 3385707,
+        "pricePerUnit": 2315,
+        "date": "2025-10-23",
+        "area": 1462,
+        "type": "Condo"
+      },
+      {
+        "price": 3807243,
+        "pricePerUnit": 2256,
+        "date": "2025-10-23",
+        "area": 1688,
+        "type": "Condo"
+      },
+      {
+        "price": 5158020,
+        "pricePerUnit": 2748,
+        "date": "2025-10-23",
+        "area": 1877,
+        "type": "Condo"
+      }
+    ],
+    "modelMetrics": {
+      "accuracy": 0.88,
+      "sampleSize": 100,
+      "dataRecency": "2025-10-24T08:36:08.917Z"
+    },
+    "generatedAt": "2025-10-24T08:36:08.974Z"
+  },
+  {
+    "id": "req_1761295471418_cugpfonv0",
+    "predictedPrice": 1132031,
+    "predictedPricePerUnit": 1509,
+    "predictedPricePerSqft": 1509,
+    "confidenceInterval": {
+      "lower": 950906,
+      "upper": 1313156,
+      "lowerPerUnit": 1268,
+      "upperPerUnit": 1751,
+      "lowerPerSqft": 1268,
+      "upperPerSqft": 1751
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 976500,
+      "marketTrend": 0.62,
+      "transactionVolume": 5494,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.68
+    },
+    "comparableTransactions": [
+      {
+        "price": 1228650,
+        "pricePerUnit": 1505,
+        "date": "2025-10-23",
+        "area": 816,
+        "type": "Condo"
+      },
+      {
+        "price": 998015,
+        "pricePerUnit": 1220,
+        "date": "2025-09-23",
+        "area": 818,
+        "type": "Condo"
+      },
+      {
+        "price": 980047,
+        "pricePerUnit": 1445,
+        "date": "2025-09-23",
+        "area": 678,
+        "type": "Condo"
+      },
+      {
+        "price": 1182254,
+        "pricePerUnit": 1279,
+        "date": "2025-08-23",
+        "area": 924,
+        "type": "Condo"
+      },
+      {
+        "price": 955738,
+        "pricePerUnit": 1234,
+        "date": "2025-08-23",
+        "area": 775,
+        "type": "Condo"
+      }
+    ],
+    "modelMetrics": {
+      "accuracy": 0.87,
+      "sampleSize": 5494,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T08:44:31.506Z"
+  },
+  {
+    "id": "req_1761295490145_5quvolno9",
+    "predictedPrice": 1380695,
+    "predictedPricePerUnit": 1841,
+    "predictedPricePerSqft": 1841,
+    "confidenceInterval": {
+      "lower": 1159784,
+      "upper": 1601607,
+      "lowerPerUnit": 1546,
+      "upperPerUnit": 2135,
+      "lowerPerSqft": 1546,
+      "upperPerSqft": 2135
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 1191000,
+      "marketTrend": 4.99,
+      "transactionVolume": 956,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.68
+    },
+    "comparableTransactions": [
+      {
+        "price": 1120152,
+        "pricePerUnit": 1834,
+        "date": "2025-10-23",
+        "area": 611,
+        "type": "Condo"
+      },
+      {
+        "price": 1589486,
+        "pricePerUnit": 1922,
+        "date": "2025-10-23",
+        "area": 827,
+        "type": "Condo"
+      },
+      {
+        "price": 1131151,
+        "pricePerUnit": 1562,
+        "date": "2025-10-23",
+        "area": 724,
+        "type": "Condo"
+      },
+      {
+        "price": 1093404,
+        "pricePerUnit": 1730,
+        "date": "2025-10-23",
+        "area": 632,
+        "type": "Condo"
+      },
+      {
+        "price": 996741,
+        "pricePerUnit": 1535,
+        "date": "2025-10-23",
+        "area": 649,
+        "type": "Condo"
+      }
+    ],
+    "modelMetrics": {
+      "accuracy": 0.87,
+      "sampleSize": 956,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T08:44:50.233Z"
+  },
+  {
+    "id": "req_1761295535647_zs1c2kcml",
+    "predictedPrice": 1132901,
+    "predictedPricePerUnit": 1511,
+    "predictedPricePerSqft": 1511,
+    "confidenceInterval": {
+      "lower": 957301,
+      "upper": 1308500,
+      "lowerPerUnit": 1276,
+      "upperPerUnit": 1745,
+      "lowerPerSqft": 1276,
+      "upperPerSqft": 1745
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 977250,
+      "marketTrend": -3.56,
+      "transactionVolume": 594,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.69
+    },
+    "comparableTransactions": [
+      {
+        "price": 1227068,
+        "pricePerUnit": 1316,
+        "date": "2025-10-23",
+        "area": 933,
+        "type": "Condo"
+      },
+      {
+        "price": 1178702,
+        "pricePerUnit": 1541,
+        "date": "2025-10-23",
+        "area": 765,
+        "type": "Condo"
+      },
+      {
+        "price": 1196775,
+        "pricePerUnit": 1368,
+        "date": "2025-09-23",
+        "area": 875,
+        "type": "Condo"
+      },
+      {
+        "price": 773251,
+        "pricePerUnit": 1267,
+        "date": "2025-09-23",
+        "area": 610,
+        "type": "Condo"
+      },
+      {
+        "price": 1202357,
+        "pricePerUnit": 1235,
+        "date": "2025-08-23",
+        "area": 974,
+        "type": "Condo"
+      }
+    ],
+    "modelMetrics": {
+      "accuracy": 0.87,
+      "sampleSize": 594,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T08:45:35.734Z"
+  },
+  {
+    "id": "req_1761297202893_f9ud7767w",
+    "predictedPrice": 1600000,
+    "predictedPricePerUnit": 1600,
+    "predictedPricePerSqft": 1600,
+    "confidenceInterval": {
+      "lower": 1255861,
+      "upper": 1600000,
+      "lowerPerUnit": 1256,
+      "upperPerUnit": 1600,
+      "lowerPerSqft": 1256,
+      "upperPerSqft": 1600
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 576214,
+      "marketTrend": 2.5,
+      "transactionVolume": 100,
+      "priceGrowthRate": 0.05062499999999992,
+      "marketConfidence": 0.9
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.88,
+      "sampleSize": 100,
+      "dataRecency": "2025-10-24T09:13:23.172Z"
+    },
+    "generatedAt": "2025-10-24T09:13:23.396Z"
+  },
+  {
+    "id": "req_1761297254482_nvfyz4iws",
+    "predictedPrice": 1136378,
+    "predictedPricePerUnit": 1515,
+    "predictedPricePerSqft": 1515,
+    "confidenceInterval": {
+      "lower": 948876,
+      "upper": 1323881,
+      "lowerPerUnit": 1265,
+      "upperPerUnit": 1765,
+      "lowerPerSqft": 1265,
+      "upperPerSqft": 1765
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 980250,
+      "marketTrend": 4.46,
+      "transactionVolume": 3815,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.67
+    },
+    "comparableTransactions": [
+      {
+        "price": 861505,
+        "pricePerUnit": 1203,
+        "date": "2025-10-23",
+        "area": 716,
+        "type": "Condo"
+      },
+      {
+        "price": 1418613,
+        "pricePerUnit": 1609,
+        "date": "2025-10-23",
+        "area": 882,
+        "type": "Condo"
+      },
+      {
+        "price": 1197223,
+        "pricePerUnit": 1542,
+        "date": "2025-09-23",
+        "area": 776,
+        "type": "Condo"
+      },
+      {
+        "price": 1196929,
+        "pricePerUnit": 1249,
+        "date": "2025-08-23",
+        "area": 958,
+        "type": "Condo"
+      },
+      {
+        "price": 940090,
+        "pricePerUnit": 1308,
+        "date": "2025-08-23",
+        "area": 718,
+        "type": "Condo"
+      }
+    ],
+    "modelMetrics": {
+      "accuracy": 0.87,
+      "sampleSize": 3815,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T09:14:14.564Z"
+  },
+  {
+    "id": "req_1761297269457_qghfyvbt8",
+    "predictedPrice": 1040000,
+    "predictedPricePerUnit": 1600,
+    "predictedPricePerSqft": 1600,
+    "confidenceInterval": {
+      "lower": 1040000,
+      "upper": 1040000,
+      "lowerPerUnit": 1600,
+      "upperPerUnit": 1600,
+      "lowerPerSqft": 1600,
+      "upperPerSqft": 1600
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 5265650,
+      "marketTrend": 4.46,
+      "transactionVolume": 3815,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.58
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.82,
+      "sampleSize": 3815,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T09:14:29.735Z"
+  },
+  {
+    "id": "req_1761297278895_sqg6954g3",
+    "predictedPrice": 1136378,
+    "predictedPricePerUnit": 1515,
+    "predictedPricePerSqft": 1515,
+    "confidenceInterval": {
+      "lower": 948876,
+      "upper": 1323881,
+      "lowerPerUnit": 1265,
+      "upperPerUnit": 1765,
+      "lowerPerSqft": 1265,
+      "upperPerSqft": 1765
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 980250,
+      "marketTrend": 4.46,
+      "transactionVolume": 3815,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.67
+    },
+    "comparableTransactions": [
+      {
+        "price": 861505,
+        "pricePerUnit": 1203,
+        "date": "2025-10-23",
+        "area": 716,
+        "type": "Condo"
+      },
+      {
+        "price": 1418613,
+        "pricePerUnit": 1609,
+        "date": "2025-10-23",
+        "area": 882,
+        "type": "Condo"
+      },
+      {
+        "price": 1197223,
+        "pricePerUnit": 1542,
+        "date": "2025-09-23",
+        "area": 776,
+        "type": "Condo"
+      },
+      {
+        "price": 1196929,
+        "pricePerUnit": 1249,
+        "date": "2025-08-23",
+        "area": 958,
+        "type": "Condo"
+      },
+      {
+        "price": 940090,
+        "pricePerUnit": 1308,
+        "date": "2025-08-23",
+        "area": 718,
+        "type": "Condo"
+      }
+    ],
+    "modelMetrics": {
+      "accuracy": 0.87,
+      "sampleSize": 3815,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T09:14:38.948Z"
+  },
+  {
+    "id": "req_1761297287416_s0zlt7700",
+    "predictedPrice": 1040000,
+    "predictedPricePerUnit": 1600,
+    "predictedPricePerSqft": 1600,
+    "confidenceInterval": {
+      "lower": 1040000,
+      "upper": 1040000,
+      "lowerPerUnit": 1600,
+      "upperPerUnit": 1600,
+      "lowerPerSqft": 1600,
+      "upperPerSqft": 1600
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 5265650,
+      "marketTrend": 4.46,
+      "transactionVolume": 3815,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.58
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.82,
+      "sampleSize": 3815,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T09:14:47.668Z"
+  },
+  {
+    "id": "req_1761297349537_kk3yk529r",
+    "predictedPrice": 1935408,
+    "predictedPricePerUnit": 2581,
+    "predictedPricePerSqft": 2581,
+    "confidenceInterval": {
+      "lower": 1625743,
+      "upper": 2245073,
+      "lowerPerUnit": 2168,
+      "upperPerUnit": 2993,
+      "lowerPerSqft": 2168,
+      "upperPerSqft": 2993
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 1669500,
+      "marketTrend": 2.75,
+      "transactionVolume": 959,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.68
+    },
+    "comparableTransactions": [
+      {
+        "price": 1894410,
+        "pricePerUnit": 2227,
+        "date": "2025-10-23",
+        "area": 850,
+        "type": "Condo"
+      },
+      {
+        "price": 2011240,
+        "pricePerUnit": 2750,
+        "date": "2025-10-23",
+        "area": 731,
+        "type": "Condo"
+      },
+      {
+        "price": 2295565,
+        "pricePerUnit": 2540,
+        "date": "2025-10-23",
+        "area": 904,
+        "type": "Condo"
+      },
+      {
+        "price": 1600712,
+        "pricePerUnit": 2244,
+        "date": "2025-10-23",
+        "area": 713,
+        "type": "Condo"
+      },
+      {
+        "price": 1520537,
+        "pricePerUnit": 2418,
+        "date": "2025-10-23",
+        "area": 629,
+        "type": "Condo"
+      }
+    ],
+    "modelMetrics": {
+      "accuracy": 0.87,
+      "sampleSize": 959,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T09:15:49.623Z"
+  },
+  {
+    "id": "req_1761297358264_2rrgvqr7m",
+    "predictedPrice": 1040000,
+    "predictedPricePerUnit": 1600,
+    "predictedPricePerSqft": 1600,
+    "confidenceInterval": {
+      "lower": 816310,
+      "upper": 1040000,
+      "lowerPerUnit": 1256,
+      "upperPerUnit": 1600,
+      "lowerPerSqft": 1256,
+      "upperPerSqft": 1600
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 576214,
+      "marketTrend": 2.5,
+      "transactionVolume": 100,
+      "priceGrowthRate": 0.05062499999999992,
+      "marketConfidence": 0.9
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.88,
+      "sampleSize": 100,
+      "dataRecency": "2025-10-24T09:15:58.569Z"
+    },
+    "generatedAt": "2025-10-24T09:15:58.768Z"
+  },
+  {
+    "id": "req_1761297367296_wq6mgtjav",
+    "predictedPrice": 1935408,
+    "predictedPricePerUnit": 2581,
+    "predictedPricePerSqft": 2581,
+    "confidenceInterval": {
+      "lower": 1625743,
+      "upper": 2245073,
+      "lowerPerUnit": 2168,
+      "upperPerUnit": 2993,
+      "lowerPerSqft": 2168,
+      "upperPerSqft": 2993
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 1669500,
+      "marketTrend": 2.75,
+      "transactionVolume": 959,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.68
+    },
+    "comparableTransactions": [
+      {
+        "price": 1894410,
+        "pricePerUnit": 2227,
+        "date": "2025-10-23",
+        "area": 850,
+        "type": "Condo"
+      },
+      {
+        "price": 2011240,
+        "pricePerUnit": 2750,
+        "date": "2025-10-23",
+        "area": 731,
+        "type": "Condo"
+      },
+      {
+        "price": 2295565,
+        "pricePerUnit": 2540,
+        "date": "2025-10-23",
+        "area": 904,
+        "type": "Condo"
+      },
+      {
+        "price": 1600712,
+        "pricePerUnit": 2244,
+        "date": "2025-10-23",
+        "area": 713,
+        "type": "Condo"
+      },
+      {
+        "price": 1520537,
+        "pricePerUnit": 2418,
+        "date": "2025-10-23",
+        "area": 629,
+        "type": "Condo"
+      }
+    ],
+    "modelMetrics": {
+      "accuracy": 0.87,
+      "sampleSize": 959,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T09:16:07.353Z"
+  },
+  {
+    "id": "req_1761297373902_03bonmhdm",
+    "predictedPrice": 1040000,
+    "predictedPricePerUnit": 1600,
+    "predictedPricePerSqft": 1600,
+    "confidenceInterval": {
+      "lower": 816310,
+      "upper": 1040000,
+      "lowerPerUnit": 1256,
+      "upperPerUnit": 1600,
+      "lowerPerSqft": 1256,
+      "upperPerSqft": 1600
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 576214,
+      "marketTrend": 2.5,
+      "transactionVolume": 100,
+      "priceGrowthRate": 0.05062499999999992,
+      "marketConfidence": 0.9
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.88,
+      "sampleSize": 100,
+      "dataRecency": "2025-10-24T09:16:14.194Z"
+    },
+    "generatedAt": "2025-10-24T09:16:14.386Z"
+  },
+  {
+    "id": "req_1761297385520_zwzz8d1s2",
+    "predictedPrice": 1040000,
+    "predictedPricePerUnit": 1600,
+    "predictedPricePerSqft": 1600,
+    "confidenceInterval": {
+      "lower": 816310,
+      "upper": 1040000,
+      "lowerPerUnit": 1256,
+      "upperPerUnit": 1600,
+      "lowerPerSqft": 1256,
+      "upperPerSqft": 1600
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 576214,
+      "marketTrend": 2.5,
+      "transactionVolume": 100,
+      "priceGrowthRate": 0.05062499999999992,
+      "marketConfidence": 0.9
+    },
+    "comparableTransactions": [],
+    "modelMetrics": {
+      "accuracy": 0.88,
+      "sampleSize": 100,
+      "dataRecency": "2025-10-24T09:16:25.793Z"
+    },
+    "generatedAt": "2025-10-24T09:16:26.003Z"
+  },
+  {
+    "id": "req_1761297392175_zdjdyy7km",
+    "predictedPrice": 1615448,
+    "predictedPricePerUnit": 2154,
+    "predictedPricePerSqft": 2154,
+    "confidenceInterval": {
+      "lower": 1348899,
+      "upper": 1881997,
+      "lowerPerUnit": 1799,
+      "upperPerUnit": 2509,
+      "lowerPerSqft": 1799,
+      "upperPerSqft": 2509
+    },
+    "marketAnalysis": {
+      "currentMarketPrice": 1393500,
+      "marketTrend": -3.58,
+      "transactionVolume": 1182,
+      "priceGrowthRate": 3,
+      "marketConfidence": 0.67
+    },
+    "comparableTransactions": [
+      {
+        "price": 1364975,
+        "pricePerUnit": 1825,
+        "date": "2025-10-23",
+        "area": 748,
+        "type": "Condo"
+      },
+      {
+        "price": 1352310,
+        "pricePerUnit": 2005,
+        "date": "2025-10-23",
+        "area": 674,
+        "type": "Condo"
+      },
+      {
+        "price": 1429218,
+        "pricePerUnit": 1717,
+        "date": "2025-10-23",
+        "area": 832,
+        "type": "Condo"
+      },
+      {
+        "price": 1341110,
+        "pricePerUnit": 2167,
+        "date": "2025-10-23",
+        "area": 619,
+        "type": "Condo"
+      },
+      {
+        "price": 1371614,
+        "pricePerUnit": 2247,
+        "date": "2025-10-23",
+        "area": 610,
+        "type": "Condo"
+      }
+    ],
+    "modelMetrics": {
+      "accuracy": 0.87,
+      "sampleSize": 1182,
+      "dataRecency": "2025-10-23T16:02:57.273Z"
+    },
+    "generatedAt": "2025-10-24T09:16:32.228Z"
   }
 ]

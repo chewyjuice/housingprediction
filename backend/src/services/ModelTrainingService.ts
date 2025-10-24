@@ -154,14 +154,19 @@ export class ModelTrainingService {
       marketConfidence: weights.confidence
     };
 
+    // Apply validation bounds to prevent unrealistic predictions
+    const validatedPrice = this.applyValidationBounds(predictedPrice, propertyType, unitSize);
+    const validatedLower = this.applyValidationBounds(confidenceInterval.lower, propertyType, unitSize);
+    const validatedUpper = this.applyValidationBounds(confidenceInterval.upper, propertyType, unitSize);
+
     return {
-      predictedPrice: Math.round(predictedPrice),
-      predictedPricePerUnit: Math.round(predictedPrice / unitSize),
+      predictedPrice: Math.round(validatedPrice),
+      predictedPricePerUnit: Math.round(validatedPrice / unitSize),
       confidenceInterval: {
-        lower: Math.round(confidenceInterval.lower),
-        upper: Math.round(confidenceInterval.upper),
-        lowerPerUnit: Math.round(confidenceInterval.lowerPerUnit),
-        upperPerUnit: Math.round(confidenceInterval.upperPerUnit)
+        lower: Math.round(validatedLower),
+        upper: Math.round(validatedUpper),
+        lowerPerUnit: Math.round(validatedLower / unitSize),
+        upperPerUnit: Math.round(validatedUpper / unitSize)
       },
       marketAnalysis,
       modelInfo: {
@@ -170,6 +175,70 @@ export class ModelTrainingService {
         accuracy: this.currentModel.accuracy.byPropertyType[propertyType] || this.currentModel.accuracy.overall
       }
     };
+  }
+
+  /**
+   * Apply validation bounds to prevent unrealistic price predictions
+   */
+  private applyValidationBounds(price: number, propertyType: string, unitSize: number): number {
+    // Define realistic price ranges based on actual market data analysis
+    const validationBounds = {
+      HDB: {
+        pricePerSqft: { min: 300, max: 1600 },
+        totalPrice: { min: 200000, max: 2000000 }
+      },
+      Condo: {
+        pricePerSqft: { min: 800, max: 3500 },
+        totalPrice: { min: 600000, max: 6000000 }
+      },
+      Landed: {
+        pricePerSqft: { min: 1200, max: 4000 },
+        totalPrice: { min: 2000000, max: 15000000 }
+      }
+    };
+
+    const bounds = validationBounds[propertyType as keyof typeof validationBounds];
+    if (!bounds) {
+      console.warn(`[TRAINING] ⚠️ Unknown property type: ${propertyType}, skipping validation`);
+      return price;
+    }
+
+    // Calculate price per sqft
+    const pricePerSqft = price / unitSize;
+    
+    // Check if price per sqft is within bounds
+    let adjustedPricePerSqft = pricePerSqft;
+    let wasAdjusted = false;
+    
+    if (pricePerSqft < bounds.pricePerSqft.min) {
+      adjustedPricePerSqft = bounds.pricePerSqft.min;
+      wasAdjusted = true;
+      console.warn(`[TRAINING] ⚠️ Price per sqft too low: $${pricePerSqft.toFixed(0)} -> $${adjustedPricePerSqft} for ${propertyType}`);
+    } else if (pricePerSqft > bounds.pricePerSqft.max) {
+      adjustedPricePerSqft = bounds.pricePerSqft.max;
+      wasAdjusted = true;
+      console.warn(`[TRAINING] ⚠️ Price per sqft too high: $${pricePerSqft.toFixed(0)} -> $${adjustedPricePerSqft} for ${propertyType}`);
+    }
+    
+    // Calculate adjusted total price
+    let adjustedPrice = adjustedPricePerSqft * unitSize;
+    
+    // Also check total price bounds
+    if (adjustedPrice < bounds.totalPrice.min) {
+      adjustedPrice = bounds.totalPrice.min;
+      wasAdjusted = true;
+      console.warn(`[TRAINING] ⚠️ Total price too low: $${price.toLocaleString()} -> $${adjustedPrice.toLocaleString()} for ${propertyType}`);
+    } else if (adjustedPrice > bounds.totalPrice.max) {
+      adjustedPrice = bounds.totalPrice.max;
+      wasAdjusted = true;
+      console.warn(`[TRAINING] ⚠️ Total price too high: $${price.toLocaleString()} -> $${adjustedPrice.toLocaleString()} for ${propertyType}`);
+    }
+    
+    if (wasAdjusted) {
+      console.log(`[TRAINING] 🔧 Applied validation bounds for ${propertyType}: $${price.toLocaleString()} -> $${adjustedPrice.toLocaleString()}`);
+    }
+    
+    return adjustedPrice;
   }
 
   /**

@@ -83,10 +83,29 @@ export class ResalePriceExtractor {
     const hdbTransactions = await fileStorage.readData<ResaleTransaction>('hdb_resale_transactions');
     const privateTransactions = await fileStorage.readData<PrivateTransaction>('private_property_transactions');
 
+    // Get unique areas from transactions
+    const hdbAreas = new Set(hdbTransactions.map(t => t.areaId || t.town?.toLowerCase().replace(/\s+/g, '-')).filter(Boolean));
+    const privateAreas = new Set(privateTransactions.map(t => t.areaId || 'unknown').filter(Boolean));
+    const allAreas = Array.from(new Set([...hdbAreas, ...privateAreas]));
+
+    // Calculate data range
+    const allDates = [
+      ...hdbTransactions.map(t => new Date(t.recordDate || t.month + '-01').getTime()).filter(d => !isNaN(d)),
+      ...privateTransactions.map(t => new Date(t.recordDate || t.dateOfSale).getTime()).filter(d => !isNaN(d))
+    ];
+
+    const earliest = allDates.length > 0 ? Math.min(...allDates) : null;
+    const latest = allDates.length > 0 ? Math.max(...allDates) : null;
+
     return {
       totalTransactions: hdbTransactions.length + privateTransactions.length,
       hdbTransactions: hdbTransactions.length,
       privateTransactions: privateTransactions.length,
+      areasWithData: allAreas,
+      dataRange: {
+        earliest,
+        latest
+      },
       lastUpdated: new Date().toISOString()
     };
   }

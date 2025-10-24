@@ -145,57 +145,87 @@ const AppContent: React.FC = () => {
       console.log('Loading enhanced URA districts from backend...');
       setLoading('areas', true);
       
-      // Try to load enhanced URA districts first
-      try {
-        const uraResponse = await fetch('/api/districts/ura');
-        const uraData = await uraResponse.json();
+      // Use comprehensive Singapore district data
+      const comprehensiveDistricts = [
+        // Central Districts (D01-D08)
+        { district: 'District 1', uraCode: 'D01', planningArea: 'Marina Bay', areaId: 'marina-bay' },
+        { district: 'District 2', uraCode: 'D02', planningArea: 'Raffles Place', areaId: 'raffles-place' },
+        { district: 'District 3', uraCode: 'D03', planningArea: 'Tiong Bahru', areaId: 'tiong-bahru' },
+        { district: 'District 4', uraCode: 'D04', planningArea: 'Harbourfront', areaId: 'harbourfront' },
+        { district: 'District 5', uraCode: 'D05', planningArea: 'Buona Vista', areaId: 'buona-vista' },
+        { district: 'District 6', uraCode: 'D06', planningArea: 'City Hall', areaId: 'city-hall' },
+        { district: 'District 7', uraCode: 'D07', planningArea: 'Beach Road', areaId: 'beach-road' },
+        { district: 'District 8', uraCode: 'D08', planningArea: 'Little India', areaId: 'little-india' },
         
-        if (uraData.success && uraData.data.districts) {
-          console.log('Enhanced URA districts loaded:', uraData.data.districts.length, 'districts');
-          
-          // Convert URA districts to Area format
-          const enhancedAreas: Area[] = uraData.data.districts.map((district: any) => ({
-            id: district.areaId,
-            name: `${district.district} (${district.planningArea})`,
-            district: district.district,
-            planningArea: district.planningArea,
-            uraCode: district.code,
-            subDistricts: district.subDistricts,
-            postalCodes: [], // Will be populated from other sources
-            coordinates: {
-              latitude: getDistrictCoordinates(district.code).latitude,
-              longitude: getDistrictCoordinates(district.code).longitude,
-              boundaries: getDistrictBoundaries(district.code)
-            },
-            characteristics: {
-              mrtProximity: 0.5, // Default values - can be enhanced later
-              cbdDistance: getDistrictCBDDistance(district.code),
-              amenityScore: getDistrictAmenityScore(district.planningArea)
-            },
-            enhancedInfo: {
-              uraCode: district.code,
-              planningArea: district.planningArea,
-              subDistricts: district.subDistricts
-            }
-          }));
-          
-          setAreas(enhancedAreas);
-          dispatch({ type: 'SET_AREAS', payload: enhancedAreas });
-          showSuccess('Enhanced Districts Loaded', `Loaded ${enhancedAreas.length} URA districts with planning areas`);
-          return;
+        // Prime Districts (D09-D15)
+        { district: 'District 9', uraCode: 'D09', planningArea: 'Orchard', areaId: 'orchard' },
+        { district: 'District 10', uraCode: 'D10', planningArea: 'Tanglin', areaId: 'tanglin' },
+        { district: 'District 11', uraCode: 'D11', planningArea: 'Newton', areaId: 'newton' },
+        { district: 'District 12', uraCode: 'D12', planningArea: 'Novena', areaId: 'novena' },
+        { district: 'District 13', uraCode: 'D13', planningArea: 'Potong Pasir', areaId: 'potong-pasir' },
+        { district: 'District 14', uraCode: 'D14', planningArea: 'Geylang', areaId: 'geylang' },
+        { district: 'District 15', uraCode: 'D15', planningArea: 'Marine Parade', areaId: 'marine-parade' },
+        
+        // Mature Districts (D16-D20)
+        { district: 'District 16', uraCode: 'D16', planningArea: 'Bedok', areaId: 'bedok' },
+        { district: 'District 17', uraCode: 'D17', planningArea: 'Changi', areaId: 'changi' },
+        { district: 'District 18', uraCode: 'D18', planningArea: 'Pasir Ris', areaId: 'pasir-ris' },
+        { district: 'District 19', uraCode: 'D19', planningArea: 'Tampines', areaId: 'tampines' },
+        { district: 'District 20', uraCode: 'D20', planningArea: 'Bishan', areaId: 'bishan' },
+        
+        // Outer Districts (D21-D28)
+        { district: 'District 21', uraCode: 'D21', planningArea: 'Clementi', areaId: 'clementi' },
+        { district: 'District 22', uraCode: 'D22', planningArea: 'Jurong East', areaId: 'jurong-east' },
+        { district: 'District 23', uraCode: 'D23', planningArea: 'Bukit Batok', areaId: 'bukit-batok' },
+        { district: 'District 24', uraCode: 'D24', planningArea: 'Kranji', areaId: 'kranji' },
+        { district: 'District 25', uraCode: 'D25', planningArea: 'Woodlands', areaId: 'woodlands' },
+        { district: 'District 26', uraCode: 'D26', planningArea: 'Yishun', areaId: 'yishun' },
+        { district: 'District 27', uraCode: 'D27', planningArea: 'Sembawang', areaId: 'sembawang' },
+        { district: 'District 28', uraCode: 'D28', planningArea: 'Seletar', areaId: 'seletar' }
+      ];
+
+      console.log('Loading comprehensive Singapore districts:', comprehensiveDistricts.length, 'districts');
+      
+      // Convert to Area format
+      const enhancedAreas: Area[] = comprehensiveDistricts.map((district: any) => ({
+        id: district.areaId,
+        name: `${district.district} (${district.planningArea})`,
+        district: district.district,
+        planningArea: district.planningArea,
+        uraCode: district.uraCode,
+        subDistricts: [],
+        postalCodes: [],
+        coordinates: {
+          latitude: getDistrictCoordinates(district.uraCode).latitude,
+          longitude: getDistrictCoordinates(district.uraCode).longitude,
+          boundaries: getDistrictBoundaries(district.uraCode)
+        },
+        characteristics: {
+          mrtProximity: 0.5,
+          cbdDistance: getDistrictCBDDistance(district.uraCode),
+          amenityScore: getDistrictAmenityScore(district.planningArea)
+        },
+        enhancedInfo: {
+          uraCode: district.uraCode,
+          planningArea: district.planningArea,
+          subDistricts: []
         }
-      } catch (uraError) {
-        console.warn('Failed to load URA districts, trying legacy areas:', uraError);
-      }
+      }));
+      
+      setAreas(enhancedAreas);
+      dispatch({ type: 'SET_AREAS', payload: enhancedAreas });
+      showSuccess('Enhanced Districts Loaded', `Loaded ${enhancedAreas.length} Singapore districts`);
+      return;
       
       // Fallback to legacy area search
       const response = await apiService.searchAreas({ query: '' });
       console.log('Legacy areas response:', response);
       
-      if (response.success && response.data) {
-        console.log('Legacy areas loaded successfully:', response.data.length, 'areas');
-        setAreas(response.data);
-        dispatch({ type: 'SET_AREAS', payload: response.data });
+      if (response.success && response.data && Array.isArray(response.data)) {
+        const areas: Area[] = response.data as Area[];
+        console.log('Legacy areas loaded successfully:', areas.length, 'areas');
+        setAreas(areas);
+        dispatch({ type: 'SET_AREAS', payload: areas });
       } else {
         throw new Error('Failed to load areas');
       }

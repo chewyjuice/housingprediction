@@ -446,5 +446,305 @@
     "roomType": "2-bedroom",
     "requestedAt": "2025-10-23T17:22:16.720Z",
     "status": "processing"
+  },
+  {
+    "id": "req_1761286081866_ufo4ey333",
+    "areaId": "tampines",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "requestedAt": "2025-10-24T06:08:01.866Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761286511201_tbs7uwkpj",
+    "areaId": "hougang",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 900,
+    "roomType": "4-room",
+    "requestedAt": "2025-10-24T06:15:11.201Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761290204337_8ssb83n7f",
+    "areaId": "toa-payoh",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "requestedAt": "2025-10-24T07:16:44.337Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761291075228_glkoiu45p",
+    "areaId": "marina-bay",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "requestedAt": "2025-10-24T07:31:15.228Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761291767947_b2epkiqw5",
+    "areaId": "marina-bay",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "requestedAt": "2025-10-24T07:42:47.947Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761292401818_cjb5bxsx0",
+    "areaId": "tampines",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "requestedAt": "2025-10-24T07:53:21.818Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761294559685_fkw1t6orn",
+    "areaId": "pasir-ris",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "requestedAt": "2025-10-24T08:29:19.685Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761294597360_swbk8h86c",
+    "areaId": "pasir-ris",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "requestedAt": "2025-10-24T08:29:57.360Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761294959893_cnsoprb6z",
+    "areaId": "tampines",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 900,
+    "roomType": "4-room",
+    "requestedAt": "2025-10-24T08:35:59.893Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761294961305_h63170fdn",
+    "areaId": "woodlands",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 650,
+    "roomType": "3-room",
+    "requestedAt": "2025-10-24T08:36:01.305Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761294962755_j0fhs5e6f",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1100,
+    "roomType": "5-room",
+    "requestedAt": "2025-10-24T08:36:02.755Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761294963991_2s99c2qor",
+    "areaId": "orchard",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 700,
+    "roomType": "2-bedroom",
+    "requestedAt": "2025-10-24T08:36:03.991Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761294965068_n5u4oiekn",
+    "areaId": "marina-bay",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 1000,
+    "roomType": "3-bedroom",
+    "requestedAt": "2025-10-24T08:36:05.068Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761294966139_aty7zwvao",
+    "areaId": "pasir-ris",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 500,
+    "roomType": "1-bedroom",
+    "requestedAt": "2025-10-24T08:36:06.139Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761294967213_j5d4qnfl3",
+    "areaId": "tiong-bahru",
+    "timeframeYears": 5,
+    "propertyType": "Landed",
+    "unitSize": 1500,
+    "roomType": "Terrace",
+    "requestedAt": "2025-10-24T08:36:07.213Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761294968680_vw23zbhey",
+    "areaId": "orchard",
+    "timeframeYears": 5,
+    "propertyType": "Landed",
+    "unitSize": 2000,
+    "roomType": "Semi-D",
+    "requestedAt": "2025-10-24T08:36:08.680Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761295471418_cugpfonv0",
+    "areaId": "pasir-ris",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "requestedAt": "2025-10-24T08:44:31.419Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761295490145_5quvolno9",
+    "areaId": "newton",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "requestedAt": "2025-10-24T08:44:50.145Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761295535647_zs1c2kcml",
+    "areaId": "city-hall",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "requestedAt": "2025-10-24T08:45:35.647Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761297202893_f9ud7767w",
+    "areaId": "seletar",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 1000,
+    "roomType": "4-room",
+    "requestedAt": "2025-10-24T09:13:22.893Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761297254482_nvfyz4iws",
+    "areaId": "novena",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "requestedAt": "2025-10-24T09:14:14.482Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761297269457_qghfyvbt8",
+    "areaId": "novena",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 650,
+    "roomType": "3-room",
+    "requestedAt": "2025-10-24T09:14:29.457Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761297278895_sqg6954g3",
+    "areaId": "novena",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "requestedAt": "2025-10-24T09:14:38.895Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761297287416_s0zlt7700",
+    "areaId": "novena",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 650,
+    "roomType": "3-room",
+    "requestedAt": "2025-10-24T09:14:47.416Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761297349537_kk3yk529r",
+    "areaId": "orchard",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "requestedAt": "2025-10-24T09:15:49.537Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761297358264_2rrgvqr7m",
+    "areaId": "orchard",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 650,
+    "roomType": "3-room",
+    "requestedAt": "2025-10-24T09:15:58.264Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761297367296_wq6mgtjav",
+    "areaId": "orchard",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "requestedAt": "2025-10-24T09:16:07.296Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761297373902_03bonmhdm",
+    "areaId": "orchard",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 650,
+    "roomType": "3-room",
+    "requestedAt": "2025-10-24T09:16:13.902Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761297385520_zwzz8d1s2",
+    "areaId": "raffles-place",
+    "timeframeYears": 5,
+    "propertyType": "HDB",
+    "unitSize": 650,
+    "roomType": "3-room",
+    "requestedAt": "2025-10-24T09:16:25.520Z",
+    "status": "processing"
+  },
+  {
+    "id": "req_1761297392175_zdjdyy7km",
+    "areaId": "raffles-place",
+    "timeframeYears": 5,
+    "propertyType": "Condo",
+    "unitSize": 750,
+    "roomType": "2-bedroom",
+    "requestedAt": "2025-10-24T09:16:32.175Z",
+    "status": "processing"
   }
 ]

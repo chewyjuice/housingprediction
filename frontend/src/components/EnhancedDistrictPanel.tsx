@@ -7,7 +7,7 @@ interface EnhancedDistrictPanelProps {
 }
 
 interface URADistrict {
-  code: string;
+  uraCode: string;
   district: string;
   planningArea: string;
   subDistricts: string[];
@@ -31,7 +31,7 @@ const EnhancedDistrictPanel: React.FC<EnhancedDistrictPanelProps> = ({
   const loadURADistricts = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/districts/ura');
+      const response = await fetch('http://localhost:8000/api/districts/ura');
       const data = await response.json();
       
       if (data.success) {
@@ -46,7 +46,7 @@ const EnhancedDistrictPanel: React.FC<EnhancedDistrictPanelProps> = ({
 
   const loadModelInfo = async () => {
     try {
-      const response = await fetch('/api/model/info');
+      const response = await fetch('http://localhost:8000/api/model/info');
       const data = await response.json();
       
       if (data.success) {
@@ -60,7 +60,7 @@ const EnhancedDistrictPanel: React.FC<EnhancedDistrictPanelProps> = ({
   const handleRetrainModel = async () => {
     try {
       setRetraining(true);
-      const response = await fetch('/api/model/retrain-enhanced', {
+      const response = await fetch('http://localhost:8000/api/model/retrain-enhanced', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -85,7 +85,7 @@ const EnhancedDistrictPanel: React.FC<EnhancedDistrictPanelProps> = ({
   };
 
   const getDistrictTier = (uraCode: string): string => {
-    const districtNum = parseInt(uraCode.substring(1));
+    const districtNum = parseInt(uraCode?.substring(1) || '0');
     
     if (districtNum <= 8) return 'Central';
     if (districtNum <= 15) return 'Prime/Mature';
@@ -94,7 +94,7 @@ const EnhancedDistrictPanel: React.FC<EnhancedDistrictPanelProps> = ({
   };
 
   const getDistrictTierColor = (uraCode: string): string => {
-    const districtNum = parseInt(uraCode.substring(1));
+    const districtNum = parseInt(uraCode?.substring(1) || '0');
     
     if (districtNum <= 8) return 'bg-red-100 text-red-800 border-red-200';
     if (districtNum <= 15) return 'bg-orange-100 text-orange-800 border-orange-200';
@@ -188,14 +188,14 @@ const EnhancedDistrictPanel: React.FC<EnhancedDistrictPanelProps> = ({
             <div className="p-2 bg-red-50 rounded border border-red-200">
               <div className="font-medium text-red-800">Central (D01-D08)</div>
               <div className="text-red-600">
-                {uraDistricts.filter(d => parseInt(d.code.substring(1)) <= 8).length} districts
+                {uraDistricts.filter(d => parseInt(d.uraCode?.substring(1) || '0') <= 8).length} districts
               </div>
             </div>
             <div className="p-2 bg-orange-50 rounded border border-orange-200">
               <div className="font-medium text-orange-800">Prime (D09-D15)</div>
               <div className="text-orange-600">
                 {uraDistricts.filter(d => {
-                  const num = parseInt(d.code.substring(1));
+                  const num = parseInt(d.uraCode?.substring(1) || '0');
                   return num >= 9 && num <= 15;
                 }).length} districts
               </div>
@@ -204,7 +204,7 @@ const EnhancedDistrictPanel: React.FC<EnhancedDistrictPanelProps> = ({
               <div className="font-medium text-green-800">Mature (D16-D20)</div>
               <div className="text-green-600">
                 {uraDistricts.filter(d => {
-                  const num = parseInt(d.code.substring(1));
+                  const num = parseInt(d.uraCode?.substring(1) || '0');
                   return num >= 16 && num <= 20;
                 }).length} districts
               </div>
@@ -212,7 +212,7 @@ const EnhancedDistrictPanel: React.FC<EnhancedDistrictPanelProps> = ({
             <div className="p-2 bg-blue-50 rounded border border-blue-200">
               <div className="font-medium text-blue-800">Outer (D21-D28)</div>
               <div className="text-blue-600">
-                {uraDistricts.filter(d => parseInt(d.code.substring(1)) >= 21).length} districts
+                {uraDistricts.filter(d => parseInt(d.uraCode?.substring(1) || '0') >= 21).length} districts
               </div>
             </div>
           </div>

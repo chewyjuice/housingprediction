@@ -1,15 +1,12 @@
 [
   {
-    "id": "raffles-place",
-    "name": "Raffles Place",
+    "id": "marina-bay",
+    "name": "District 1 (Marina Bay)",
     "district": "District 1",
-    "postalCodes": [
-      "018989",
-      "048624",
-      "049318",
-      "049319",
-      "049320"
-    ],
+    "planningArea": "Marina Bay",
+    "uraCode": "D01",
+    "subDistricts": [],
+    "postalCodes": [],
     "coordinates": {
       "latitude": 1.2844,
       "longitude": 103.8517,
@@ -18,46 +15,48 @@
         "coordinates": [
           [
             [
-              103.848,
-              1.28
+              103.8,
+              1.25
             ],
             [
-              103.855,
-              1.28
+              103.9,
+              1.25
             ],
             [
-              103.855,
-              1.288
+              103.9,
+              1.35
             ],
             [
-              103.848,
-              1.288
+              103.8,
+              1.35
             ],
             [
-              103.848,
-              1.28
+              103.8,
+              1.25
             ]
           ]
         ]
       }
     },
     "characteristics": {
-      "mrtProximity": 0.1,
-      "cbdDistance": 0,
-      "amenityScore": 9.5
+      "mrtProximity": 0.5,
+      "cbdDistance": 1.2057752782310258,
+      "amenityScore": 8.545228857202082
+    },
+    "enhancedInfo": {
+      "uraCode": "D01",
+      "planningArea": "Marina Bay",
+      "subDistricts": []
     }
   },
   {
-    "id": "marina-bay",
-    "name": "Marina Bay",
-    "district": "District 1",
-    "postalCodes": [
-      "018956",
-      "018957",
-      "018958",
-      "018959",
-      "018960"
-    ],
+    "id": "raffles-place",
+    "name": "District 2 (Raffles Place)",
+    "district": "District 2",
+    "planningArea": "Raffles Place",
+    "uraCode": "D02",
+    "subDistricts": [],
+    "postalCodes": [],
     "coordinates": {
       "latitude": 1.282,
       "longitude": 103.8607,
@@ -66,286 +65,198 @@
         "coordinates": [
           [
             [
-              103.857,
-              1.278
+              103.8,
+              1.25
             ],
             [
-              103.864,
-              1.278
+              103.9,
+              1.25
             ],
             [
-              103.864,
-              1.286
+              103.9,
+              1.35
             ],
             [
-              103.857,
-              1.286
+              103.8,
+              1.35
             ],
             [
-              103.857,
-              1.278
+              103.8,
+              1.25
             ]
           ]
         ]
       }
     },
     "characteristics": {
-      "mrtProximity": 0.2,
-      "cbdDistance": 0.5,
-      "amenityScore": 9.8
-    }
-  },
-  {
-    "id": "tanjong-pagar",
-    "name": "Tanjong Pagar",
-    "district": "District 2",
-    "postalCodes": [
-      "088001",
-      "088002",
-      "088003",
-      "089001",
-      "089002"
-    ],
-    "coordinates": {
-      "latitude": 1.2762,
-      "longitude": 103.8458,
-      "boundaries": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              103.842,
-              1.272
-            ],
-            [
-              103.849,
-              1.272
-            ],
-            [
-              103.849,
-              1.28
-            ],
-            [
-              103.842,
-              1.28
-            ],
-            [
-              103.842,
-              1.272
-            ]
-          ]
-        ]
-      }
+      "mrtProximity": 0.5,
+      "cbdDistance": 0.6019348659417751,
+      "amenityScore": 9.108522268081478
     },
-    "characteristics": {
-      "mrtProximity": 0.1,
-      "cbdDistance": 1.2,
-      "amenityScore": 8.5
+    "enhancedInfo": {
+      "uraCode": "D02",
+      "planningArea": "Raffles Place",
+      "subDistricts": []
     }
   },
   {
     "id": "tiong-bahru",
-    "name": "Tiong Bahru",
+    "name": "District 3 (Tiong Bahru)",
     "district": "District 3",
-    "postalCodes": [
-      "160001",
-      "160002",
-      "160003",
-      "161001",
-      "161002"
-    ],
+    "planningArea": "Tiong Bahru",
+    "uraCode": "D03",
+    "subDistricts": [],
+    "postalCodes": [],
     "coordinates": {
-      "latitude": 1.2859,
-      "longitude": 103.8268,
+      "latitude": 1.278,
+      "longitude": 103.834,
       "boundaries": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              103.823,
-              1.282
+              103.8,
+              1.25
             ],
             [
-              103.83,
-              1.282
+              103.9,
+              1.25
             ],
             [
-              103.83,
-              1.29
+              103.9,
+              1.35
             ],
             [
-              103.823,
-              1.29
+              103.8,
+              1.35
             ],
             [
-              103.823,
-              1.282
+              103.8,
+              1.25
             ]
           ]
         ]
       }
     },
     "characteristics": {
-      "mrtProximity": 0.2,
-      "cbdDistance": 2.5,
-      "amenityScore": 8.2
-    }
-  },
-  {
-    "id": "queenstown",
-    "name": "Queenstown",
-    "district": "District 3",
-    "postalCodes": [
-      "118001",
-      "118002",
-      "118003",
-      "119001",
-      "119002"
-    ],
-    "coordinates": {
-      "latitude": 1.2966,
-      "longitude": 103.8065,
-      "boundaries": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              103.802,
-              1.292
-            ],
-            [
-              103.811,
-              1.292
-            ],
-            [
-              103.811,
-              1.301
-            ],
-            [
-              103.802,
-              1.301
-            ],
-            [
-              103.802,
-              1.292
-            ]
-          ]
-        ]
-      }
+      "mrtProximity": 0.5,
+      "cbdDistance": 0.7497826713896583,
+      "amenityScore": 8.24538539489538
     },
-    "characteristics": {
-      "mrtProximity": 0.3,
-      "cbdDistance": 4.2,
-      "amenityScore": 7.8
+    "enhancedInfo": {
+      "uraCode": "D03",
+      "planningArea": "Tiong Bahru",
+      "subDistricts": []
     }
   },
   {
     "id": "harbourfront",
-    "name": "Harbourfront",
+    "name": "District 4 (Harbourfront)",
     "district": "District 4",
-    "postalCodes": [
-      "099001",
-      "099002",
-      "099003",
-      "100001",
-      "100002"
-    ],
+    "planningArea": "Harbourfront",
+    "uraCode": "D04",
+    "subDistricts": [],
+    "postalCodes": [],
     "coordinates": {
-      "latitude": 1.2653,
-      "longitude": 103.8198,
+      "latitude": 1.265,
+      "longitude": 103.82,
       "boundaries": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              103.816,
-              1.261
+              103.8,
+              1.25
             ],
             [
-              103.823,
-              1.261
+              103.9,
+              1.25
             ],
             [
-              103.823,
-              1.269
+              103.9,
+              1.35
             ],
             [
-              103.816,
-              1.269
+              103.8,
+              1.35
             ],
             [
-              103.816,
-              1.261
+              103.8,
+              1.25
             ]
           ]
         ]
       }
     },
     "characteristics": {
-      "mrtProximity": 0.1,
-      "cbdDistance": 3.5,
-      "amenityScore": 8
+      "mrtProximity": 0.5,
+      "cbdDistance": 1.7175529754452454,
+      "amenityScore": 6.056570835814461
+    },
+    "enhancedInfo": {
+      "uraCode": "D04",
+      "planningArea": "Harbourfront",
+      "subDistricts": []
     }
   },
   {
-    "id": "clementi",
-    "name": "Clementi",
+    "id": "buona-vista",
+    "name": "District 5 (Buona Vista)",
     "district": "District 5",
-    "postalCodes": [
-      "120001",
-      "120002",
-      "120003",
-      "121001",
-      "121002"
-    ],
+    "planningArea": "Buona Vista",
+    "uraCode": "D05",
+    "subDistricts": [],
+    "postalCodes": [],
     "coordinates": {
-      "latitude": 1.3162,
-      "longitude": 103.7649,
+      "latitude": 1.307,
+      "longitude": 103.79,
       "boundaries": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              103.76,
-              1.312
+              103.8,
+              1.25
             ],
             [
-              103.77,
-              1.312
+              103.9,
+              1.25
             ],
             [
-              103.77,
-              1.32
+              103.9,
+              1.35
             ],
             [
-              103.76,
-              1.32
+              103.8,
+              1.35
             ],
             [
-              103.76,
-              1.312
+              103.8,
+              1.25
             ]
           ]
         ]
       }
     },
     "characteristics": {
-      "mrtProximity": 0.2,
-      "cbdDistance": 8.5,
-      "amenityScore": 7.5
+      "mrtProximity": 0.5,
+      "cbdDistance": 1.4022074189223024,
+      "amenityScore": 5.867666687154148
+    },
+    "enhancedInfo": {
+      "uraCode": "D05",
+      "planningArea": "Buona Vista",
+      "subDistricts": []
     }
   },
   {
     "id": "city-hall",
-    "name": "City Hall",
+    "name": "District 6 (City Hall)",
     "district": "District 6",
-    "postalCodes": [
-      "179001",
-      "179002",
-      "179003",
-      "180001",
-      "180002"
-    ],
+    "planningArea": "City Hall",
+    "uraCode": "D06",
+    "subDistricts": [],
+    "postalCodes": [],
     "coordinates": {
       "latitude": 1.293,
       "longitude": 103.852,
@@ -354,142 +265,148 @@
         "coordinates": [
           [
             [
-              103.848,
-              1.289
+              103.8,
+              1.25
             ],
             [
-              103.856,
-              1.289
+              103.9,
+              1.25
             ],
             [
-              103.856,
-              1.297
+              103.9,
+              1.35
             ],
             [
-              103.848,
-              1.297
+              103.8,
+              1.35
             ],
             [
-              103.848,
-              1.289
+              103.8,
+              1.25
             ]
           ]
         ]
       }
     },
     "characteristics": {
-      "mrtProximity": 0.1,
-      "cbdDistance": 1,
-      "amenityScore": 9
+      "mrtProximity": 0.5,
+      "cbdDistance": 1.9722505510099082,
+      "amenityScore": 5.915861582644045
+    },
+    "enhancedInfo": {
+      "uraCode": "D06",
+      "planningArea": "City Hall",
+      "subDistricts": []
     }
   },
   {
-    "id": "bugis",
-    "name": "Bugis",
+    "id": "beach-road",
+    "name": "District 7 (Beach Road)",
     "district": "District 7",
-    "postalCodes": [
-      "188001",
-      "188002",
-      "188003",
-      "189001",
-      "189002"
-    ],
+    "planningArea": "Beach Road",
+    "uraCode": "D07",
+    "subDistricts": [],
+    "postalCodes": [],
     "coordinates": {
-      "latitude": 1.3006,
-      "longitude": 103.8558,
+      "latitude": 1.298,
+      "longitude": 103.858,
       "boundaries": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              103.852,
-              1.297
+              103.8,
+              1.25
             ],
             [
-              103.86,
-              1.297
+              103.9,
+              1.25
             ],
             [
-              103.86,
-              1.305
+              103.9,
+              1.35
             ],
             [
-              103.852,
-              1.305
+              103.8,
+              1.35
             ],
             [
-              103.852,
-              1.297
+              103.8,
+              1.25
             ]
           ]
         ]
       }
     },
     "characteristics": {
-      "mrtProximity": 0.1,
-      "cbdDistance": 1.8,
-      "amenityScore": 8.7
+      "mrtProximity": 0.5,
+      "cbdDistance": 1.102677409001148,
+      "amenityScore": 6.611987402938169
+    },
+    "enhancedInfo": {
+      "uraCode": "D07",
+      "planningArea": "Beach Road",
+      "subDistricts": []
     }
   },
   {
     "id": "little-india",
-    "name": "Little India",
+    "name": "District 8 (Little India)",
     "district": "District 8",
-    "postalCodes": [
-      "200001",
-      "200002",
-      "200003",
-      "201001",
-      "201002"
-    ],
+    "planningArea": "Little India",
+    "uraCode": "D08",
+    "subDistricts": [],
+    "postalCodes": [],
     "coordinates": {
-      "latitude": 1.3067,
-      "longitude": 103.8518,
+      "latitude": 1.307,
+      "longitude": 103.852,
       "boundaries": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              103.848,
-              1.303
+              103.8,
+              1.25
             ],
             [
-              103.856,
-              1.303
+              103.9,
+              1.25
             ],
             [
-              103.856,
-              1.311
+              103.9,
+              1.35
             ],
             [
-              103.848,
-              1.311
+              103.8,
+              1.35
             ],
             [
-              103.848,
-              1.303
+              103.8,
+              1.25
             ]
           ]
         ]
       }
     },
     "characteristics": {
-      "mrtProximity": 0.1,
-      "cbdDistance": 2.5,
-      "amenityScore": 7.8
+      "mrtProximity": 0.5,
+      "cbdDistance": 1.7851612343846837,
+      "amenityScore": 6.052573245423426
+    },
+    "enhancedInfo": {
+      "uraCode": "D08",
+      "planningArea": "Little India",
+      "subDistricts": []
     }
   },
   {
     "id": "orchard",
-    "name": "Orchard",
+    "name": "District 9 (Orchard)",
     "district": "District 9",
-    "postalCodes": [
-      "228001",
-      "228002",
-      "228003",
-      "229001",
-      "229002"
-    ],
+    "planningArea": "Orchard",
+    "uraCode": "D09",
+    "subDistricts": [],
+    "postalCodes": [],
     "coordinates": {
       "latitude": 1.3048,
       "longitude": 103.8318,
@@ -498,72 +415,24 @@
         "coordinates": [
           [
             [
-              103.828,
-              1.301
+              103.8,
+              1.25
             ],
             [
-              103.836,
-              1.301
+              103.9,
+              1.25
             ],
             [
-              103.836,
-              1.309
+              103.9,
+              1.35
             ],
             [
-              103.828,
-              1.309
+              103.8,
+              1.35
             ],
             [
-              103.828,
-              1.301
-            ]
-          ]
-        ]
-      }
-    },
-    "characteristics": {
-      "mrtProximity": 0.1,
-      "cbdDistance": 2.2,
-      "amenityScore": 9.5
-    }
-  },
-  {
-    "id": "bukit-timah",
-    "name": "Bukit Timah",
-    "district": "District 10",
-    "postalCodes": [
-      "259001",
-      "259002",
-      "259003",
-      "260001",
-      "260002"
-    ],
-    "coordinates": {
-      "latitude": 1.3294,
-      "longitude": 103.8077,
-      "boundaries": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              103.803,
-              1.325
-            ],
-            [
-              103.812,
-              1.325
-            ],
-            [
-              103.812,
-              1.334
-            ],
-            [
-              103.803,
-              1.334
-            ],
-            [
-              103.803,
-              1.325
+              103.8,
+              1.25
             ]
           ]
         ]
@@ -571,767 +440,149 @@
     },
     "characteristics": {
       "mrtProximity": 0.5,
-      "cbdDistance": 5.5,
-      "amenityScore": 9.2
+      "cbdDistance": 2.2863521794809127,
+      "amenityScore": 9.400263031554351
+    },
+    "enhancedInfo": {
+      "uraCode": "D09",
+      "planningArea": "Orchard",
+      "subDistricts": []
+    }
+  },
+  {
+    "id": "tanglin",
+    "name": "District 10 (Tanglin)",
+    "district": "District 10",
+    "planningArea": "Tanglin",
+    "uraCode": "D10",
+    "subDistricts": [],
+    "postalCodes": [],
+    "coordinates": {
+      "latitude": 1.32,
+      "longitude": 103.824,
+      "boundaries": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8,
+              1.25
+            ],
+            [
+              103.9,
+              1.25
+            ],
+            [
+              103.9,
+              1.35
+            ],
+            [
+              103.8,
+              1.35
+            ],
+            [
+              103.8,
+              1.25
+            ]
+          ]
+        ]
+      }
+    },
+    "characteristics": {
+      "mrtProximity": 0.5,
+      "cbdDistance": 4.478037592138248,
+      "amenityScore": 7.1380931395022635
+    },
+    "enhancedInfo": {
+      "uraCode": "D10",
+      "planningArea": "Tanglin",
+      "subDistricts": []
+    }
+  },
+  {
+    "id": "newton",
+    "name": "District 11 (Newton)",
+    "district": "District 11",
+    "planningArea": "Newton",
+    "uraCode": "D11",
+    "subDistricts": [],
+    "postalCodes": [],
+    "coordinates": {
+      "latitude": 1.318,
+      "longitude": 103.838,
+      "boundaries": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8,
+              1.25
+            ],
+            [
+              103.9,
+              1.25
+            ],
+            [
+              103.9,
+              1.35
+            ],
+            [
+              103.8,
+              1.35
+            ],
+            [
+              103.8,
+              1.25
+            ]
+          ]
+        ]
+      }
+    },
+    "characteristics": {
+      "mrtProximity": 0.5,
+      "cbdDistance": 3.3032554731682793,
+      "amenityScore": 8.398056980226045
+    },
+    "enhancedInfo": {
+      "uraCode": "D11",
+      "planningArea": "Newton",
+      "subDistricts": []
     }
   },
   {
     "id": "novena",
-    "name": "Novena",
-    "district": "District 11",
-    "postalCodes": [
-      "307001",
-      "307002",
-      "307003",
-      "308001",
-      "308002"
-    ],
-    "coordinates": {
-      "latitude": 1.3202,
-      "longitude": 103.8435,
-      "boundaries": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              103.839,
-              1.316
-            ],
-            [
-              103.848,
-              1.316
-            ],
-            [
-              103.848,
-              1.324
-            ],
-            [
-              103.839,
-              1.324
-            ],
-            [
-              103.839,
-              1.316
-            ]
-          ]
-        ]
-      }
-    },
-    "characteristics": {
-      "mrtProximity": 0.1,
-      "cbdDistance": 4.5,
-      "amenityScore": 8.5
-    }
-  },
-  {
-    "id": "toa-payoh",
-    "name": "Toa Payoh",
+    "name": "District 12 (Novena)",
     "district": "District 12",
-    "postalCodes": [
-      "310001",
-      "310002",
-      "310003",
-      "311001",
-      "311002"
-    ],
+    "planningArea": "Novena",
+    "uraCode": "D12",
+    "subDistricts": [],
+    "postalCodes": [],
     "coordinates": {
-      "latitude": 1.3343,
-      "longitude": 103.8474,
+      "latitude": 1.327,
+      "longitude": 103.843,
       "boundaries": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              103.843,
-              1.33
+              103.8,
+              1.25
             ],
             [
-              103.852,
-              1.33
+              103.9,
+              1.25
             ],
             [
-              103.852,
-              1.338
+              103.9,
+              1.35
             ],
             [
-              103.843,
-              1.338
+              103.8,
+              1.35
             ],
             [
-              103.843,
-              1.33
-            ]
-          ]
-        ]
-      }
-    },
-    "characteristics": {
-      "mrtProximity": 0.2,
-      "cbdDistance": 5.8,
-      "amenityScore": 7.5
-    }
-  },
-  {
-    "id": "potong-pasir",
-    "name": "Potong Pasir",
-    "district": "District 13",
-    "postalCodes": [
-      "350001",
-      "350002",
-      "350003",
-      "351001",
-      "351002"
-    ],
-    "coordinates": {
-      "latitude": 1.3308,
-      "longitude": 103.8697,
-      "boundaries": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              103.865,
-              1.327
-            ],
-            [
-              103.874,
-              1.327
-            ],
-            [
-              103.874,
-              1.335
-            ],
-            [
-              103.865,
-              1.335
-            ],
-            [
-              103.865,
-              1.327
-            ]
-          ]
-        ]
-      }
-    },
-    "characteristics": {
-      "mrtProximity": 0.3,
-      "cbdDistance": 6.2,
-      "amenityScore": 6.8
-    }
-  },
-  {
-    "id": "geylang",
-    "name": "Geylang",
-    "district": "District 14",
-    "postalCodes": [
-      "380001",
-      "380002",
-      "380003",
-      "381001",
-      "381002"
-    ],
-    "coordinates": {
-      "latitude": 1.3138,
-      "longitude": 103.8831,
-      "boundaries": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              103.879,
-              1.31
-            ],
-            [
-              103.888,
-              1.31
-            ],
-            [
-              103.888,
-              1.318
-            ],
-            [
-              103.879,
-              1.318
-            ],
-            [
-              103.879,
-              1.31
-            ]
-          ]
-        ]
-      }
-    },
-    "characteristics": {
-      "mrtProximity": 0.4,
-      "cbdDistance": 5.5,
-      "amenityScore": 6.5
-    }
-  },
-  {
-    "id": "katong",
-    "name": "Katong",
-    "district": "District 15",
-    "postalCodes": [
-      "428001",
-      "428002",
-      "428003",
-      "429001",
-      "429002"
-    ],
-    "coordinates": {
-      "latitude": 1.3048,
-      "longitude": 103.9006,
-      "boundaries": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              103.896,
-              1.301
-            ],
-            [
-              103.905,
-              1.301
-            ],
-            [
-              103.905,
-              1.309
-            ],
-            [
-              103.896,
-              1.309
-            ],
-            [
-              103.896,
-              1.301
-            ]
-          ]
-        ]
-      }
-    },
-    "characteristics": {
-      "mrtProximity": 0.6,
-      "cbdDistance": 7.2,
-      "amenityScore": 7.8
-    }
-  },
-  {
-    "id": "bedok",
-    "name": "Bedok",
-    "district": "District 16",
-    "postalCodes": [
-      "460001",
-      "460002",
-      "460003",
-      "461001",
-      "461002"
-    ],
-    "coordinates": {
-      "latitude": 1.3236,
-      "longitude": 103.9273,
-      "boundaries": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              103.923,
-              1.32
-            ],
-            [
-              103.932,
-              1.32
-            ],
-            [
-              103.932,
-              1.328
-            ],
-            [
-              103.923,
-              1.328
-            ],
-            [
-              103.923,
-              1.32
-            ]
-          ]
-        ]
-      }
-    },
-    "characteristics": {
-      "mrtProximity": 0.3,
-      "cbdDistance": 9.5,
-      "amenityScore": 7.2
-    }
-  },
-  {
-    "id": "changi",
-    "name": "Changi",
-    "district": "District 17",
-    "postalCodes": [
-      "500001",
-      "500002",
-      "500003",
-      "501001",
-      "501002"
-    ],
-    "coordinates": {
-      "latitude": 1.3644,
-      "longitude": 103.9915,
-      "boundaries": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              103.987,
-              1.36
-            ],
-            [
-              103.996,
-              1.36
-            ],
-            [
-              103.996,
-              1.368
-            ],
-            [
-              103.987,
-              1.368
-            ],
-            [
-              103.987,
-              1.36
-            ]
-          ]
-        ]
-      }
-    },
-    "characteristics": {
-      "mrtProximity": 1.2,
-      "cbdDistance": 18.5,
-      "amenityScore": 6
-    }
-  },
-  {
-    "id": "tampines",
-    "name": "Tampines",
-    "district": "District 18",
-    "postalCodes": [
-      "520001",
-      "520002",
-      "520003",
-      "521001",
-      "521002"
-    ],
-    "coordinates": {
-      "latitude": 1.3496,
-      "longitude": 103.9568,
-      "boundaries": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              103.952,
-              1.346
-            ],
-            [
-              103.961,
-              1.346
-            ],
-            [
-              103.961,
-              1.354
-            ],
-            [
-              103.952,
-              1.354
-            ],
-            [
-              103.952,
-              1.346
-            ]
-          ]
-        ]
-      }
-    },
-    "characteristics": {
-      "mrtProximity": 0.2,
-      "cbdDistance": 15.2,
-      "amenityScore": 7.8
-    }
-  },
-  {
-    "id": "hougang",
-    "name": "Hougang",
-    "district": "District 19",
-    "postalCodes": [
-      "530001",
-      "530002",
-      "530003",
-      "531001",
-      "531002"
-    ],
-    "coordinates": {
-      "latitude": 1.3613,
-      "longitude": 103.8863,
-      "boundaries": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              103.882,
-              1.357
-            ],
-            [
-              103.891,
-              1.357
-            ],
-            [
-              103.891,
-              1.365
-            ],
-            [
-              103.882,
-              1.365
-            ],
-            [
-              103.882,
-              1.357
-            ]
-          ]
-        ]
-      }
-    },
-    "characteristics": {
-      "mrtProximity": 0.3,
-      "cbdDistance": 12.5,
-      "amenityScore": 7
-    }
-  },
-  {
-    "id": "bishan",
-    "name": "Bishan",
-    "district": "District 20",
-    "postalCodes": [
-      "570001",
-      "570002",
-      "570003",
-      "571001",
-      "571002"
-    ],
-    "coordinates": {
-      "latitude": 1.3506,
-      "longitude": 103.8492,
-      "boundaries": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              103.845,
-              1.347
-            ],
-            [
-              103.854,
-              1.347
-            ],
-            [
-              103.854,
-              1.355
-            ],
-            [
-              103.845,
-              1.355
-            ],
-            [
-              103.845,
-              1.347
-            ]
-          ]
-        ]
-      }
-    },
-    "characteristics": {
-      "mrtProximity": 0.2,
-      "cbdDistance": 8.8,
-      "amenityScore": 8.2
-    }
-  },
-  {
-    "id": "ang-mo-kio",
-    "name": "Ang Mo Kio",
-    "district": "District 20",
-    "postalCodes": [
-      "560001",
-      "560002",
-      "560003",
-      "561001",
-      "561002"
-    ],
-    "coordinates": {
-      "latitude": 1.3691,
-      "longitude": 103.8454,
-      "boundaries": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              103.841,
-              1.365
-            ],
-            [
-              103.85,
-              1.365
-            ],
-            [
-              103.85,
-              1.373
-            ],
-            [
-              103.841,
-              1.373
-            ],
-            [
-              103.841,
-              1.365
-            ]
-          ]
-        ]
-      }
-    },
-    "characteristics": {
-      "mrtProximity": 0.3,
-      "cbdDistance": 10.2,
-      "amenityScore": 7.8
-    }
-  },
-  {
-    "id": "upper-bukit-timah",
-    "name": "Upper Bukit Timah",
-    "district": "District 21",
-    "postalCodes": [
-      "588001",
-      "588002",
-      "588003",
-      "589001",
-      "589002"
-    ],
-    "coordinates": {
-      "latitude": 1.3438,
-      "longitude": 103.7764,
-      "boundaries": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              103.772,
-              1.34
-            ],
-            [
-              103.781,
-              1.34
-            ],
-            [
-              103.781,
-              1.348
-            ],
-            [
-              103.772,
-              1.348
-            ],
-            [
-              103.772,
-              1.34
-            ]
-          ]
-        ]
-      }
-    },
-    "characteristics": {
-      "mrtProximity": 0.8,
-      "cbdDistance": 12.5,
-      "amenityScore": 8.5
-    }
-  },
-  {
-    "id": "jurong-east",
-    "name": "Jurong East",
-    "district": "District 22",
-    "postalCodes": [
-      "600001",
-      "600002",
-      "600003",
-      "601001",
-      "601002"
-    ],
-    "coordinates": {
-      "latitude": 1.3329,
-      "longitude": 103.7436,
-      "boundaries": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              103.739,
-              1.329
-            ],
-            [
-              103.748,
-              1.329
-            ],
-            [
-              103.748,
-              1.337
-            ],
-            [
-              103.739,
-              1.337
-            ],
-            [
-              103.739,
-              1.329
-            ]
-          ]
-        ]
-      }
-    },
-    "characteristics": {
-      "mrtProximity": 0.2,
-      "cbdDistance": 15.8,
-      "amenityScore": 7.5
-    }
-  },
-  {
-    "id": "bukit-panjang",
-    "name": "Bukit Panjang",
-    "district": "District 23",
-    "postalCodes": [
-      "670001",
-      "670002",
-      "670003",
-      "671001",
-      "671002"
-    ],
-    "coordinates": {
-      "latitude": 1.3774,
-      "longitude": 103.7723,
-      "boundaries": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              103.768,
-              1.373
-            ],
-            [
-              103.777,
-              1.373
-            ],
-            [
-              103.777,
-              1.381
-            ],
-            [
-              103.768,
-              1.381
-            ],
-            [
-              103.768,
-              1.373
-            ]
-          ]
-        ]
-      }
-    },
-    "characteristics": {
-      "mrtProximity": 0.3,
-      "cbdDistance": 18.2,
-      "amenityScore": 6.8
-    }
-  },
-  {
-    "id": "woodlands",
-    "name": "Woodlands",
-    "district": "District 25",
-    "postalCodes": [
-      "730001",
-      "730002",
-      "730003",
-      "731001",
-      "731002"
-    ],
-    "coordinates": {
-      "latitude": 1.4382,
-      "longitude": 103.789,
-      "boundaries": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              103.785,
-              1.434
-            ],
-            [
-              103.794,
-              1.434
-            ],
-            [
-              103.794,
-              1.442
-            ],
-            [
-              103.785,
-              1.442
-            ],
-            [
-              103.785,
-              1.434
-            ]
-          ]
-        ]
-      }
-    },
-    "characteristics": {
-      "mrtProximity": 0.4,
-      "cbdDistance": 25.5,
-      "amenityScore": 6.5
-    }
-  },
-  {
-    "id": "thomson",
-    "name": "Thomson",
-    "district": "District 26",
-    "postalCodes": [
-      "574001",
-      "574002",
-      "574003",
-      "575001",
-      "575002"
-    ],
-    "coordinates": {
-      "latitude": 1.3547,
-      "longitude": 103.8317,
-      "boundaries": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              103.827,
-              1.351
-            ],
-            [
-              103.836,
-              1.351
-            ],
-            [
-              103.836,
-              1.359
-            ],
-            [
-              103.827,
-              1.359
-            ],
-            [
-              103.827,
-              1.351
+              103.8,
+              1.25
             ]
           ]
         ]
@@ -1339,104 +590,813 @@
     },
     "characteristics": {
       "mrtProximity": 0.5,
-      "cbdDistance": 9.5,
-      "amenityScore": 8
+      "cbdDistance": 4.042929239528777,
+      "amenityScore": 7.915215467790542
+    },
+    "enhancedInfo": {
+      "uraCode": "D12",
+      "planningArea": "Novena",
+      "subDistricts": []
+    }
+  },
+  {
+    "id": "potong-pasir",
+    "name": "District 13 (Potong Pasir)",
+    "district": "District 13",
+    "planningArea": "Potong Pasir",
+    "uraCode": "D13",
+    "subDistricts": [],
+    "postalCodes": [],
+    "coordinates": {
+      "latitude": 1.329,
+      "longitude": 103.867,
+      "boundaries": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8,
+              1.25
+            ],
+            [
+              103.9,
+              1.25
+            ],
+            [
+              103.9,
+              1.35
+            ],
+            [
+              103.8,
+              1.35
+            ],
+            [
+              103.8,
+              1.25
+            ]
+          ]
+        ]
+      }
+    },
+    "characteristics": {
+      "mrtProximity": 0.5,
+      "cbdDistance": 2.2114514565456465,
+      "amenityScore": 6.754957719339796
+    },
+    "enhancedInfo": {
+      "uraCode": "D13",
+      "planningArea": "Potong Pasir",
+      "subDistricts": []
+    }
+  },
+  {
+    "id": "geylang",
+    "name": "District 14 (Geylang)",
+    "district": "District 14",
+    "planningArea": "Geylang",
+    "uraCode": "D14",
+    "subDistricts": [],
+    "postalCodes": [],
+    "coordinates": {
+      "latitude": 1.314,
+      "longitude": 103.879,
+      "boundaries": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8,
+              1.25
+            ],
+            [
+              103.9,
+              1.25
+            ],
+            [
+              103.9,
+              1.35
+            ],
+            [
+              103.8,
+              1.35
+            ],
+            [
+              103.8,
+              1.25
+            ]
+          ]
+        ]
+      }
+    },
+    "characteristics": {
+      "mrtProximity": 0.5,
+      "cbdDistance": 3.2341229411327848,
+      "amenityScore": 6.608319584457284
+    },
+    "enhancedInfo": {
+      "uraCode": "D14",
+      "planningArea": "Geylang",
+      "subDistricts": []
+    }
+  },
+  {
+    "id": "marine-parade",
+    "name": "District 15 (Marine Parade)",
+    "district": "District 15",
+    "planningArea": "Marine Parade",
+    "uraCode": "D15",
+    "subDistricts": [],
+    "postalCodes": [],
+    "coordinates": {
+      "latitude": 1.302,
+      "longitude": 103.906,
+      "boundaries": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8,
+              1.25
+            ],
+            [
+              103.9,
+              1.25
+            ],
+            [
+              103.9,
+              1.35
+            ],
+            [
+              103.8,
+              1.35
+            ],
+            [
+              103.8,
+              1.25
+            ]
+          ]
+        ]
+      }
+    },
+    "characteristics": {
+      "mrtProximity": 0.5,
+      "cbdDistance": 4.969037688038953,
+      "amenityScore": 6.470327627574063
+    },
+    "enhancedInfo": {
+      "uraCode": "D15",
+      "planningArea": "Marine Parade",
+      "subDistricts": []
+    }
+  },
+  {
+    "id": "bedok",
+    "name": "District 16 (Bedok)",
+    "district": "District 16",
+    "planningArea": "Bedok",
+    "uraCode": "D16",
+    "subDistricts": [],
+    "postalCodes": [],
+    "coordinates": {
+      "latitude": 1.324,
+      "longitude": 103.93,
+      "boundaries": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8,
+              1.25
+            ],
+            [
+              103.9,
+              1.25
+            ],
+            [
+              103.9,
+              1.35
+            ],
+            [
+              103.8,
+              1.35
+            ],
+            [
+              103.8,
+              1.25
+            ]
+          ]
+        ]
+      }
+    },
+    "characteristics": {
+      "mrtProximity": 0.5,
+      "cbdDistance": 5.078301740379541,
+      "amenityScore": 5.604281057984904
+    },
+    "enhancedInfo": {
+      "uraCode": "D16",
+      "planningArea": "Bedok",
+      "subDistricts": []
+    }
+  },
+  {
+    "id": "changi",
+    "name": "District 17 (Changi)",
+    "district": "District 17",
+    "planningArea": "Changi",
+    "uraCode": "D17",
+    "subDistricts": [],
+    "postalCodes": [],
+    "coordinates": {
+      "latitude": 1.357,
+      "longitude": 103.987,
+      "boundaries": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8,
+              1.25
+            ],
+            [
+              103.9,
+              1.25
+            ],
+            [
+              103.9,
+              1.35
+            ],
+            [
+              103.8,
+              1.35
+            ],
+            [
+              103.8,
+              1.25
+            ]
+          ]
+        ]
+      }
+    },
+    "characteristics": {
+      "mrtProximity": 0.5,
+      "cbdDistance": 5.2176874934050685,
+      "amenityScore": 6.528015261437089
+    },
+    "enhancedInfo": {
+      "uraCode": "D17",
+      "planningArea": "Changi",
+      "subDistricts": []
+    }
+  },
+  {
+    "id": "pasir-ris",
+    "name": "District 18 (Pasir Ris)",
+    "district": "District 18",
+    "planningArea": "Pasir Ris",
+    "uraCode": "D18",
+    "subDistricts": [],
+    "postalCodes": [],
+    "coordinates": {
+      "latitude": 1.372,
+      "longitude": 103.949,
+      "boundaries": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8,
+              1.25
+            ],
+            [
+              103.9,
+              1.25
+            ],
+            [
+              103.9,
+              1.35
+            ],
+            [
+              103.8,
+              1.35
+            ],
+            [
+              103.8,
+              1.25
+            ]
+          ]
+        ]
+      }
+    },
+    "characteristics": {
+      "mrtProximity": 0.5,
+      "cbdDistance": 5.687354010317809,
+      "amenityScore": 6.939320825610397
+    },
+    "enhancedInfo": {
+      "uraCode": "D18",
+      "planningArea": "Pasir Ris",
+      "subDistricts": []
+    }
+  },
+  {
+    "id": "tampines",
+    "name": "District 19 (Tampines)",
+    "district": "District 19",
+    "planningArea": "Tampines",
+    "uraCode": "D19",
+    "subDistricts": [],
+    "postalCodes": [],
+    "coordinates": {
+      "latitude": 1.353,
+      "longitude": 103.945,
+      "boundaries": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8,
+              1.25
+            ],
+            [
+              103.9,
+              1.25
+            ],
+            [
+              103.9,
+              1.35
+            ],
+            [
+              103.8,
+              1.35
+            ],
+            [
+              103.8,
+              1.25
+            ]
+          ]
+        ]
+      }
+    },
+    "characteristics": {
+      "mrtProximity": 0.5,
+      "cbdDistance": 9.879460564977691,
+      "amenityScore": 7.340396324629202
+    },
+    "enhancedInfo": {
+      "uraCode": "D19",
+      "planningArea": "Tampines",
+      "subDistricts": []
+    }
+  },
+  {
+    "id": "bishan",
+    "name": "District 20 (Bishan)",
+    "district": "District 20",
+    "planningArea": "Bishan",
+    "uraCode": "D20",
+    "subDistricts": [],
+    "postalCodes": [],
+    "coordinates": {
+      "latitude": 1.351,
+      "longitude": 103.848,
+      "boundaries": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8,
+              1.25
+            ],
+            [
+              103.9,
+              1.25
+            ],
+            [
+              103.9,
+              1.35
+            ],
+            [
+              103.8,
+              1.35
+            ],
+            [
+              103.8,
+              1.25
+            ]
+          ]
+        ]
+      }
+    },
+    "characteristics": {
+      "mrtProximity": 0.5,
+      "cbdDistance": 6.398991546365029,
+      "amenityScore": 8.188712907205327
+    },
+    "enhancedInfo": {
+      "uraCode": "D20",
+      "planningArea": "Bishan",
+      "subDistricts": []
+    }
+  },
+  {
+    "id": "clementi",
+    "name": "District 21 (Clementi)",
+    "district": "District 21",
+    "planningArea": "Clementi",
+    "uraCode": "D21",
+    "subDistricts": [],
+    "postalCodes": [],
+    "coordinates": {
+      "latitude": 1.315,
+      "longitude": 103.765,
+      "boundaries": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8,
+              1.25
+            ],
+            [
+              103.9,
+              1.25
+            ],
+            [
+              103.9,
+              1.35
+            ],
+            [
+              103.8,
+              1.35
+            ],
+            [
+              103.8,
+              1.25
+            ]
+          ]
+        ]
+      }
+    },
+    "characteristics": {
+      "mrtProximity": 0.5,
+      "cbdDistance": 16.23124727503017,
+      "amenityScore": 6.347120576730647
+    },
+    "enhancedInfo": {
+      "uraCode": "D21",
+      "planningArea": "Clementi",
+      "subDistricts": []
+    }
+  },
+  {
+    "id": "jurong-east",
+    "name": "District 22 (Jurong East)",
+    "district": "District 22",
+    "planningArea": "Jurong East",
+    "uraCode": "D22",
+    "subDistricts": [],
+    "postalCodes": [],
+    "coordinates": {
+      "latitude": 1.333,
+      "longitude": 103.742,
+      "boundaries": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8,
+              1.25
+            ],
+            [
+              103.9,
+              1.25
+            ],
+            [
+              103.9,
+              1.35
+            ],
+            [
+              103.8,
+              1.35
+            ],
+            [
+              103.8,
+              1.25
+            ]
+          ]
+        ]
+      }
+    },
+    "characteristics": {
+      "mrtProximity": 0.5,
+      "cbdDistance": 12.754165778944952,
+      "amenityScore": 6.722448995885785
+    },
+    "enhancedInfo": {
+      "uraCode": "D22",
+      "planningArea": "Jurong East",
+      "subDistricts": []
+    }
+  },
+  {
+    "id": "bukit-batok",
+    "name": "District 23 (Bukit Batok)",
+    "district": "District 23",
+    "planningArea": "Bukit Batok",
+    "uraCode": "D23",
+    "subDistricts": [],
+    "postalCodes": [],
+    "coordinates": {
+      "latitude": 1.348,
+      "longitude": 103.758,
+      "boundaries": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8,
+              1.25
+            ],
+            [
+              103.9,
+              1.25
+            ],
+            [
+              103.9,
+              1.35
+            ],
+            [
+              103.8,
+              1.35
+            ],
+            [
+              103.8,
+              1.25
+            ]
+          ]
+        ]
+      }
+    },
+    "characteristics": {
+      "mrtProximity": 0.5,
+      "cbdDistance": 13.127341917564925,
+      "amenityScore": 5.773991569309793
+    },
+    "enhancedInfo": {
+      "uraCode": "D23",
+      "planningArea": "Bukit Batok",
+      "subDistricts": []
+    }
+  },
+  {
+    "id": "kranji",
+    "name": "District 24 (Kranji)",
+    "district": "District 24",
+    "planningArea": "Kranji",
+    "uraCode": "D24",
+    "subDistricts": [],
+    "postalCodes": [],
+    "coordinates": {
+      "latitude": 1.427,
+      "longitude": 103.755,
+      "boundaries": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8,
+              1.25
+            ],
+            [
+              103.9,
+              1.25
+            ],
+            [
+              103.9,
+              1.35
+            ],
+            [
+              103.8,
+              1.35
+            ],
+            [
+              103.8,
+              1.25
+            ]
+          ]
+        ]
+      }
+    },
+    "characteristics": {
+      "mrtProximity": 0.5,
+      "cbdDistance": 18.766450376543304,
+      "amenityScore": 7.260575564705551
+    },
+    "enhancedInfo": {
+      "uraCode": "D24",
+      "planningArea": "Kranji",
+      "subDistricts": []
+    }
+  },
+  {
+    "id": "woodlands",
+    "name": "District 25 (Woodlands)",
+    "district": "District 25",
+    "planningArea": "Woodlands",
+    "uraCode": "D25",
+    "subDistricts": [],
+    "postalCodes": [],
+    "coordinates": {
+      "latitude": 1.437,
+      "longitude": 103.786,
+      "boundaries": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8,
+              1.25
+            ],
+            [
+              103.9,
+              1.25
+            ],
+            [
+              103.9,
+              1.35
+            ],
+            [
+              103.8,
+              1.35
+            ],
+            [
+              103.8,
+              1.25
+            ]
+          ]
+        ]
+      }
+    },
+    "characteristics": {
+      "mrtProximity": 0.5,
+      "cbdDistance": 16.492948117837223,
+      "amenityScore": 6.402498056091773
+    },
+    "enhancedInfo": {
+      "uraCode": "D25",
+      "planningArea": "Woodlands",
+      "subDistricts": []
     }
   },
   {
     "id": "yishun",
-    "name": "Yishun",
-    "district": "District 27",
-    "postalCodes": [
-      "760001",
-      "760002",
-      "760003",
-      "761001",
-      "761002"
-    ],
+    "name": "District 26 (Yishun)",
+    "district": "District 26",
+    "planningArea": "Yishun",
+    "uraCode": "D26",
+    "subDistricts": [],
+    "postalCodes": [],
     "coordinates": {
-      "latitude": 1.4304,
-      "longitude": 103.8354,
+      "latitude": 1.429,
+      "longitude": 103.835,
       "boundaries": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              103.831,
-              1.426
+              103.8,
+              1.25
             ],
             [
-              103.84,
-              1.426
+              103.9,
+              1.25
             ],
             [
-              103.84,
-              1.434
+              103.9,
+              1.35
             ],
             [
-              103.831,
-              1.434
+              103.8,
+              1.35
             ],
             [
-              103.831,
-              1.426
+              103.8,
+              1.25
             ]
           ]
         ]
       }
     },
     "characteristics": {
-      "mrtProximity": 0.3,
-      "cbdDistance": 22.8,
-      "amenityScore": 6.8
+      "mrtProximity": 0.5,
+      "cbdDistance": 12.863493696558724,
+      "amenityScore": 7.159030898067584
+    },
+    "enhancedInfo": {
+      "uraCode": "D26",
+      "planningArea": "Yishun",
+      "subDistricts": []
+    }
+  },
+  {
+    "id": "sembawang",
+    "name": "District 27 (Sembawang)",
+    "district": "District 27",
+    "planningArea": "Sembawang",
+    "uraCode": "D27",
+    "subDistricts": [],
+    "postalCodes": [],
+    "coordinates": {
+      "latitude": 1.449,
+      "longitude": 103.82,
+      "boundaries": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8,
+              1.25
+            ],
+            [
+              103.9,
+              1.25
+            ],
+            [
+              103.9,
+              1.35
+            ],
+            [
+              103.8,
+              1.35
+            ],
+            [
+              103.8,
+              1.25
+            ]
+          ]
+        ]
+      }
+    },
+    "characteristics": {
+      "mrtProximity": 0.5,
+      "cbdDistance": 16.95824764299587,
+      "amenityScore": 6.803845346551854
+    },
+    "enhancedInfo": {
+      "uraCode": "D27",
+      "planningArea": "Sembawang",
+      "subDistricts": []
     }
   },
   {
     "id": "seletar",
-    "name": "Seletar",
+    "name": "District 28 (Seletar)",
     "district": "District 28",
-    "postalCodes": [
-      "797001",
-      "797002",
-      "797003",
-      "798001",
-      "798002"
-    ],
+    "planningArea": "Seletar",
+    "uraCode": "D28",
+    "subDistricts": [],
+    "postalCodes": [],
     "coordinates": {
-      "latitude": 1.4048,
-      "longitude": 103.8692,
+      "latitude": 1.404,
+      "longitude": 103.869,
       "boundaries": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              103.865,
-              1.401
+              103.8,
+              1.25
             ],
             [
-              103.874,
-              1.401
+              103.9,
+              1.25
             ],
             [
-              103.874,
-              1.409
+              103.9,
+              1.35
             ],
             [
-              103.865,
-              1.409
+              103.8,
+              1.35
             ],
             [
-              103.865,
-              1.401
+              103.8,
+              1.25
             ]
           ]
         ]
       }
     },
     "characteristics": {
-      "mrtProximity": 1.5,
-      "cbdDistance": 20.5,
-      "amenityScore": 6.2
+      "mrtProximity": 0.5,
+      "cbdDistance": 16.869314588243675,
+      "amenityScore": 6.406273243243458
+    },
+    "enhancedInfo": {
+      "uraCode": "D28",
+      "planningArea": "Seletar",
+      "subDistricts": []
     }
   }
 ]

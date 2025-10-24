@@ -268,10 +268,37 @@ npm run test:propertyguru      # Test PropertyGuru scraping
 
 ### Common Issues
 
+**"Area not found" Error:**
+- **Cause**: Backend using cached/stale area data
+- **Quick Fix**: `curl -X POST http://localhost:8000/api/areas/refresh`
+- **Permanent Fix**: Restart backend server
+- **Verification**: Check logs show "28 comprehensive Singapore districts"
+
 **"Prediction Failed" Error:**
 - Check browser console (F12) for detailed logs
 - Ensure both backend and frontend are running
 - Verify backend is accessible at http://localhost:8000
+- Check specific area exists: `curl http://localhost:8000/api/areas/{area-id}`
+
+**"$NaN/sqft" or Incorrect PSF Values:**
+- **Cause**: Unit conversion errors between sqm and sqft
+- **Fix**: Restart backend server (fixed in latest version)
+- **Expected**: PSF values should be 1,000-3,000 range for Singapore
+
+**"Cannot read properties of undefined" Errors:**
+- **Cause**: Missing null checks in frontend components
+- **Fix**: Refresh browser page (fixed in latest version)
+- **Prevention**: All components now handle undefined values gracefully
+
+**"Unexpected token '<', "<!DOCTYPE"... JSON Error:**
+- **Cause**: Frontend calling wrong API URLs
+- **Fix**: Ensure backend is running on port 8000
+- **Check**: API calls should go to `http://localhost:8000/api/...`
+
+**Districts Missing from Map:**
+- **Cause**: Frontend-backend area data mismatch
+- **Fix**: Both now use same 28 Singapore districts
+- **Verification**: Map should show all districts D01-D28
 
 **Port Already in Use:**
 - Backend (8000): Change port in backend/.env
@@ -287,6 +314,51 @@ Enable detailed logging by opening browser console (F12) and watching for:
 - `[PREDICTION]` logs for prediction flow
 - `[POLLING]` logs for result polling
 - `[API]` logs for HTTP requests
+- `[AREAS]` logs for area initialization
+
+### Advanced Troubleshooting
+
+**Force Refresh Area Data:**
+```bash
+# Clear cached area data and reinitialize
+curl -X POST http://localhost:8000/api/areas/refresh
+
+# Check specific area exists
+curl http://localhost:8000/api/areas/pasir-ris
+
+# List all available areas
+curl http://localhost:8000/api/areas
+```
+
+**Verify API Endpoints:**
+```bash
+# Test API validation
+curl http://localhost:8000/api/validate-apis
+
+# Test URA districts
+curl http://localhost:8000/api/districts/ura
+
+# Test market summary
+curl http://localhost:8000/api/resale/summary
+
+# Test model info
+curl http://localhost:8000/api/model/info
+```
+
+**Backend Logs to Watch For:**
+```
+[AREAS] Loaded X areas from storage
+[AREAS] Initialized 28 comprehensive Singapore districts
+[AREAS] Pasir Ris included: true
+[PREDICTION] Area not found for ID: "area-name"
+[API Validation] Making request to http://localhost:8000/api/...
+```
+
+**Common Fix Sequence:**
+1. **Restart backend server** (fixes most caching issues)
+2. **Refresh browser page** (clears frontend cache)
+3. **Check browser console** for specific error messages
+4. **Use debug endpoints** to verify data availability
 
 ## 🚦 System Status
 

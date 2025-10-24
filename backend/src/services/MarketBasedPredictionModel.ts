@@ -167,21 +167,28 @@ export class MarketBasedPredictionModel {
       const confidence = this.calculateConfidenceInterval(projectedPrice, marketStats, input.timeframeYears);
       
       // Calculate price per unit
-      const pricePerUnit = input.propertyType === 'HDB' 
-        ? projectedPrice / input.unitSize // Price per sqm for HDB
-        : projectedPrice / (input.unitSize * 10.764); // Price per sqft for private (convert sqm to sqft)
+      // Frontend always sends unitSize in sqft, so calculate price per sqft consistently
+      const pricePerUnit = projectedPrice / input.unitSize; // Price per sqft (unitSize is always in sqft from frontend)
       
+      // Apply final validation to the projected price
+      const validatedPrice = this.applyValidationBounds(projectedPrice, input.propertyType, input.unitSize);
+      const validatedPricePerUnit = validatedPrice / input.unitSize;
+      
+      // Also validate confidence interval bounds
+      const validatedLower = this.applyValidationBounds(confidence.lower, input.propertyType, input.unitSize);
+      const validatedUpper = this.applyValidationBounds(confidence.upper, input.propertyType, input.unitSize);
+
       const result: MarketPredictionResult = {
-        predictedPrice: Math.round(projectedPrice),
-        predictedPricePerUnit: Math.round(pricePerUnit),
-        predictedPricePerSqft: Math.round(pricePerUnit), // Map to frontend expected field
+        predictedPrice: Math.round(validatedPrice),
+        predictedPricePerUnit: Math.round(validatedPricePerUnit),
+        predictedPricePerSqft: Math.round(validatedPricePerUnit), // Map to frontend expected field
         confidenceInterval: {
-          lower: Math.round(confidence.lower),
-          upper: Math.round(confidence.upper),
-          lowerPerUnit: Math.round(confidence.lower / (input.propertyType === 'HDB' ? input.unitSize : input.unitSize * 10.764)),
-          upperPerUnit: Math.round(confidence.upper / (input.propertyType === 'HDB' ? input.unitSize : input.unitSize * 10.764)),
-          lowerPerSqft: Math.round(confidence.lower / (input.propertyType === 'HDB' ? input.unitSize : input.unitSize * 10.764)), // Map to frontend expected field
-          upperPerSqft: Math.round(confidence.upper / (input.propertyType === 'HDB' ? input.unitSize : input.unitSize * 10.764))  // Map to frontend expected field
+          lower: Math.round(validatedLower),
+          upper: Math.round(validatedUpper),
+          lowerPerUnit: Math.round(validatedLower / input.unitSize), // unitSize is always in sqft
+          upperPerUnit: Math.round(validatedUpper / input.unitSize), // unitSize is always in sqft
+          lowerPerSqft: Math.round(validatedLower / input.unitSize), // Map to frontend expected field
+          upperPerSqft: Math.round(validatedUpper / input.unitSize)  // Map to frontend expected field
         },
         marketAnalysis: {
           currentMarketPrice: marketStats.averagePrice,
@@ -218,15 +225,8 @@ export class MarketBasedPredictionModel {
     // Start with market average
     let basePrice = marketStats.averagePrice;
     
-    // Adjust based on unit size
-    if (input.propertyType === 'HDB') {
-      // For HDB, use price per sqm
-      basePrice = marketStats.averagePricePerUnit * input.unitSize;
-    } else {
-      // For private properties, use price per sqft
-      const unitSizeInSqft = input.unitSize * 10.764; // Convert sqm to sqft
-      basePrice = marketStats.averagePricePerUnit * unitSizeInSqft;
-    }
+    // Adjust based on unit size (unitSize is always in sqft from frontend)
+    basePrice = marketStats.averagePricePerUnit * input.unitSize;
     
     // Adjust based on comparables if available
     if (comparables.length > 0) {
@@ -237,6 +237,9 @@ export class MarketBasedPredictionModel {
     
     // Apply area-specific adjustments
     basePrice = this.applyAreaAdjustments(basePrice, input.district, input.propertyType);
+    
+    // Apply validation bounds to prevent unrealistic prices
+    basePrice = this.applyValidationBounds(basePrice, input.propertyType, input.unitSize);
     
     return basePrice;
   }
@@ -257,8 +260,14 @@ export class MarketBasedPredictionModel {
       annualGrowthRate = Math.max(marketStats.trendPercentage / 100 * 0.5, -0.02); // Floor at -2%
     }
     
+    // Cap growth rate based on timeframe to prevent unrealistic projections
+    const maxGrowthMultiplier = years <= 5 ? 1.4 : 2.0; // Max 40% growth in 5 years, 100% in 10+ years
+    const cappedGrowthRate = Math.min(annualGrowthRate, Math.log(maxGrowthMultiplier) / years);
+    
     // Apply compound growth
-    const projectedPrice = basePrice * Math.pow(1 + annualGrowthRate, years);
+    const projectedPrice = basePrice * Math.pow(1 + cappedGrowthRate, years);
+    
+    console.log(`[PREDICTION] Growth projection: ${years}y @ ${(cappedGrowthRate * 100).toFixed(1)}% = ${((projectedPrice / basePrice - 1) * 100).toFixed(1)}% total`);
     
     return projectedPrice;
   }
@@ -307,7 +316,7 @@ export class MarketBasedPredictionModel {
           }));
       } else {
         const privateData = await fileStorage.readData<PrivateTransaction>('private_property_transactions');
-        const targetSizeInSqft = input.unitSize * 10.764;
+        const targetSizeInSqft = input.unitSize; // unitSize is already in sqft from frontend
         transactions = privateData
           .filter(t => 
             t.district === input.district &&
@@ -423,6 +432,70 @@ export class MarketBasedPredictionModel {
     accuracy += marketConfidence * 0.2;
     
     return Math.max(0.5, Math.min(0.95, accuracy));
+  }
+
+  /**
+   * Apply validation bounds to prevent unrealistic price predictions
+   */
+  private applyValidationBounds(price: number, propertyType: string, unitSize: number): number {
+    // Define realistic price ranges based on actual market data analysis
+    const validationBounds = {
+      HDB: {
+        pricePerSqft: { min: 300, max: 1600 },
+        totalPrice: { min: 200000, max: 2000000 }
+      },
+      Condo: {
+        pricePerSqft: { min: 800, max: 3500 },
+        totalPrice: { min: 600000, max: 6000000 }
+      },
+      Landed: {
+        pricePerSqft: { min: 1200, max: 4000 },
+        totalPrice: { min: 2000000, max: 15000000 }
+      }
+    };
+
+    const bounds = validationBounds[propertyType as keyof typeof validationBounds];
+    if (!bounds) {
+      console.warn(`[PREDICTION] ⚠️ Unknown property type: ${propertyType}, skipping validation`);
+      return price;
+    }
+
+    // Calculate price per sqft
+    const pricePerSqft = price / unitSize;
+    
+    // Check if price per sqft is within bounds
+    let adjustedPricePerSqft = pricePerSqft;
+    let wasAdjusted = false;
+    
+    if (pricePerSqft < bounds.pricePerSqft.min) {
+      adjustedPricePerSqft = bounds.pricePerSqft.min;
+      wasAdjusted = true;
+      console.warn(`[PREDICTION] ⚠️ Price per sqft too low: $${pricePerSqft.toFixed(0)} -> $${adjustedPricePerSqft} for ${propertyType}`);
+    } else if (pricePerSqft > bounds.pricePerSqft.max) {
+      adjustedPricePerSqft = bounds.pricePerSqft.max;
+      wasAdjusted = true;
+      console.warn(`[PREDICTION] ⚠️ Price per sqft too high: $${pricePerSqft.toFixed(0)} -> $${adjustedPricePerSqft} for ${propertyType}`);
+    }
+    
+    // Calculate adjusted total price
+    let adjustedPrice = adjustedPricePerSqft * unitSize;
+    
+    // Also check total price bounds
+    if (adjustedPrice < bounds.totalPrice.min) {
+      adjustedPrice = bounds.totalPrice.min;
+      wasAdjusted = true;
+      console.warn(`[PREDICTION] ⚠️ Total price too low: $${price.toLocaleString()} -> $${adjustedPrice.toLocaleString()} for ${propertyType}`);
+    } else if (adjustedPrice > bounds.totalPrice.max) {
+      adjustedPrice = bounds.totalPrice.max;
+      wasAdjusted = true;
+      console.warn(`[PREDICTION] ⚠️ Total price too high: $${price.toLocaleString()} -> $${adjustedPrice.toLocaleString()} for ${propertyType}`);
+    }
+    
+    if (wasAdjusted) {
+      console.log(`[PREDICTION] 🔧 Applied validation bounds for ${propertyType}: $${price.toLocaleString()} -> $${adjustedPrice.toLocaleString()}`);
+    }
+    
+    return adjustedPrice;
   }
 
   /**

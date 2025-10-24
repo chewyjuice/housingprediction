@@ -19,8 +19,20 @@ const APIValidationStatus: React.FC<APIValidationStatusProps> = ({ onValidationC
   const runValidation = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/validate-apis');
+      const apiUrl = 'http://localhost:8000/api/validate-apis';
+      console.log('[API Validation] Making request to', apiUrl);
+      const response = await fetch(apiUrl);
+      console.log('[API Validation] Response status:', response.status, response.statusText);
+      console.log('[API Validation] Response headers:', Object.fromEntries(response.headers.entries()));
+      
+      if (!response.ok) {
+        const text = await response.text();
+        console.log('[API Validation] Error response body:', text.substring(0, 200));
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+      
       const data = await response.json();
+      console.log('[API Validation] Parsed JSON data:', data);
       
       if (data.success || data.results) {
         setValidationResults(data.results || []);
@@ -31,10 +43,22 @@ const APIValidationStatus: React.FC<APIValidationStatusProps> = ({ onValidationC
       }
     } catch (error) {
       console.error('API validation failed:', error);
+      
+      // Enhanced error reporting
+      let errorMessage = 'Unknown error';
+      if (error instanceof Error) {
+        errorMessage = error.message;
+        
+        // Check if it's a JSON parsing error
+        if (error.message.includes('Unexpected token') || error.message.includes('<!DOCTYPE')) {
+          errorMessage = `JSON Parse Error: Server returned HTML instead of JSON. This usually means the endpoint doesn't exist or there's a server error. Original error: ${error.message}`;
+        }
+      }
+      
       setValidationResults([{
         name: 'Validation Error',
         status: 'error',
-        message: error instanceof Error ? error.message : 'Unknown error'
+        message: errorMessage
       }]);
       setSummary({ success: 0, warnings: 0, errors: 1 });
       onValidationComplete?.(false);
